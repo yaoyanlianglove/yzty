@@ -22,8 +22,7 @@ extern "C" {
 #define     PROTECT_SUB_DITH_TIME 1       //保护告警去抖时间 
    
 
-#define     CONTROL_POWER_ON  HAL_GPIO_WritePin(POWER_CTR_GPIO_Port, POWER_CTR_Pin, GPIO_PIN_RESET)
-#define     CONTROL_POWER_OFF HAL_GPIO_WritePin(POWER_CTR_GPIO_Port, POWER_CTR_Pin, GPIO_PIN_SET)
+
 
 /**
   * @brief  Device status definition

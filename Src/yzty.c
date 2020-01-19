@@ -543,10 +543,16 @@ void YZTY_Control_Judge(void)
         if(tySpace == 0)
         {
             CONTROL_POWER_ON;
-            if(YZTY_Switch_Action() != 0)
-                g_remoteSignal.turnGearFail = 1;
+            delay_ms(REMOTE_SIGNAL_SUB_DITH_TIME + 5); //主电源开启后，等待读主电源遥信
+            if(g_remoteSignal.powerOffAlarm == 0)
+            {
+                if(YZTY_Switch_Action() != 0)
+                    g_remoteSignal.turnGearFail = 1;
+                else
+                    g_remoteSignal.turnGearFail = 0;
+            }
             else
-                g_remoteSignal.turnGearFail = 0;
+                g_remoteSignal.turnGearFail = 1;
             CONTROL_POWER_OFF;
             g_switch.lastMotion     = g_switch.motion;
             g_saveFlag.switchMotionFlag = 1;
@@ -561,10 +567,16 @@ void YZTY_Control_Judge(void)
         if(tySpace == 0)
         {
             CONTROL_POWER_ON;
-            if(YZTY_Switch_Action() != 0)
-                g_remoteSignal.turnCapFail = 1;
+            delay_ms(REMOTE_SIGNAL_SUB_DITH_TIME + 5); //主电源开启后，等待读主电源遥信
+            if(g_remoteSignal.powerOffAlarm == 0)
+            {
+                if(YZTY_Switch_Action() != 0)
+                    g_remoteSignal.turnGearFail = 1;
+                else
+                    g_remoteSignal.turnGearFail = 0;
+            }
             else
-                g_remoteSignal.turnCapFail = 0;
+                g_remoteSignal.turnGearFail = 1;
             CONTROL_POWER_OFF;
             g_switch.lastMotion     = g_switch.motion;
             g_saveFlag.switchMotionFlag = 1;

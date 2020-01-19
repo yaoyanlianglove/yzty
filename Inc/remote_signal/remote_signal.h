@@ -35,6 +35,10 @@ extern "C" {
 #define  REMOTE_SIGNAL_POWER_CHECK           HAL_GPIO_ReadPin(POWER_CHECK_GPIO_Port, POWER_CHECK_Pin)  
 
 
+#define  REMOTE_SIGNAL_POWER_CONTROL         HAL_GPIO_ReadPin(POWER_CTR_GPIO_Port, POWER_CTR_Pin) 
+#define  CONTROL_POWER_ON                    HAL_GPIO_WritePin(POWER_CTR_GPIO_Port, POWER_CTR_Pin, GPIO_PIN_RESET)
+#define  CONTROL_POWER_OFF                   HAL_GPIO_WritePin(POWER_CTR_GPIO_Port, POWER_CTR_Pin, GPIO_PIN_SET)
+
 #define  BUTTON_CONFIRM_TIME         100       //按钮确认时间 
 #define  BUTTON_HANDLE_PERIOD_TIME   200       //按钮确认时间 
 
