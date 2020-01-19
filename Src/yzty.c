@@ -409,7 +409,7 @@ void YZTY_Lock_Judge(void)
  
         if(g_remoteSignal.overCurrentAlarm == 1 || g_remoteSignal.highVoltageAlarm == 1 || 
            g_remoteSignal.lowVoltageAlarm  == 1 || g_remoteSignal.gearFault        == 1 ||
-           g_remoteSignal.powerOffAlarm    == 1 || g_remoteSignal.motorFault       == 1 )
+           g_remoteSignal.motorFault       == 1 )
             g_remoteSignal.lockSwitch = 1;
         else
             g_remoteSignal.lockSwitch = 0;
@@ -417,7 +417,6 @@ void YZTY_Lock_Judge(void)
     else if(g_remoteSignal.remoteMode == 1) //手动模式
     {
         if(g_remoteSignal.gearFault        == 1 || 
-           g_remoteSignal.powerOffAlarm    == 1 ||
            g_remoteSignal.motorFault       == 1 )
             g_remoteSignal.lockSwitch = 1;
         else
