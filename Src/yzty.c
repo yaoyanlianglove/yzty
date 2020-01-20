@@ -133,18 +133,17 @@ uint8_t YZTY_Init(void)
         }
     }
 
-
     Remote_Signal_Init(&g_remoteSignal);
     Switch_Driver_Init();
     swStatus = Switch_Init(&g_switch, g_configPara.tapTotalNum);
-//    if(swStatus != SWITCH_OK)
-//    {
-//        res = 1;
-//        if(swStatus == SWITCH_GEAR_ERROR)
-//            g_remoteSignal.gearFault = 1;
-//        else if(swStatus == SWITCH_MOTOR_ERROR)
-//            g_remoteSignal.motorFault = 1;
-//    }
+    if(swStatus != SWITCH_OK)
+    {
+        res = 1;
+        if(swStatus == SWITCH_GEAR_ERROR)
+            g_remoteSignal.gearFault = 1;
+        else if(swStatus == SWITCH_MOTOR_ERROR)
+            g_remoteSignal.motorFault = 1;
+    }
     if(res != 0)
     {
         g_remoteSignal.initFail = 1;
@@ -226,7 +225,7 @@ void YZTY_Read_Clock(void)
 void YZTY_Read_Oil_Temp(void)
 {
     float tmp = 0;
-    if(readOilTmpSpace == 0)
+    if(flagReadOilTmp == 0 && readOilTmpSpace == 0)
     {
         /*-----------------关闭中断------------------------*/
         __disable_irq();
