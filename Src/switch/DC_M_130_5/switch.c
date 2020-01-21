@@ -583,15 +583,11 @@ SwitchStatusTypeDef Find_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef* s
 {
     uint16_t num   = 0;
     uint32_t count = 0;
-    uint8_t  q, gear, gear1;
+    uint8_t  gear, gear1;
     uint16_t delay = 0;
     float    speed = 0.0;
     motor->dutyCycle = 700;      //找档电机速度要设置，初始为700
     /************无法预期档位，读多次相同，判断找到档位***************************/
-    if(sw->memoryGear < 3)
-        q = 0;
-    else
-        q = 1;
     Motor_Clear_Number_Of_Turns();
     while(1)
     {
@@ -602,10 +598,7 @@ SwitchStatusTypeDef Find_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef* s
             sw->gearFault = 1;
             gearFaultArray[sw->expectGear] = 1;
             Motor_Standby();
-            if(q == 0)
-                return Back_Gear(num , dir^1, motor);
-            else
-                return Back_Gear(num , dir, motor);
+            return Back_Gear(num , dir^1, motor);
         }
         num = Motor_Get_Number_Of_Turns();
         if(count > MOTOR_TURN_TIME_ONE_CYCLE)
@@ -617,20 +610,14 @@ SwitchStatusTypeDef Find_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef* s
                 {
                     motor->motorFault = 1;
                     Motor_Standby();
-                    if(q == 0)
-                        return Back_Gear(num , dir^1, motor);
-                    else
-                        return Back_Gear(num , dir, motor);
+                    return Back_Gear(num , dir^1, motor);
                 }
                 else if(num > R_OF_ONE_GEAR + 5)  //超转数
                 {
                     sw->gearFault = 1;
                     gearFaultArray[sw->expectGear] = 1;
                     Motor_Standby();
-                    if(q == 0)
-                        return Back_Gear(num , dir^1, motor);
-                    else
-                        return Back_Gear(num , dir, motor);
+                    return Back_Gear(num , dir^1, motor);
                 }
             }
         }
@@ -654,10 +641,7 @@ SwitchStatusTypeDef Find_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef* s
         else
             delay = 0;
         Motor_Set_Speed(num, motor);
-        if(q == 0)
-            Motor_Run(dir, (uint16_t)(motor->dutyCycle));
-        else
-            Motor_Run(dir^1, (uint16_t)(motor->dutyCycle));
+        Motor_Run(dir, (uint16_t)(motor->dutyCycle));
         delay_us(TIME_OF_ONE_CYCLE);
     }
     return SWITCH_OK;
@@ -674,7 +658,10 @@ SwitchStatusTypeDef Switch_Calibration(SwitchTypeDef *sw, MotorTypeDef *motor)
     SwitchStatusTypeDef res = SWITCH_OK;
     if(sw->currentGear == 0)
     {
-        res = Find_Gear(FORWARD, motor, sw);
+        if(sw->memoryGear > 0 && sw->memoryGear < sw->totalGear/2 + 1)
+            res = Find_Gear(FORWARD, motor, sw);
+        else
+            res = Find_Gear(REVERSE, motor, sw);
     }
     //如果档位存在，直接找中，如果档位不存在，找档成功以后执行找中
     if(res != SWITCH_OK)

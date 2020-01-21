@@ -29,8 +29,8 @@ extern "C" {
 #define     R_OF_ON_GEAR         22       //在档位上的转数
 #define     TIME_OF_ONE_CYCLE    1        //电机运行的周期1us 
 
-#define     MOTOR_TURN_TIMEOUT        2000
-#define     MOTOR_TURN_OVER_SPEED     3.0
+#define     MOTOR_TURN_TIMEOUT        5000
+#define     MOTOR_TURN_OVER_SPEED     10.0
 #define     MOTOR_TURN_TIME_ONE_CYCLE 3000
 
 #define     DELAY_GEAR_REMOTE_SIGNAL  2
