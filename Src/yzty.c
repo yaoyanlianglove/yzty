@@ -42,6 +42,11 @@ volatile  uint16_t remoteHeartTimeout = 0;       //远程通信心跳超时
 uint16_t lastDeciveStatus    = 0;
 uint16_t currentDeciveStatus = 0;
 /***********设备状态结束************************************************************/
+/***********电源切换开始************************************************************/
+volatile uint16_t timeToCBPCounter = 0;          //关闭大电源的时间计数
+#define  POWER_ON_CBP_TIMEOUT     120            //秒
+#define  SW_CTR_AGO_CBP_TIMEOUT   60             //秒
+/***********电源切换结束************************************************************/
 
 /***********油温相关开始************************************************************/
 volatile  uint16_t readOilTmpSpace    = 0;       //读油温时间间隔
@@ -69,6 +74,8 @@ uint8_t YZTY_Init(void)
     uint8_t res = 0;
     uint8_t initData[64] = {0};
     SwitchStatusTypeDef swStatus = SWITCH_OK;
+
+    timeToCBPCounter = POWER_ON_CBP_TIMEOUT;
     
     if(Save_Reboot_Counter() != STORAGE_OK)
     {
@@ -246,11 +253,34 @@ void YZTY_Read_Oil_Temp(void)
             /*-----------------关闭中断------------------------*/
             __disable_irq();
             if(Temp_Read(&tmp) == TMP_OK)
+            {
                 g_telemetry.oilTmp = tmp;
+                if(tmp >= g_configPara.thAlarmTemp)
+                    g_remoteSignal.oilTemAlarm = 1;
+                else
+                    g_remoteSignal.oilTemAlarm = 0;
+            }
             readOilTmpSpace = READ_OIL_TMP_PERIOD;
             flagReadOilTmp = 0;
             /*-----------------打开中断------------------------*/
             __enable_irq();
+        }
+    }
+}
+/*****************************************************************************
+ Function    : YZTY_Power_Check
+ Description : None
+ Input       : None
+ Output      : None
+ Return      : None
+ *****************************************************************************/
+void YZTY_Power_Check(void)
+{
+    if(timeToCBPCounter == 0)
+    {
+        if(REMOTE_SIGNAL_POWER_CONTROL == 0)
+        {
+            CONTROL_POWER_OFF;
         }
     }
 }
@@ -280,6 +310,8 @@ void YZTY_Time_Counter(void)
         if(remoteHeartTimeout > 0)
             remoteHeartTimeout--;
         Private_Comm_Yk_Return_Counter();
+        if(timeToCBPCounter > 0)
+            timeToCBPCounter--;
     }
     if(oilTmpConvertSpace > 0)
         oilTmpConvertSpace--;
@@ -431,7 +463,7 @@ void YZTY_Lock_Judge(void)
  *****************************************************************************/
 void YZTY_Read_Gear_Signal(void)
 {
-    if(Read_Gear(&g_switch, &g_remoteSignal.gearSignal) == GEAR_OK)
+    if(Gear_Check(&g_switch, &g_remoteSignal.gearSignal) == GEAR_OK)
         g_remoteSignal.gearFault  = 0;
     else
         g_remoteSignal.gearFault  = 1;
@@ -466,6 +498,7 @@ uint8_t YZTY_Switch_Action(void)
         g_remoteSignal.gearFault  = 0;
         g_remoteSignal.motorFault = 0;
     }
+    timeToCBPCounter = SW_CTR_AGO_CBP_TIMEOUT;
     return 0;
 }
 /*****************************************************************************
@@ -541,7 +574,7 @@ void YZTY_Control_Judge(void)
         if(tySpace == 0)
         {
             CONTROL_POWER_ON;
-            delay_ms(REMOTE_SIGNAL_SUB_DITH_TIME + 5); //主电源开启后，等待读主电源遥信
+            delay_ms(REMOTE_SIGNAL_SUB_DITH_TIME + 50); //主电源开启后，等待读主电源遥信
             if(g_remoteSignal.powerOffAlarm == 0)
             {
                 if(YZTY_Switch_Action() != 0)
@@ -551,7 +584,6 @@ void YZTY_Control_Judge(void)
             }
             else
                 g_remoteSignal.turnGearFail = 1;
-            CONTROL_POWER_OFF;
             g_switch.lastMotion     = g_switch.motion;
             g_saveFlag.switchMotionFlag = 1;
             tySpace = g_configPara.tySpace;
@@ -565,7 +597,7 @@ void YZTY_Control_Judge(void)
         if(tySpace == 0)
         {
             CONTROL_POWER_ON;
-            delay_ms(REMOTE_SIGNAL_SUB_DITH_TIME + 5); //主电源开启后，等待读主电源遥信
+            delay_ms(REMOTE_SIGNAL_SUB_DITH_TIME + 50); //主电源开启后，等待读主电源遥信
             if(g_remoteSignal.powerOffAlarm == 0)
             {
                 if(YZTY_Switch_Action() != 0)
@@ -575,7 +607,6 @@ void YZTY_Control_Judge(void)
             }
             else
                 g_remoteSignal.turnGearFail = 1;
-            CONTROL_POWER_OFF;
             g_switch.lastMotion     = g_switch.motion;
             g_saveFlag.switchMotionFlag = 1;
             tySpace = g_configPara.tySpace;

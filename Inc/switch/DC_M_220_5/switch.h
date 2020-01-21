@@ -101,7 +101,7 @@ typedef struct
 
 
 void     Gear_Signal_Time_Counter(GearSignalTypeDef *gearSignal);
-GearStatusTypeDef  Read_Gear(SwitchTypeDef* sw, GearSignalTypeDef* gearSignal);
+GearStatusTypeDef    Read_Gear(SwitchTypeDef* sw, GearSignalTypeDef* gearSignal);
 SwitchStatusTypeDef  Switch_Calibration(SwitchTypeDef* sw, MotorTypeDef* motor);
 SwitchStatusTypeDef  Switch_Init(SwitchTypeDef* sw, uint8_t toatlGear);
 SwitchStatusTypeDef  Switch_Control(SwitchTypeDef* sw);

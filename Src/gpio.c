@@ -58,8 +58,8 @@ void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOF, LED2_Pin|LED3_Pin|LED4_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOG, LED5_Pin|LED6_Pin|POWER_CTR_Pin|DOUT13_Pin 
-                          |DOUT12_Pin|DOUT11_Pin|DOUT10_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOG, LED5_Pin|LED6_Pin|DOUT13_Pin|DOUT12_Pin 
+                          |DOUT11_Pin|DOUT10_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOE, LCD_CS_Pin|LCD_RST_Pin|LCD_A0_Pin|LCD_BKL_Pin 
@@ -75,6 +75,9 @@ void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, _4G_RESET_Pin|OIL_TEMP_Pin|WIFI_RESET_Pin, GPIO_PIN_SET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(POWER_CTR_GPIO_Port, POWER_CTR_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : PtPin */
   GPIO_InitStruct.Pin = FRAM_WP_Pin;
