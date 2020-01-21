@@ -573,6 +573,54 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
     return SWITCH_OK;
 }
 /*****************************************************************************
+ Function    : Go_To_Middle
+ Description : None
+ Input       : None
+ Output      : None
+ Return      : 0-sucess,1-failed;
+ *****************************************************************************/
+SwitchStatusTypeDef Go_To_Middle(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef* sw)
+{
+    uint16_t num   = 0;
+    uint32_t count = 0;
+    float speed   = 0.0;
+    Motor_Clear_Number_Of_Turns();
+    motor->dutyCycle = 700;
+    while(1)
+    {
+        if(count < (1000/TIME_OF_ONE_CYCLE)*MOTOR_TURN_TIMEOUT)
+            count++;
+        else  //超时
+        {
+            Motor_Standby();
+            return SWITCH_MOTOR_ERROR;
+        }
+        num = Motor_Get_Number_Of_Turns();
+        if(count > MOTOR_TURN_TIME_ONE_CYCLE)
+        {
+            if(num > 0)
+            {
+                speed = count/num/1000;
+                if(speed > MOTOR_TURN_OVER_SPEED)                   //超速
+                {
+                    motor->motorFault = 1;
+                    Motor_Standby();
+                    return Back_Gear(num, dir^1, motor);
+                }
+                else if(num > R_OF_ON_GEAR/2)   //按转过的圈数返回
+                {
+                    Motor_Standby();
+                    break;
+                }
+            }
+        }
+        Motor_Set_Speed(num, motor);
+        Motor_Run(dir, (uint16_t)(motor->dutyCycle));
+        delay_us(TIME_OF_ONE_CYCLE);
+    }
+    return SWITCH_OK;
+}
+/*****************************************************************************
  Function    : Find_Gear
  Description : None
  Input       : None
@@ -635,7 +683,7 @@ SwitchStatusTypeDef Find_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef* s
                 Motor_Standby();
                 sw->currentGear = gear;
                 sw->memoryGear  = gear;
-                break;
+                return Go_To_Middle(dir , motor, sw);
             } 
         }
         else
@@ -644,7 +692,6 @@ SwitchStatusTypeDef Find_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef* s
         Motor_Run(dir, (uint16_t)(motor->dutyCycle));
         delay_us(TIME_OF_ONE_CYCLE);
     }
-    return SWITCH_OK;
 }
 /*****************************************************************************
  Function    : Switch_Calibration
@@ -742,7 +789,7 @@ SwitchStatusTypeDef Turn_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef* s
                     sw->currentGear = sw->expectGear;
                     sw->memoryGear  = sw->expectGear;
                     Motor_Standby();
-                    return Find_Middle_Of_Gear(dir^1, motor, sw);
+                    return Go_To_Middle(dir , motor, sw);
                 }
             }
             else

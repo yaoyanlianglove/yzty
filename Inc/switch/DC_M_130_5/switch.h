@@ -106,6 +106,7 @@ GearStatusTypeDef    Gear_Check(SwitchTypeDef *sw, GearSignalTypeDef *gearSignal
 SwitchStatusTypeDef  Switch_Calibration(SwitchTypeDef* sw, MotorTypeDef* motor);
 SwitchStatusTypeDef  Switch_Init(SwitchTypeDef* sw, uint8_t toatlGear);
 SwitchStatusTypeDef  Switch_Control(SwitchTypeDef* sw);
+SwitchStatusTypeDef  Go_To_Middle(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef* sw);
 
 
 #ifdef __cplusplus
