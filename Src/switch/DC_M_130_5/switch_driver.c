@@ -177,6 +177,7 @@ void Switch_Driver_Init(void)
 {
     TIM2_Init();
     TIM4_Init();
+    Motor_Standby();
 }
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
