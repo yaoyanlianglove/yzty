@@ -43,7 +43,7 @@ uint16_t lastDeciveStatus    = 0;
 uint16_t currentDeciveStatus = 0;
 /***********设备状态结束************************************************************/
 /***********电源切换开始************************************************************/
-volatile uint16_t timeToCBPCounter = 0;          //关闭大电源的时间计数
+volatile uint16_t timeToCBPCounter = 120;        //关闭大电源的时间计数
 #define  POWER_ON_CBP_TIMEOUT     120            //秒
 #define  SW_CTR_AGO_CBP_TIMEOUT   60             //秒
 /***********电源切换结束************************************************************/
@@ -278,10 +278,8 @@ void YZTY_Power_Check(void)
 {
     if(timeToCBPCounter == 0)
     {
-        if(REMOTE_SIGNAL_POWER_CONTROL == 0)
-        {
-            CONTROL_POWER_OFF;
-        }
+        CONTROL_POWER_OFF;
+        g_remoteSignal.flagPowerON   = 0;
     }
 }
 /*****************************************************************************
@@ -574,6 +572,7 @@ void YZTY_Control_Judge(void)
         if(tySpace == 0)
         {
             CONTROL_POWER_ON;
+            g_remoteSignal.flagPowerON = 1;
             delay_ms(REMOTE_SIGNAL_SUB_DITH_TIME + 50); //主电源开启后，等待读主电源遥信
             if(g_remoteSignal.powerOffAlarm == 0)
             {
@@ -597,6 +596,7 @@ void YZTY_Control_Judge(void)
         if(tySpace == 0)
         {
             CONTROL_POWER_ON;
+            g_remoteSignal.flagPowerON = 1;
             delay_ms(REMOTE_SIGNAL_SUB_DITH_TIME + 50); //主电源开启后，等待读主电源遥信
             if(g_remoteSignal.powerOffAlarm == 0)
             {
