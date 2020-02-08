@@ -251,7 +251,7 @@ SwitchStatusTypeDef Back_Gear(uint8_t r, uint8_t dir, MotorTypeDef* motor)
         {
             if(num > 0)
             {
-                speed = count/num/1000;
+                speed = count/(num+1)/1000;
                 if(speed > MOTOR_TURN_OVER_SPEED)                   //速度异常
                 {
                     motor->motorFault = 1;
@@ -317,7 +317,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
         {
             if(num > 0)
             {
-                speed = count/num/1000;
+                speed = count/(num+1)/1000;
                 if(speed > MOTOR_TURN_OVER_SPEED)  //速度异常
                 {
                     motor->motorFault = 1;
@@ -385,7 +385,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
         {
             if(num > 0)
             {
-                speed = count/num/1000;
+                speed = count/(num+1)/1000;
                 if(speed > MOTOR_TURN_OVER_SPEED)                   //速度异常
                 {
                     motor->motorFault = 1;
@@ -469,7 +469,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
         {
             if(num > 0)
             {
-                speed = count/num/1000;
+                speed = count/(num+1)/1000;
                 if(speed > MOTOR_TURN_OVER_SPEED)                   //速度异常
                 {
                     motor->motorFault = 1;
@@ -551,7 +551,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
         {
             if(num > 0)
             {
-                speed = count/num/1000;
+                speed = count/(num+1)/1000;
                 if(speed > MOTOR_TURN_OVER_SPEED)                   //速度异常
                 {
                     motor->motorFault = 1;
@@ -633,7 +633,7 @@ SwitchStatusTypeDef Go_To_Middle(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef
         {
             if(num > 0)
             {
-                speed = count/num/1000;
+                speed = count/(num+1)/1000;
                 if(speed > MOTOR_TURN_OVER_SPEED)                   //速度异常
                 {
                     motor->motorFault = 1;
@@ -691,7 +691,7 @@ SwitchStatusTypeDef Find_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef* s
         {
             if(num > 0)
             {
-                speed = count/num/1000;
+                speed = count/(num+1)/1000;
                 if(speed > MOTOR_TURN_OVER_SPEED)                   //速度异常
                 {
                     motor->motorFault = 1;
@@ -809,7 +809,7 @@ SwitchStatusTypeDef Turn_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef* s
         {
             if(num > 0)
             {
-                speed = count/num/1000;
+                speed = count/(num+1)/1000;
                 if(speed > MOTOR_TURN_OVER_SPEED)                   //速度异常
                 {
                     motor->motorFault = 1;

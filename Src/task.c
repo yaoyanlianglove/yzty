@@ -64,7 +64,6 @@ static UINT32 Task_Main(VOID)
     dprintf("Task_Main Start.\r\n");    
     while(1)
     {
-    //    dprintf("Task_Main Start.\r\n"); 
         YZTY_Read_Telemetry();                       //读遥测
         YZTY_Read_Oil_Temp();                        //读温度
         YZTY_Read_Gear_Signal();                     //读档位
