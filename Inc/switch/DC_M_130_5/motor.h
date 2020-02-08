@@ -31,7 +31,6 @@ extern "C" {
 
 #define     MOTOR_TURN_TIMEOUT        2000
 #define     MOTOR_TURN_OVER_SPEED     6.0
-#define     MOTOR_TURN_TIME_ONE_CYCLE 6000
 
 #define     DELAY_GEAR_REMOTE_SIGNAL  2
 
