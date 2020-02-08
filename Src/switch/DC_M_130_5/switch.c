@@ -232,9 +232,9 @@ GearStatusTypeDef Read_Gear(SwitchTypeDef *sw, GearSignalTypeDef *gearSignal)
  *****************************************************************************/
 SwitchStatusTypeDef Back_Gear(uint8_t r, uint8_t dir, MotorTypeDef* motor)
 {
-    uint16_t num   = 0;
-    uint32_t count = 0;
-    float speed   = 0.0;
+    uint16_t num      = 0;
+    uint32_t count    = 0;
+    float    speed    = 0.0;
     Motor_Clear_Number_Of_Turns();
     motor->dutyCycle = 700;
     while(1)
@@ -252,7 +252,7 @@ SwitchStatusTypeDef Back_Gear(uint8_t r, uint8_t dir, MotorTypeDef* motor)
             if(num > 0)
             {
                 speed = count/num/1000;
-                if(speed > MOTOR_TURN_OVER_SPEED)                   //超速
+                if(speed > MOTOR_TURN_OVER_SPEED)                   //速度异常
                 {
                     motor->motorFault = 1;
                     Motor_Standby();
@@ -264,8 +264,17 @@ SwitchStatusTypeDef Back_Gear(uint8_t r, uint8_t dir, MotorTypeDef* motor)
                     break;
                 }
             }
+            else if(num == 0)
+            {
+                motor->motorFault = 1;
+                Motor_Standby();
+                return SWITCH_MOTOR_ERROR;
+            }
         }
-        Motor_Set_Speed(num, motor);
+        if(count % 200 == 0)
+        {
+            Motor_Set_Speed(num, motor);
+        }
         Motor_Run(dir, (uint16_t)(motor->dutyCycle));
         delay_us(TIME_OF_ONE_CYCLE);
     }
@@ -309,7 +318,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
             if(num > 0)
             {
                 speed = count/num/1000;
-                if(speed > MOTOR_TURN_OVER_SPEED)                   //超速
+                if(speed > MOTOR_TURN_OVER_SPEED)  //速度异常
                 {
                     motor->motorFault = 1;
                     Motor_Standby();
@@ -323,6 +332,12 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
                     totalNum = num;
                     return Back_Gear(totalNum, dir^1, motor);
                 }
+            }
+            else if(num == 0)
+            {
+                motor->motorFault = 1;
+                Motor_Standby();
+                return SWITCH_MOTOR_ERROR;
             }
         }
         if(Read_Gear_No_Delay() == sw->expectGear)
@@ -371,7 +386,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
             if(num > 0)
             {
                 speed = count/num/1000;
-                if(speed > MOTOR_TURN_OVER_SPEED)                   //超速
+                if(speed > MOTOR_TURN_OVER_SPEED)                   //速度异常
                 {
                     motor->motorFault = 1;
                     Motor_Standby();
@@ -401,6 +416,12 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
                         return Back_Gear(totalNum, dir^1, motor);
                     }
                 }
+            }
+            else if(num == 0)
+            {
+                motor->motorFault = 1;
+                Motor_Standby();
+                return SWITCH_MOTOR_ERROR;
             }
         }
         if(Read_Gear_No_Delay() == sw->expectGear)
@@ -449,7 +470,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
             if(num > 0)
             {
                 speed = count/num/1000;
-                if(speed > MOTOR_TURN_OVER_SPEED)                   //超速
+                if(speed > MOTOR_TURN_OVER_SPEED)                   //速度异常
                 {
                     motor->motorFault = 1;
                     Motor_Standby();
@@ -479,6 +500,12 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
                         return Back_Gear(totalNum, dir^1, motor);
                     }
                 }
+            }
+            else if(num == 0)
+            {
+                motor->motorFault = 1;
+                Motor_Standby();
+                return SWITCH_MOTOR_ERROR;
             }
         }
         if(Read_Gear_No_Delay() == sw->expectGear)
@@ -525,7 +552,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
             if(num > 0)
             {
                 speed = count/num/1000;
-                if(speed > MOTOR_TURN_OVER_SPEED)                   //超速
+                if(speed > MOTOR_TURN_OVER_SPEED)                   //速度异常
                 {
                     motor->motorFault = 1;
                     Motor_Standby();
@@ -556,6 +583,12 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
                     }
                 }
             }
+            else if(num == 0)
+            {
+                motor->motorFault = 1;
+                Motor_Standby();
+                return SWITCH_MOTOR_ERROR;
+            }
         }
         if(num < r)
         {               
@@ -583,7 +616,7 @@ SwitchStatusTypeDef Go_To_Middle(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef
 {
     uint16_t num   = 0;
     uint32_t count = 0;
-    float speed   = 0.0;
+    float    speed = 0.0;
     Motor_Clear_Number_Of_Turns();
     motor->dutyCycle = 700;
     while(1)
@@ -601,7 +634,7 @@ SwitchStatusTypeDef Go_To_Middle(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef
             if(num > 0)
             {
                 speed = count/num/1000;
-                if(speed > MOTOR_TURN_OVER_SPEED)                   //超速
+                if(speed > MOTOR_TURN_OVER_SPEED)                   //速度异常
                 {
                     motor->motorFault = 1;
                     Motor_Standby();
@@ -613,8 +646,13 @@ SwitchStatusTypeDef Go_To_Middle(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef
                     break;
                 }
             }
+            else if(num == 0)
+            {
+                motor->motorFault = 1;
+                Motor_Standby();
+                return SWITCH_MOTOR_ERROR;
+            }
         }
-        Motor_Set_Speed(num, motor);
         Motor_Run(dir, (uint16_t)(motor->dutyCycle));
         delay_us(TIME_OF_ONE_CYCLE);
     }
@@ -654,7 +692,7 @@ SwitchStatusTypeDef Find_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef* s
             if(num > 0)
             {
                 speed = count/num/1000;
-                if(speed > MOTOR_TURN_OVER_SPEED)                   //超速
+                if(speed > MOTOR_TURN_OVER_SPEED)                   //速度异常
                 {
                     motor->motorFault = 1;
                     Motor_Standby();
@@ -667,6 +705,12 @@ SwitchStatusTypeDef Find_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef* s
                     Motor_Standby();
                     return Back_Gear(num , dir^1, motor);
                 }
+            }
+            else if(num == 0)
+            {
+                motor->motorFault = 1;
+                Motor_Standby();
+                return SWITCH_MOTOR_ERROR;
             }
         }
         gear = Read_Gear_No_Delay();
@@ -688,7 +732,10 @@ SwitchStatusTypeDef Find_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef* s
         }
         else
             delay = 0;
-        Motor_Set_Speed(num, motor);
+        if(count % 200 == 0)
+        {
+            Motor_Set_Speed(num, motor);
+        }
         Motor_Run(dir, (uint16_t)(motor->dutyCycle));
         delay_us(TIME_OF_ONE_CYCLE);
     }
@@ -763,7 +810,7 @@ SwitchStatusTypeDef Turn_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef* s
             if(num > 0)
             {
                 speed = count/num/1000;
-                if(speed > MOTOR_TURN_OVER_SPEED)                   //超速
+                if(speed > MOTOR_TURN_OVER_SPEED)                   //速度异常
                 {
                     motor->motorFault = 1;
                     Motor_Standby();
@@ -776,6 +823,12 @@ SwitchStatusTypeDef Turn_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef* s
                     Motor_Standby();
                     return Back_Gear(num , dir^1, motor);
                 }
+            }
+            else if(num == 0)
+            {
+                motor->motorFault = 1;
+                Motor_Standby();
+                return SWITCH_MOTOR_ERROR;
             }
         }
         if(flagGetGear == 0)
@@ -795,7 +848,10 @@ SwitchStatusTypeDef Turn_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef* s
             else
                 delay = 0;
         }
-        Motor_Set_Speed(num, motor);
+        if(count % 200 == 0)
+        {
+            Motor_Set_Speed(num, motor);
+        }
         Motor_Run(dir, (uint16_t)(motor->dutyCycle));
         delay_us(TIME_OF_ONE_CYCLE);
     }

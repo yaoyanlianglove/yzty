@@ -26,12 +26,12 @@ extern "C" {
 #define     R_SPEED_UP_TH        15
 #define     R_SLOW_DOWN_TH       115
 #define     R_OF_ONE_GEAR        130      //一档的转数
-#define     R_OF_ON_GEAR         22       //在档位上的转数
+#define     R_OF_ON_GEAR         24       //在档位上的转数
 #define     TIME_OF_ONE_CYCLE    1        //电机运行的周期1us 
 
-#define     MOTOR_TURN_TIMEOUT        5000
-#define     MOTOR_TURN_OVER_SPEED     10.0
-#define     MOTOR_TURN_TIME_ONE_CYCLE 3000
+#define     MOTOR_TURN_TIMEOUT        2000
+#define     MOTOR_TURN_OVER_SPEED     6.0
+#define     MOTOR_TURN_TIME_ONE_CYCLE 6000
 
 #define     DELAY_GEAR_REMOTE_SIGNAL  2
 
@@ -41,7 +41,7 @@ extern "C" {
 typedef struct 
 {
     float    dutyCycle;            //当前档位
-    uint8_t  motorFault;          //记忆档位
+    uint8_t  motorFault;           //记忆档位
 }MotorTypeDef;
 
 void     Motor_Init(MotorTypeDef* motor);
@@ -50,6 +50,8 @@ void     Motor_Standby(void);
 uint16_t Motor_Get_Number_Of_Turns(void);
 void     Motor_Set_Speed(uint16_t r, MotorTypeDef* motor);
 void     Motor_Run(uint8_t dir, uint16_t dutyCycle);
+
+
 #ifdef __cplusplus
 }
 #endif
