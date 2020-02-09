@@ -579,7 +579,7 @@ SwitchStatusTypeDef Go_To_Middle(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef
             Motor_Standby();
             return Back_Gear(num, dir^1, motor);
         }
-        else if(num >= R_OF_ON_GEAR/2)   //按转过的圈数返回
+        else if(num >= (R_OF_ON_GEAR/2 - 1))  //按转过的圈数返回
         {
             Motor_Standby();
             break;
