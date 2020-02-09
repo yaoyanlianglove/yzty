@@ -491,11 +491,6 @@ uint8_t YZTY_Switch_Action(void)
             g_remoteSignal.motorFault = 1;
         return 1;
     }
-    else
-    {
-        g_remoteSignal.gearFault  = 0;
-        g_remoteSignal.motorFault = 0;
-    }
     timeToCBPCounter = SW_CTR_AGO_CBP_TIMEOUT;
     return 0;
 }

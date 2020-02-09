@@ -30,9 +30,9 @@ extern "C" {
 #define     TIME_OF_ONE_CYCLE    1        //电机运行的周期1us 
 
 #define     MOTOR_TURN_TIMEOUT        2000
-#define     MOTOR_TURN_OVER_SPEED     6.0
+#define     MOTOR_TURN_OVER_SPEED     8.0
 
-#define     DELAY_GEAR_REMOTE_SIGNAL  2
+#define     DELAY_GEAR_REMOTE_SIGNAL  1
 
 /**
   * @brief  Motor structures definition
