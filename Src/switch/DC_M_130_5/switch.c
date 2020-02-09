@@ -334,6 +334,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
         delay_us(TIME_OF_ONE_CYCLE);
     }
     num1 = num;
+    delay_ms(30);
     /************预期档位是当前档位，与dir反向***************************/
     Motor_Clear_Number_Of_Turns();
     sw->expectGear = sw->currentGear;
@@ -406,6 +407,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
         delay_us(TIME_OF_ONE_CYCLE);
     }
     num2 = num;
+    delay_ms(30);
     /************预期档位是0，继续与dir反向***************************/
     Motor_Clear_Number_Of_Turns();
     sw->expectGear = 0;
@@ -479,6 +481,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
     }
     num3 = num;
     r = num/2;
+    delay_ms(30);
     /************按dir方向走num/2圈，找到中点***************************/
     Motor_Clear_Number_Of_Turns();
     count = 0;
