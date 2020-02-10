@@ -694,6 +694,10 @@ void LCD_Display_Handle_Enter_Key(LCDStatusTypeDef *lcdStatus, TelemetryTypeDef 
                     lcdStatus->monitorCurrentPage++;
                 LCD_Display_Monitor(lcdStatus, telemetry);
             }
+            else if(lcdStatus->monitorCurrentPage == 1)
+            {
+                LCD_Display_Monitor(lcdStatus, telemetry);
+            }
         break;
         case 1:
             if(lcdStatus->controlCurrentPage == 0)
