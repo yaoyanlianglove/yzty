@@ -203,7 +203,6 @@ void Remote_Signal_Time_Counter(RemoteSignalTypeDef *remoteSignal)
     }
     else 
         oilCount = 0;
-
     //主电源失电
     if(remoteSignal->powerOffAlarm == REMOTE_SIGNAL_POWER_CHECK)
     {
@@ -216,8 +215,6 @@ void Remote_Signal_Time_Counter(RemoteSignalTypeDef *remoteSignal)
     }
     else 
         powerOffCount = 0; 
-    
-    
     Gear_Signal_Time_Counter(&(remoteSignal->gearSignal));
     Hand_Button_Time_Counter(&(remoteSignal->handButton));
     LCD_Button_Time_Counter(&(remoteSignal->lcdButton));
