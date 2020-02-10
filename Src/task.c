@@ -67,7 +67,6 @@ static UINT32 Task_Main(VOID)
         YZTY_Read_Telemetry();                       //读遥测
         YZTY_Read_Oil_Temp();                        //读温度
         YZTY_Read_Gear_Signal();                     //读档位
-        YZTY_Power_Check();                          //电源检测
         YZTY_Protect_Judge();                        //保护判断
         YZTY_Lock_Judge();                           //闭锁判断
         YZTY_Device_Status_Judge();                  //设备状态

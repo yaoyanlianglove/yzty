@@ -41,7 +41,6 @@ volatile  uint16_t lcdPeriodCount  = 0;
  *****************************************************************************/
 void Remote_Signal_Init(RemoteSignalTypeDef *remoteSignal)
 {
-    remoteSignal->flagPowerON = 1;
     remoteSignal->autoMode = 1;       //默认自动模式
 }
 /*****************************************************************************
@@ -206,24 +205,18 @@ void Remote_Signal_Time_Counter(RemoteSignalTypeDef *remoteSignal)
         oilCount = 0;
 
     //主电源失电
-    if(remoteSignal->flagPowerON  == 1)//主电源使能
+    if(remoteSignal->powerOffAlarm == REMOTE_SIGNAL_POWER_CHECK)
     {
-        if(remoteSignal->powerOffAlarm == REMOTE_SIGNAL_POWER_CHECK)
+        if(powerOffCount < REMOTE_SIGNAL_SUB_DITH_TIME)
+            powerOffCount++;
+        else
         {
-            if(powerOffCount < REMOTE_SIGNAL_SUB_DITH_TIME)
-                powerOffCount++;
-            else
-            {
-                remoteSignal->powerOffAlarm = REMOTE_SIGNAL_POWER_CHECK ^ 1;
-            }
+            remoteSignal->powerOffAlarm = REMOTE_SIGNAL_POWER_CHECK ^ 1;
         }
-        else 
-            powerOffCount = 0; 
     }
-    else
-    {
-        powerOffCount = 0;
-    }
+    else 
+        powerOffCount = 0; 
+    
     
     Gear_Signal_Time_Counter(&(remoteSignal->gearSignal));
     Hand_Button_Time_Counter(&(remoteSignal->handButton));

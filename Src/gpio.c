@@ -76,9 +76,6 @@ void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, _4G_RESET_Pin|OIL_TEMP_Pin|WIFI_RESET_Pin, GPIO_PIN_SET);
 
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(POWER_CTR_GPIO_Port, POWER_CTR_Pin, GPIO_PIN_RESET);
-
   /*Configure GPIO pin : PtPin */
   GPIO_InitStruct.Pin = FRAM_WP_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -139,9 +136,9 @@ void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PGPin PGPin PGPin PGPin 
-                           PGPin PGPin PGPin */
-  GPIO_InitStruct.Pin = LED5_Pin|LED6_Pin|POWER_CTR_Pin|DOUT13_Pin 
-                          |DOUT12_Pin|DOUT11_Pin|DOUT10_Pin;
+                           PGPin PGPin */
+  GPIO_InitStruct.Pin = LED5_Pin|LED6_Pin|DOUT13_Pin|DOUT12_Pin 
+                          |DOUT11_Pin|DOUT10_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

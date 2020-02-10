@@ -133,11 +133,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4107</DriverSelection>
+            <DriverSelection>4100</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>STLink\ST-LINKIII-KEIL_SWO.dll</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xE,USE_HAL_DRIVER,STM32F103xE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc; ../Drivers/STM32F1xx_HAL_Driver/Inc; ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy; ../Drivers/CMSIS/Device/ST/STM32F1xx/Include; ../Drivers/CMSIS/Include; ..\OS_CONFIG; ..\Middlewares\LiteOS\arch\arm\arm-m\include; ..\Middlewares\LiteOS\kernel\include; ..\Middlewares\LiteOS\kernel\base\include; ..\Middlewares\LiteOS\kernel\extended\include; ..\Inc\auto; ..\Inc\clock; ..\Inc\comm; ..\Inc\comm\modbus; ..\Inc\comm\private_comm; ..\Inc\i2c_soft; ..\Inc\LCD; ..\Inc\led; ..\Inc\remote_signal; ..\Inc\storage; ..\Inc\storage\fram; ..\Inc\switch; ..\Inc\telemetry; ..\Inc\telemetry\AC_sampling; ..\Inc\telemetry\AC_sampling\att7022; ..\Inc\telemetry\oil_temp; ..\Inc\switch\DC_M_130_5</IncludePath>
+              <IncludePath>../Inc;  ../Drivers/STM32F1xx_HAL_Driver/Inc;  ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;  ../Drivers/CMSIS/Device/ST/STM32F1xx/Include;  ../Drivers/CMSIS/Include;  ..\OS_CONFIG;  ..\Middlewares\LiteOS\arch\arm\arm-m\include;  ..\Middlewares\LiteOS\kernel\include;  ..\Middlewares\LiteOS\kernel\base\include;  ..\Middlewares\LiteOS\kernel\extended\include;  ..\Inc\auto;  ..\Inc\clock;  ..\Inc\comm;  ..\Inc\comm\modbus;  ..\Inc\comm\private_comm;  ..\Inc\i2c_soft;  ..\Inc\LCD;  ..\Inc\led;  ..\Inc\remote_signal;  ..\Inc\storage;  ..\Inc\storage\fram;  ..\Inc\switch;  ..\Inc\telemetry;  ..\Inc\telemetry\AC_sampling;  ..\Inc\telemetry\AC_sampling\att7022;  ..\Inc\telemetry\oil_temp;  ..\Inc\switch\DC_M_130_5</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

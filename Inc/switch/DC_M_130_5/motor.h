@@ -22,7 +22,7 @@ extern "C" {
 #define     MOTOR_ENABLE  HAL_GPIO_WritePin(DOUT8_GPIO_Port, DOUT8_Pin, GPIO_PIN_SET)
 #define     MOTOR_DISABLE HAL_GPIO_WritePin(DOUT8_GPIO_Port, DOUT8_Pin, GPIO_PIN_RESET)
 
-#define     R_STEP               2.28f
+#define     R_STEP               3.5f
 #define     R_SPEED_UP_TH        15
 #define     R_SLOW_DOWN_TH       115
 #define     R_OF_ONE_GEAR        130      //一档的转数

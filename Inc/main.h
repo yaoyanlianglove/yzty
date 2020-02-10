@@ -144,8 +144,6 @@ void Error_Handler(void);
 #define WIFI_RESET_GPIO_Port GPIOA
 #define RS485_DIR_Pin GPIO_PIN_1
 #define RS485_DIR_GPIO_Port GPIOD
-#define POWER_CTR_Pin GPIO_PIN_11
-#define POWER_CTR_GPIO_Port GPIOG
 #define DOUT13_Pin GPIO_PIN_12
 #define DOUT13_GPIO_Port GPIOG
 #define DOUT12_Pin GPIO_PIN_13

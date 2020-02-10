@@ -253,7 +253,7 @@ SwitchStatusTypeDef Back_Gear(uint8_t r, uint8_t dir, MotorTypeDef* motor)
         {
             motor->motorFault = 1;
             Motor_Standby();
-            return Back_Gear(num, dir^1, motor);
+            return SWITCH_MOTOR_ERROR;
         }
         else if(num > r)                 //按转过的圈数返回
         {
