@@ -283,26 +283,46 @@ void LCD_Display_RealStatus(SwitchTypeDef *sw, uint16_t version, float oilTemp, 
     }
     if(temp < 0)
         LCD_Display_One_Hanzi(0, 2, 52, &FONT_Characters[2][16], 16);
+    else
+        LCD_Display_One_Hanzi(0, 2, 52, FONT_Cap, 16);
+        
+
     if(abs(temp) > 999)
         LCD_Display_One_Hanzi(0, 2, 60, &FONT_Number[temp/1000][16], 16);
+    else
+        LCD_Display_One_Hanzi(0, 2, 60, FONT_Cap, 16);
     if(abs(temp) > 99)
         LCD_Display_One_Hanzi(0, 2, 68, &FONT_Number[(temp%1000)/100][16], 16);
+    else
+        LCD_Display_One_Hanzi(0, 2, 68, FONT_Cap, 16);
     if(abs(temp) > 9)
         LCD_Display_One_Hanzi(0, 2, 76, &FONT_Number[(temp%100)/10][16], 16);
+    else
+        LCD_Display_One_Hanzi(0, 2, 76, FONT_Cap, 16);
     if(abs(temp) > 0)
         LCD_Display_One_Hanzi(0, 2, 84, &FONT_Characters[0][16], 16);
+    else
+        LCD_Display_One_Hanzi(0, 2, 84, FONT_Cap, 16);
     LCD_Display_One_Hanzi(0, 2, 90, &FONT_Number[(temp%10)][16], 16);
 
     if(deviceStatus > 9999)
         LCD_Display_One_Hanzi(0, 4, 60, &FONT_Number[deviceStatus/10000][16], 16);
+    else
+        LCD_Display_One_Hanzi(0, 4, 60, FONT_Cap, 16);
     if(deviceStatus > 999)
         LCD_Display_One_Hanzi(0, 4, 68, &FONT_Number[(deviceStatus%10000)/1000][16], 16);
+    else
+        LCD_Display_One_Hanzi(0, 4, 68, FONT_Cap, 16);
     if(deviceStatus > 99)
         LCD_Display_One_Hanzi(0, 4, 76, &FONT_Number[(deviceStatus%1000)/100][16], 16);
+    else
+        LCD_Display_One_Hanzi(0, 4, 76, FONT_Cap, 16);
     if(deviceStatus > 9)
         LCD_Display_One_Hanzi(0, 4, 84, &FONT_Number[(deviceStatus%100)/10][16], 16);
+    else
+        LCD_Display_One_Hanzi(0, 4, 84, FONT_Cap, 16);
 
-        LCD_Display_One_Hanzi(0, 4, 90, &FONT_Number[(deviceStatus%10)/1][16], 16);
+    LCD_Display_One_Hanzi(0, 4, 90, &FONT_Number[(deviceStatus%10)/1][16], 16);
 
     LCD_Display_One_Hanzi(0, 6, 42, &FONT_Number[sw->currentGear/10][16], 16);
     LCD_Display_One_Hanzi(0, 6, 50, &FONT_Number[sw->currentGear%10][16], 16);  
@@ -418,9 +438,9 @@ void LCD_Display_Monitor(LCDStatusTypeDef *lcdStatus, TelemetryTypeDef *telemetr
                     temp = (uint32_t)(telemetry->sample.pc);
                 }
                 if(sign == 1)
-                {
                     LCD_Display_One_Hanzi(0, 2*i, 28, &FONT_Characters[2][16], 16);
-                }
+                else
+                    LCD_Display_One_Hanzi(0, 2*i, 28, FONT_Cap, 16);
                 LCD_Display_One_Hanzi(0, 2*i, 36, &FONT_Number[temp/1000][16], 16);
                 LCD_Display_One_Hanzi(0, 2*i, 44, &FONT_Number[(temp%1000)/100][16], 16);
                 LCD_Display_One_Hanzi(0, 2*i, 52, &FONT_Number[(temp%100)/10][16], 16);
@@ -462,9 +482,9 @@ void LCD_Display_Monitor(LCDStatusTypeDef *lcdStatus, TelemetryTypeDef *telemetr
                     temp = (uint32_t)(telemetry->sample.qc);
                 }
                 if(sign == 1)
-                {
                     LCD_Display_One_Hanzi(0, 2*i, 28, &FONT_Characters[2][16], 16);
-                }
+                else
+                    LCD_Display_One_Hanzi(0, 2*i, 28, FONT_Cap, 16);
                 LCD_Display_One_Hanzi(0, 2*i, 36, &FONT_Number[temp/1000][16], 16);
                 LCD_Display_One_Hanzi(0, 2*i, 44, &FONT_Number[(temp%1000)/100][16], 16);
                 LCD_Display_One_Hanzi(0, 2*i, 52, &FONT_Number[(temp%100)/10][16], 16);
@@ -487,9 +507,9 @@ void LCD_Display_Monitor(LCDStatusTypeDef *lcdStatus, TelemetryTypeDef *telemetr
             if(telemetry->sample.pf < 2)
                 temp = (uint32_t)(telemetry->sample.pf*1000);
             if(sign == 1)
-            {
                 LCD_Display_One_Hanzi(0, 2, 76, &FONT_Characters[2][16], 16);
-            }
+            else
+                LCD_Display_One_Hanzi(0, 2, 76, FONT_Cap, 16);
             
             LCD_Display_One_Hanzi(0, 2, 84,  &FONT_Number[temp/1000][16], 16);
             LCD_Display_One_Hanzi(0, 2, 92,  &FONT_Characters[0][16], 16);
@@ -523,14 +543,24 @@ void LCD_Display_Monitor(LCDStatusTypeDef *lcdStatus, TelemetryTypeDef *telemetr
             envTemp = (int16_t)(telemetry->sample.tmp*10);
             if(envTemp < 0)
                 LCD_Display_One_Hanzi(0, 6, 76, &FONT_Characters[2][16], 16);
+            else
+                LCD_Display_One_Hanzi(0, 6, 76, FONT_Cap, 16);
             if(abs(envTemp) > 999)
                 LCD_Display_One_Hanzi(0, 6, 84, &FONT_Number[envTemp/1000][16], 16);
+            else
+                LCD_Display_One_Hanzi(0, 6, 84, FONT_Cap, 16);
             if(abs(envTemp) > 99)
                 LCD_Display_One_Hanzi(0, 6, 92, &FONT_Number[(envTemp%1000)/100][16], 16);
+            else
+                LCD_Display_One_Hanzi(0, 6, 92, FONT_Cap, 16);
             if(abs(envTemp) > 9)
                 LCD_Display_One_Hanzi(0, 6, 100, &FONT_Number[(envTemp%100)/10][16], 16);
+            else
+                LCD_Display_One_Hanzi(0, 6, 100, FONT_Cap, 16);
             if(abs(envTemp) > 0)
                 LCD_Display_One_Hanzi(0, 6, 108, &FONT_Characters[0][16], 16);
+            else
+                LCD_Display_One_Hanzi(0, 6, 108, FONT_Cap, 16);
             LCD_Display_One_Hanzi(0, 6, 116, &FONT_Number[(envTemp%10)][16], 16);
         break;
         case 6:
@@ -543,14 +573,24 @@ void LCD_Display_Monitor(LCDStatusTypeDef *lcdStatus, TelemetryTypeDef *telemetr
             oilTemp = (int16_t)(telemetry->oilTmp*10.0);
             if(oilTemp < 0)
                 LCD_Display_One_Hanzi(0, 2, 44, &FONT_Characters[2][16], 16);
+            else
+                LCD_Display_One_Hanzi(0, 2, 44, FONT_Cap, 16);
             if(abs(oilTemp) > 999)
                 LCD_Display_One_Hanzi(0, 2, 52, &FONT_Number[oilTemp/1000][16], 16);
+            else
+                LCD_Display_One_Hanzi(0, 2, 52, FONT_Cap, 16);
             if(abs(oilTemp) > 99)
                 LCD_Display_One_Hanzi(0, 2, 60, &FONT_Number[(oilTemp%1000)/100][16], 16);
+            else
+                LCD_Display_One_Hanzi(0, 2, 60, FONT_Cap, 16);
             if(abs(oilTemp) > 9)
                 LCD_Display_One_Hanzi(0, 2, 68, &FONT_Number[(oilTemp%100)/10][16], 16);
+            else
+                LCD_Display_One_Hanzi(0, 2, 68, FONT_Cap, 16);
             if(abs(oilTemp) > 0)
                 LCD_Display_One_Hanzi(0, 2, 76, &FONT_Characters[0][16], 16);
+            else
+                LCD_Display_One_Hanzi(0, 2, 76, FONT_Cap, 16);
             LCD_Display_One_Hanzi(0, 2, 104, &FONT_Number[(oilTemp%10)][16], 16);  
         break;
         default:;
