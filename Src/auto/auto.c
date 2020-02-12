@@ -137,14 +137,20 @@ void Auto_Control_Time_Counter(uint32_t tyDelay
         if(autoUpVoltageConfigCount < tyDelay)
             autoUpVoltageConfigCount++;
         else
+        {
+            autoUpVoltageConfigCount = 0;
             autoControlMotion = 1;
+        }
     }
     else if(autoDownVoltageFlag == 1)
     {
         if(autoDownVoltageConfigCount < tyDelay)
             autoDownVoltageConfigCount++;
         else
+        {
+            autoDownVoltageConfigCount = 0;
             autoControlMotion = 2;
+        }
     }
     else
     {
@@ -162,9 +168,12 @@ void Auto_Control_Time_Counter(uint32_t tyDelay
     if(autoChangeCapaFlag == 1)
     {
         if(autoChangeCapaConfigCount < trDelay)
-            autoUpVoltageConfigCount++;
+            autoChangeCapaConfigCount++;
         else if(autoControlMotion == 0)     //无调压动作的情况下调容
+        {
+            autoChangeCapaConfigCount = 0;
             autoControlMotion = 3;
+        }
     }
     else
     {

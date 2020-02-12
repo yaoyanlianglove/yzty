@@ -27,7 +27,7 @@ extern "C" {
 #define     R_SLOW_DOWN_TH       115
 #define     R_OF_ONE_GEAR        130      //一档的转数
 #define     R_OF_ON_GEAR         22       //在档位上的转数
-#define     TIME_OF_ONE_CYCLE    1        //电机运行的周期1us 
+#define     TIME_OF_ONE_CYCLE    1        //电机运行的周期延时1us  代码固有周期3.5us：电机控制while(1)的周期 
 
 #define     MOTOR_TURN_TIMEOUT        2000
 #define     MOTOR_TURN_OVER_SPEED     8.0
