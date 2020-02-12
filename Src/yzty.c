@@ -476,12 +476,6 @@ void YZTY_Hand_Judge(void)
             g_switch.handMotion = 2;
         else if(g_remoteSignal.handButton.cp == 1)
             g_switch.handMotion = 3;
-
-        g_remoteSignal.handButton.en = 0;
-        g_remoteSignal.handButton.up = 0;
-        g_remoteSignal.handButton.down = 0;
-        g_remoteSignal.handButton.cp = 0;
-
     }
 }
 /*****************************************************************************

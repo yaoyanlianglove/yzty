@@ -134,7 +134,10 @@ static void Hand_Button_Time_Counter(HandButtonSignalTypeDef *handButton)
             handButton->en = 1;
     }
     else
+    {
+        handButton->en = 0;
         handEnBCT = 0;
+    }
     if(REMOTE_SIGNAL_HAND_UP == 0)
     {
         if(handUpBCT < BUTTON_CONFIRM_TIME)
@@ -143,7 +146,10 @@ static void Hand_Button_Time_Counter(HandButtonSignalTypeDef *handButton)
             handButton->up = 1;
     }
     else
+    {
+        handButton->up = 0;
         handUpBCT = 0;
+    }
     if(REMOTE_SIGNAL_HAND_DW == 0)
     {
         if(handDwBCT < BUTTON_CONFIRM_TIME)
@@ -152,7 +158,10 @@ static void Hand_Button_Time_Counter(HandButtonSignalTypeDef *handButton)
             handButton->down = 1;
     }
     else
+    {
+        handButton->down = 0;
         handDwBCT = 0;
+    }
     if(REMOTE_SIGNAL_HAND_CP == 0)
     {
         if(handCpBCT < BUTTON_CONFIRM_TIME)
@@ -161,7 +170,10 @@ static void Hand_Button_Time_Counter(HandButtonSignalTypeDef *handButton)
             handButton->cp = 1;
     }
     else
+    {
+        handButton->cp = 0;
         handCpBCT = 0;
+    }
 
     if(handPeriodCount < BUTTON_HANDLE_PERIOD_TIME)
         handPeriodCount++;
