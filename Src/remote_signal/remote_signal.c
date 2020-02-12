@@ -168,7 +168,7 @@ static void Hand_Button_Time_Counter(HandButtonSignalTypeDef *handButton)
     else
     {
         handPeriodCount = 0;
-        if(handButton->en == 0)
+        if(handButton->en == 1)
         {
             if((handButton->up == 1 && handButton->cp == 0 && handButton->down == 0) ||
                (handButton->up == 0 && handButton->cp == 1 && handButton->down == 0) ||
