@@ -61,10 +61,12 @@ uint8_t Auto_Control(ACSampleTypeDef *sample, ConfigParaTypeDef *configPara
     if(uAvg > configPara->thDownVoltage && uMin > configPara->lockVoltageLowLimit)      
     {
         autoDownVoltageFlag = 1;
+        autoUpVoltageFlag   = 0;
     }
     else if(uAvg < configPara->thUpVoltage && uMax < configPara->lockVoltageUpLimit)
     {
-        autoUpVoltageFlag = 1;
+        autoDownVoltageFlag = 0;
+        autoUpVoltageFlag   = 1;
     }
     else
     {
@@ -138,7 +140,6 @@ void Auto_Control_Time_Counter(uint32_t tyDelay
             autoUpVoltageConfigCount++;
         else
         {
-            autoUpVoltageConfigCount = 0;
             autoControlMotion = 1;
         }
     }
@@ -148,7 +149,6 @@ void Auto_Control_Time_Counter(uint32_t tyDelay
             autoDownVoltageConfigCount++;
         else
         {
-            autoDownVoltageConfigCount = 0;
             autoControlMotion = 2;
         }
     }
@@ -171,7 +171,6 @@ void Auto_Control_Time_Counter(uint32_t tyDelay
             autoChangeCapaConfigCount++;
         else if(autoControlMotion == 0)     //无调压动作的情况下调容
         {
-            autoChangeCapaConfigCount = 0;
             autoControlMotion = 3;
         }
     }
