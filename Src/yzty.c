@@ -20,6 +20,7 @@
 #include "oil_temp.h"
 #include "switch_driver.h"
 #include "led.h"
+#include "iwdg.h"
 
 ACSampleCalibrationParaTypeDef       g_calibrationPara;
 ACSampleCalibrationInputTypeDef      g_calibrationInput;
@@ -38,6 +39,7 @@ uint32_t msCount = 0;                            //毫秒计数器
 int16_t  telemetryReg[32] = {0};                 //遥测输入寄存器，通信地址映射用
 extern volatile  uint8_t  flagHandBtOK;          //手动按钮检测标志
 volatile  uint16_t remoteHeartTimeout = 0;       //远程通信心跳超时
+uint8_t  goToMainTapFlag = 0;                    //上电后执行回主分接头标志
 /***********设备状态开始************************************************************/
 uint16_t lastDeciveStatus    = 0;
 uint16_t currentDeciveStatus = 0;
@@ -135,7 +137,11 @@ uint8_t YZTY_Init(void)
 
     Remote_Signal_Init(&g_remoteSignal);
     Switch_Driver_Init();
+    /*-----------------关闭中断------------------------*/
+    __disable_irq();
     swStatus = Switch_Init(&g_switch, g_configPara.tapTotalNum);
+    /*-----------------打开中断------------------------*/
+    __enable_irq();
     if(swStatus != SWITCH_OK)
     {
         res = 1;
@@ -479,6 +485,40 @@ void YZTY_Hand_Judge(void)
     }
 }
 /*****************************************************************************
+ Function    : YZTY_Go_To_Main_Tap
+ Description : None
+ Input       : None
+ Output      : None
+ Return      : None
+ *****************************************************************************/
+static void YZTY_Go_To_Main_Tap(void)
+{
+    uint8_t mainTapGear;
+    if(g_switch.totalGear % 2 == 0)
+        mainTapGear = g_switch.totalGear/2;
+    else
+        mainTapGear = g_switch.totalGear/2 + 1;
+    if(g_switch.currentGear < mainTapGear)
+        g_switch.motion = RC_UP_VOL;
+    else if(g_switch.currentGear > mainTapGear)
+        g_switch.motion = RC_DOWN_VOL;
+    else
+    {
+        g_switch.motion = RC_NONE;
+        goToMainTapFlag = 1;
+        return;
+    }
+    if((g_switch.motion == RC_UP_VOL || g_switch.motion == RC_DOWN_VOL))
+    {
+        if(YZTY_Switch_Action() != 0)
+            g_remoteSignal.turnGearFail = 1;
+        else
+            g_remoteSignal.turnGearFail = 0;
+        g_switch.lastMotion     = g_switch.motion;
+        g_saveFlag.switchMotionFlag = 1;
+    } 
+}
+/*****************************************************************************
  Function    : YZTY_Control_Judge
  Description : None
  Input       : None
@@ -488,6 +528,12 @@ void YZTY_Hand_Judge(void)
 void YZTY_Control_Judge(void)
 {
     SwitchMotionTypeDef action = RC_NONE;
+    if(goToMainTapFlag == 0)
+    {
+        if(g_remoteSignal.lockSwitch == 0)
+            YZTY_Go_To_Main_Tap();
+        return;
+    }
     if(g_remoteSignal.autoMode == 1 && g_remoteSignal.lockSwitch == 0)  //自动模式
     {
         g_switch.autoMotion = Auto_Control(&g_telemetry.sample, &g_configPara
@@ -743,6 +789,7 @@ uint16_t Private_Comm_Calibration_Callback(float u, float i)
  *****************************************************************************/
 uint16_t Private_Comm_Get_Rec_Callback(uint8_t codeType, uint16_t addrNum,  uint8_t *data)
 {
+    YZTY_Refresh_Iwdg();
     return Private_Comm_Interface_Get_Rec_Process(codeType, addrNum, data);
 }
  /*****************************************************************************
@@ -835,7 +882,16 @@ void YZTY_Lcd(void)
     }
     
 }
-
-
+/*****************************************************************************
+ Function    : YZTY_Refresh_Iwdg
+ Description : None
+ Input       : None
+ Output      : None
+ Return      : None
+ *****************************************************************************/
+void YZTY_Refresh_Iwdg(void)
+{
+    HAL_IWDG_Refresh(&hiwdg);
+}
 /************************ZXDQ *****END OF FILE****/
 

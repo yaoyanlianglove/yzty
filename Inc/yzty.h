@@ -67,6 +67,7 @@ void    YZTY_Display_Logo(void);
 void    YZTY_Communication(void);
 void    YZTY_Comm_Init(void);
 void    YZTY_Heart_Judge(void);
+void    YZTY_Refresh_Iwdg(void);
 
 #ifdef __cplusplus
 }

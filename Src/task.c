@@ -64,6 +64,7 @@ static UINT32 Task_Main(VOID)
     dprintf("Task_Main Start.\r\n");    
     while(1)
     {
+        YZTY_Refresh_Iwdg();                         //喂狗
         YZTY_Read_Telemetry();                       //读遥测
         YZTY_Read_Oil_Temp();                        //读温度
         YZTY_Read_Gear_Signal();                     //读档位
@@ -139,6 +140,7 @@ static UINT32 Task_YZTY_Init(VOID)
         if(initRes != 0)
         {
             dprintf("YZTY_Init failed.\r\n");
+            YZTY_Refresh_Iwdg();                         //喂狗
             YZTY_Read_Telemetry();                       //读遥测
             YZTY_Read_Oil_Temp();                        //读温度
             YZTY_Read_Gear_Signal();                     //读档位
@@ -164,7 +166,9 @@ static UINT32 Task_YZTY_Init(VOID)
                 dprintf("Task_APP_Create Failed.\r\n");
             }
             else
+            {
                 LOS_TaskDelete(TASK_YZTY_INIT_ID);
+            }
         }
     }   
 }
@@ -204,6 +208,7 @@ UINT32 Task_Create(VOID)
         return LOS_NOK;
     }
     dprintf("Timer 1ms Start\r\n");
+    
     delay_ms(1000);
 
     res = LOS_TaskCreate(&TASK_YZTY_INIT_ID, &stInitParam);
