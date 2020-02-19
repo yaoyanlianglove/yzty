@@ -435,19 +435,19 @@ StorageStatusTypeDef Save_Default_Config(ConfigParaTypeDef *cfgPara)
     cfgPara->tyDelay              = 300;
     cfgPara->ctRatio              = 100; 
     cfgPara->lockOverCurrent      = 400;
-    cfgPara->lockVoltageUpLimit   = 242;
+    cfgPara->lockVoltageUpLimit   = 240;
     cfgPara->lockVoltageLowLimit  = 198;
     cfgPara->lockHighVoltage      = 300;
     cfgPara->lockLowVoltage       = 150;
-    cfgPara->thChangeCapacity     = 60; 
+    cfgPara->thChangeCapacity     = 80; 
     cfgPara->ccDelay              = 600;
     cfgPara->thAlarmTemp          = 85;
     cfgPara->tranCapacity         = 400;
     cfgPara->tapTotalNum          = GEAR_TOTAL;
-    cfgPara->tapPer               = 5;
-    cfgPara->tapWideHigh          = 10;
-    cfgPara->tapWideLow           = 10;
-    cfgPara->code                 = 10;
+    cfgPara->tapPer               = 250;
+    cfgPara->tapWideHigh          = 1000;
+    cfgPara->tapWideLow           = 1000;
+    cfgPara->code                 = 01;
          
     writeData[0 ] = (cfgPara->thDownVoltage >>8) & 0xFF;
     writeData[1 ] =  cfgPara->thDownVoltage      & 0xFF;
