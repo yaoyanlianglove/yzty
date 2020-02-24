@@ -95,6 +95,12 @@ uint8_t YZTY_Init(void)
         res = 1;
         g_remoteSignal.storeErr = 1;
     } 
+    g_configPara.deviceInfo.tapTotalNum = GEAR_TOTAL;
+    g_configPara.deviceInfo.tapWideHigh = TRAN_TAP_WIDE_HIGH;
+    g_configPara.deviceInfo.tapWideLow  = TRAN_TAP_WIDE_LOW;
+    g_configPara.deviceInfo.switchType  = SWITCH_TYPE;
+    g_configPara.deviceInfo.hardVersion = HARD_VERSION;
+    g_configPara.deviceInfo.softVersion = SOFT_VERSION;
 
     if(Read_AC_Sample_Calibration_Para(&g_calibrationPara) != STORAGE_OK)
     {
@@ -121,17 +127,17 @@ uint8_t YZTY_Init(void)
     }
     else if(Read_Memory_Gear(initData) != STORAGE_OK)
     {
-        g_switch.memoryGear = g_configPara.tapTotalNum/2;
-        Save_Memory_Gear(g_configPara.tapTotalNum/2);
+        g_switch.memoryGear = g_configPara.deviceInfo.tapTotalNum/2;
+        Save_Memory_Gear(g_configPara.deviceInfo.tapTotalNum/2);
     }
     else
     {
-        if(initData[0] > 0 && initData[0] < g_configPara.tapTotalNum + 1)
+        if(initData[0] > 0 && initData[0] < g_configPara.deviceInfo.tapTotalNum + 1)
             g_switch.memoryGear = initData[0];
         else
         {
-            g_switch.memoryGear = g_configPara.tapTotalNum/2;
-            Save_Memory_Gear(g_configPara.tapTotalNum/2);
+            g_switch.memoryGear = g_configPara.deviceInfo.tapTotalNum/2;
+            Save_Memory_Gear(g_configPara.deviceInfo.tapTotalNum/2);
         }
     }
 
@@ -139,7 +145,7 @@ uint8_t YZTY_Init(void)
     Switch_Driver_Init();
     /*-----------------关闭中断------------------------*/
     __disable_irq();
-    swStatus = Switch_Init(&g_switch, g_configPara.tapTotalNum);
+    swStatus = Switch_Init(&g_switch, g_configPara.deviceInfo.tapTotalNum);
     /*-----------------打开中断------------------------*/
     __enable_irq();
     if(swStatus != SWITCH_OK)
@@ -555,7 +561,7 @@ void YZTY_Control_Judge(void)
             g_switch.motion = g_switch.lcdMotion;
         if(g_switch.motion == RC_UP_VOL)
         {
-            if(g_switch.currentGear > g_configPara.tapTotalNum - 1)
+            if(g_switch.currentGear > g_configPara.deviceInfo.tapTotalNum - 1)
                 action = RC_NONE;
             else
                 action = RC_UP_VOL;

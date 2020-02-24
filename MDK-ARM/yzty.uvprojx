@@ -81,7 +81,7 @@
           <AfterMake>
             <RunUserProg1>0</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
-            <UserProg1Name></UserProg1Name>
+            <UserProg1Name>D:\Keil_v5\ARM\ARMCC\bin\fromelf.exe --bin -o   ./yzty/DC_M_130_5/yzty_DC_M_130_5.bin ./yzty/DC_M_130_5/yzty_DC_M_130_5.axf</UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
@@ -272,8 +272,8 @@
               </OCR_RVCT3>
               <OCR_RVCT4>
                 <Type>1</Type>
-                <StartAddress>0x8000000</StartAddress>
-                <Size>0x80000</Size>
+                <StartAddress>0x8003000</StartAddress>
+                <Size>0x20000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xE,USE_HAL_DRIVER,STM32F103xE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;   ../Drivers/STM32F1xx_HAL_Driver/Inc;   ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;   ../Drivers/CMSIS/Device/ST/STM32F1xx/Include;   ../Drivers/CMSIS/Include;   ..\OS_CONFIG;   ..\Middlewares\LiteOS\arch\arm\arm-m\include;   ..\Middlewares\LiteOS\kernel\include;   ..\Middlewares\LiteOS\kernel\base\include;   ..\Middlewares\LiteOS\kernel\extended\include;   ..\Inc\auto;   ..\Inc\clock;   ..\Inc\comm;   ..\Inc\comm\modbus;   ..\Inc\comm\private_comm;   ..\Inc\i2c_soft;   ..\Inc\LCD;   ..\Inc\led;   ..\Inc\remote_signal;   ..\Inc\storage;   ..\Inc\storage\fram;   ..\Inc\switch;   ..\Inc\telemetry;   ..\Inc\telemetry\AC_sampling;   ..\Inc\telemetry\AC_sampling\att7022;   ..\Inc\telemetry\oil_temp;   ..\Inc\switch\DC_M_130_5</IncludePath>
+              <IncludePath>../Inc;     ../Drivers/STM32F1xx_HAL_Driver/Inc;     ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;     ../Drivers/CMSIS/Device/ST/STM32F1xx/Include;     ../Drivers/CMSIS/Include;     ..\OS_CONFIG;     ..\Middlewares\LiteOS\arch\arm\arm-m\include;     ..\Middlewares\LiteOS\kernel\include;     ..\Middlewares\LiteOS\kernel\base\include;     ..\Middlewares\LiteOS\kernel\extended\include;     ..\Inc\auto;     ..\Inc\clock;     ..\Inc\comm;     ..\Inc\comm\modbus;     ..\Inc\comm\private_comm;     ..\Inc\i2c_soft;     ..\Inc\LCD;     ..\Inc\led;     ..\Inc\remote_signal;     ..\Inc\storage;     ..\Inc\storage\fram;     ..\Inc\switch;     ..\Inc\telemetry;     ..\Inc\telemetry\AC_sampling;     ..\Inc\telemetry\AC_sampling\att7022;     ..\Inc\telemetry\oil_temp;     ..\Inc\switch\DC_M_130_5</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

@@ -144,19 +144,13 @@ StorageStatusTypeDef Save_Config_Para(ConfigParaTypeDef *cfgPara)
     writeData[25] =  cfgPara->thAlarmTemp      & 0xFF;
     writeData[26] = (cfgPara->tranCapacity >>8) & 0xFF;
     writeData[27] =  cfgPara->tranCapacity      & 0xFF;
-    writeData[28] = (cfgPara->tapTotalNum >>8) & 0xFF;
-    writeData[29] =  cfgPara->tapTotalNum      & 0xFF;
-    writeData[30] = (cfgPara->tapPer >>8) & 0xFF;
-    writeData[31] =  cfgPara->tapPer      & 0xFF;
-    writeData[32] = (cfgPara->tapWideHigh >>8) & 0xFF;
-    writeData[33] =  cfgPara->tapWideHigh      & 0xFF;
-    writeData[34] = (cfgPara->tapWideLow >>8) & 0xFF;
-    writeData[35] =  cfgPara->tapWideLow      & 0xFF;
-    writeData[36] = (cfgPara->code >>8) & 0xFF;
-    writeData[37] =  cfgPara->code      & 0xFF;
+    
+    writeData[28] = (cfgPara->code >>8) & 0xFF;
+    writeData[29] =  cfgPara->code      & 0xFF;
+
     cfgPara->crc = CRC_16(writeData, CONFIG_PARA_DATA_LEN - 2);
-    writeData[38] = (cfgPara->crc >> 8) & 0xFF;
-    writeData[39] =  cfgPara->crc       & 0xFF;
+    writeData[30] = (cfgPara->crc >> 8) & 0xFF;
+    writeData[31] =  cfgPara->crc       & 0xFF;
 
     if(FRAM_Write_With_CRC(YZTY_CFG_ADDR, writeData, CONFIG_PARA_DATA_LEN) != FRAM_WRITE_READ_OK)
         return STORAGE_WRITE_ERROR;
@@ -433,21 +427,24 @@ StorageStatusTypeDef Save_Default_Config(ConfigParaTypeDef *cfgPara)
     cfgPara->thUpVoltage          = 225;
     cfgPara->tySpace              = 10; 
     cfgPara->tyDelay              = 300;
-    cfgPara->ctRatio              = 100; 
+    cfgPara->ctRatio              = 300; 
     cfgPara->lockOverCurrent      = 400;
     cfgPara->lockVoltageUpLimit   = 240;
     cfgPara->lockVoltageLowLimit  = 198;
-    cfgPara->lockHighVoltage      = 300;
+    cfgPara->lockHighVoltage      = 280;
     cfgPara->lockLowVoltage       = 150;
     cfgPara->thChangeCapacity     = 80; 
     cfgPara->ccDelay              = 600;
-    cfgPara->thAlarmTemp          = 85;
+    cfgPara->thAlarmTemp          = 60;
     cfgPara->tranCapacity         = 400;
-    cfgPara->tapTotalNum          = GEAR_TOTAL;
-    cfgPara->tapPer               = 250;
-    cfgPara->tapWideHigh          = 1000;
-    cfgPara->tapWideLow           = 1000;
     cfgPara->code                 = 01;
+
+    cfgPara->deviceInfo.tapTotalNum = GEAR_TOTAL;
+    cfgPara->deviceInfo.tapWideHigh = TRAN_TAP_WIDE_HIGH;
+    cfgPara->deviceInfo.tapWideLow  = TRAN_TAP_WIDE_LOW;
+    cfgPara->deviceInfo.switchType  = SWITCH_TYPE;
+    cfgPara->deviceInfo.hardVersion = HARD_VERSION;
+    cfgPara->deviceInfo.softVersion = SOFT_VERSION;
          
     writeData[0 ] = (cfgPara->thDownVoltage >>8) & 0xFF;
     writeData[1 ] =  cfgPara->thDownVoltage      & 0xFF;
@@ -477,21 +474,13 @@ StorageStatusTypeDef Save_Default_Config(ConfigParaTypeDef *cfgPara)
     writeData[25] =  cfgPara->thAlarmTemp      & 0xFF;
     writeData[26] = (cfgPara->tranCapacity >>8) & 0xFF;
     writeData[27] =  cfgPara->tranCapacity      & 0xFF;
-    writeData[28] = (cfgPara->tapTotalNum >>8) & 0xFF;
-    writeData[29] =  cfgPara->tapTotalNum      & 0xFF;
-    writeData[30] = (cfgPara->tapPer >>8) & 0xFF;
-    writeData[31] =  cfgPara->tapPer      & 0xFF;
-    writeData[32] = (cfgPara->tapWideHigh >>8) & 0xFF;
-    writeData[33] =  cfgPara->tapWideHigh      & 0xFF;
-    writeData[34] = (cfgPara->tapWideLow >>8) & 0xFF;
-    writeData[35] =  cfgPara->tapWideLow      & 0xFF;
-    writeData[36] = (cfgPara->code >>8) & 0xFF;
-    writeData[37] =  cfgPara->code      & 0xFF;
+    writeData[28] = (cfgPara->code >>8) & 0xFF;
+    writeData[29] =  cfgPara->code      & 0xFF;
 
     cfgPara->crc = CRC_16(writeData, CONFIG_PARA_DATA_LEN - 2);
 
-    writeData[38] = (cfgPara->crc >>8) & 0xFF;
-    writeData[39] =  cfgPara->crc      & 0xFF;
+    writeData[30] = (cfgPara->crc >>8) & 0xFF;
+    writeData[31] =  cfgPara->crc      & 0xFF;
 
     if(FRAM_Write_With_CRC(YZTY_CFG_ADDR, writeData, CONFIG_PARA_DATA_LEN) != FRAM_WRITE_READ_OK)
         return STORAGE_WRITE_ERROR;
@@ -602,16 +591,9 @@ StorageStatusTypeDef Read_Config_Para(ConfigParaTypeDef *cfgPara)
     cfgPara->ccDelay              = (readData[22]<< 8)  +  readData[23];
     cfgPara->thAlarmTemp          = (readData[24]<< 8)  +  readData[25];
     cfgPara->tranCapacity         = (readData[26]<< 8)  +  readData[27];
-#ifdef   GEAR_TOTAL
-    cfgPara->tapTotalNum          = GEAR_TOTAL;
-#else
-    cfgPara->tapTotalNum          = (readData[28]<< 8)  +  readData[29];
-#endif
-    cfgPara->tapPer               = (readData[30]<< 8)  +  readData[31];
-    cfgPara->tapWideHigh          = (readData[32]<< 8)  +  readData[33];
-    cfgPara->tapWideLow           = (readData[34]<< 8)  +  readData[35];
-    cfgPara->code                 = (readData[36]<< 8)  +  readData[37];
-    cfgPara->crc                  = (readData[38]<< 8)  +  readData[39];
+    cfgPara->code                 = (readData[28]<< 8)  +  readData[29];
+    cfgPara->crc                  = (readData[30]<< 8)  +  readData[31];
+
     return STORAGE_OK;
 }
 /*****************************************************************************

@@ -57,8 +57,8 @@ extern "C" {
 
 #define STATUS_CODE_CRC_ERR             401
 #define STATUS_CODE_NO_YK_ERR           402            //未收到遥控命令
-#define STATUS_CODE_OVER_ERR            403            //参数越界
-#define STATUS_CODE_STORE_ERR           404            //存储故障
+#define STATUS_CODE_OVER_ERR            403            //参数错误
+#define STATUS_CODE_STORE_ERR           404            //参数保存失败
 #define STATUS_CODE_LOCK_ERR            405            //开关闭锁，拒绝遥控
 #define STATUS_CODE_DW_LOW_ERR          406            //档位已最小，禁止降档
 #define STATUS_CODE_DW_HIGH_ERR         407            //档位已最大，禁止升档

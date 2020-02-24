@@ -22,7 +22,7 @@
 #define MODBUS_RX_SPACE_TIMEOUT         3
 #define MODBUS_COIN_REG_LIMIT           7
 #define MODBUS_DIS_INPUT_REG_LIMIT      32
-#define MODBUS_HOLDING_REG_LIMIT        24
+#define MODBUS_HOLDING_REG_LIMIT        27
 #define MODBUS_INPUT_REG_LIMIT          16
 
 

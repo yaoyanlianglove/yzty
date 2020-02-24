@@ -79,19 +79,21 @@ void Modbus_Interface_Init(RemoteSignalTypeDef *remoteSignal, ConfigParaTypeDef 
     modbus.holdingReg[11] = &configPara->ccDelay;
     modbus.holdingReg[12] = &configPara->thAlarmTemp;
     modbus.holdingReg[13] = &configPara->tranCapacity;
-    modbus.holdingReg[14] = &configPara->tapTotalNum;
-    modbus.holdingReg[15] = &configPara->tapWideHigh;
-    modbus.holdingReg[16] = &configPara->tapWideLow;
-    modbus.holdingReg[17] = &configPara->code;
-    modbus.holdingReg[18] = &clock->y;
-    modbus.holdingReg[19] = &clock->m;
-    modbus.holdingReg[20] = &clock->d;
-    modbus.holdingReg[21] = &clock->h;
-    modbus.holdingReg[22] = &clock->min;
-    modbus.holdingReg[23] = &clock->s;
-    modbus.holdingReg[24] = &configPara->deviceInfo.switchType;
-    modbus.holdingReg[25] = &configPara->deviceInfo.hardVersion;
-    modbus.holdingReg[26] = &configPara->deviceInfo.softVersion;
+    modbus.holdingReg[14] = &configPara->code;
+    modbus.holdingReg[15] = &configPara->deviceInfo.tapTotalNum;
+    modbus.holdingReg[16] = &configPara->deviceInfo.tapWideHigh;
+    modbus.holdingReg[17] = &configPara->deviceInfo.tapWideLow;
+    modbus.holdingReg[18] = &configPara->deviceInfo.switchType;
+    modbus.holdingReg[19] = &configPara->deviceInfo.hardVersion;
+    modbus.holdingReg[20] = &configPara->deviceInfo.softVersion;
+
+
+    modbus.holdingReg[21] = &clock->y;
+    modbus.holdingReg[22] = &clock->m;
+    modbus.holdingReg[23] = &clock->d;
+    modbus.holdingReg[24] = &clock->h;
+    modbus.holdingReg[25] = &clock->min;
+    modbus.holdingReg[26] = &clock->s;
 
     Modbus_Start_Rec();
 }
@@ -151,14 +153,14 @@ uint8_t Modbus_Interface_Remote_Control_Process(RemoteSignalTypeDef *remoteSigna
         {
             if(data[0 ] == 1)
             {
-                if(sw->currentGear < configPara->tapTotalNum && sw->currentGear > 0)
+                if(sw->currentGear < configPara->deviceInfo.tapTotalNum && sw->currentGear > 0)
                     sw->remoteMotion = 1;
                 else
                     return 3;                    
             }
             else if(data[1 ] == 1)
             {
-                if(sw->currentGear < configPara->tapTotalNum + 1 && sw->currentGear > 1)
+                if(sw->currentGear < configPara->deviceInfo.tapTotalNum + 1 && sw->currentGear > 1)
                     sw->remoteMotion = 2;
                 else
                     return 3;
@@ -177,8 +179,22 @@ uint8_t Modbus_Interface_Remote_Control_Process(RemoteSignalTypeDef *remoteSigna
             return 3;
         else if(remoteSignal->lockSwitch == 1)
             return 4;
+        if(data[0 ] == 1 && data[1 ] == 0)
+        {
+            if(remoteSignal->capacity == 1)   //当前小容量 10往大容量调
+                sw->remoteMotion = 3;  //调容
+            else
+                return 3;
+        }
+        else if(data[0 ] == 0 && data[1 ] == 1)
+        {
+            if(remoteSignal->capacity == 0)  //当前大容量 01往小容量调
+                sw->remoteMotion = 3;  //调容
+             else
+                return 3;
+        }
         else
-            sw->remoteMotion = 3;  //调容
+            return 3;
     }
     else if(regAddr == 6)
     {
@@ -186,7 +202,10 @@ uint8_t Modbus_Interface_Remote_Control_Process(RemoteSignalTypeDef *remoteSigna
             return 2;
         if(remoteSignal->remoteMode == 0)
             return 3;
-        sw->resetFlag = 1;  //重启
+        if(data[0] == 1)
+            sw->resetFlag = 1;  //重启
+        else
+            return 3;
     }
     else 
         return 2;
@@ -229,7 +248,11 @@ uint8_t Modbus_Interface_Set_Config_Process(RemoteSignalTypeDef *remoteSignal,
                 if(data[i] < 5 || data[i] > 1200)
                     res = 3;
             break;
-            case 4:;
+            case 4:
+                if(data[i] == 300 || data[i] == 600 || data[i] == 1000)
+                    ;
+                else
+                    res = 3;
             break;
             case 5:;
             break;
@@ -259,38 +282,50 @@ uint8_t Modbus_Interface_Set_Config_Process(RemoteSignalTypeDef *remoteSignal,
             break;
             case 14:;
             break;
-
-            case 15:;
+            case 15:
+                res = 3;
             break;
-            case 16:;
+            case 16:
+                res = 3;
             break;
-            case 17:;
+            case 17:
+                res = 3;
             break;
             case 18:
+                res = 3;
+            break;
+            case 19:
+                res = 3;
+            break;
+            case 20:
+                res = 3;
+            break;
+            case 21:
                 if(data[i] < 19 || data[i] > 100)
                     res = 3;
             break;
-            case 19:
+            case 22:
                 if(data[i] == 0 || data[i] > 12)
                     res = 3;
             break;
-            case 20:
+            case 23:
                 if(data[i] == 0 || data[i] > 31)
                     res = 3;
             break;
 
-            case 21:
+            case 24:
                 if(data[i] > 23)
                     res = 3;
             break;
-            case 22:
+            case 25:
                 if(data[i] > 59)
                     res = 3;
             break;
-            case 23:
+            case 26:
                 if(data[i] > 59)
                     res = 3;
             break;
+            
             default:;
             break;
         }
@@ -344,42 +379,50 @@ uint8_t Modbus_Interface_Set_Config_Process(RemoteSignalTypeDef *remoteSignal,
                     configPara->tranCapacity = data[i];
                 break;
                 case 14:
-                    configPara->tapPer = data[i];
+                    configPara->code = data[i];
                 break;
     
                 case 15:
-                    configPara->tapWideHigh = data[i];
+                    ;
                 break;
                 case 16:
-                    configPara->tapWideLow = data[i];
+                    ;
                 break;
                 case 17:
-                    configPara->code = data[i];
+                    
                 break;
                 case 18:
-                    clock->y = data[i];
+                    ;
                 break;
                 case 19:
-                    clock->m = data[i];
+                    ;
                 break;
                 case 20:
-                    clock->d = data[i];
+                    
                 break;
                 case 21:
-                    clock->h = data[i];
+                    clock->y = data[i];
                 break;
                 case 22:
-                    clock->min = data[i];
+                    clock->m = data[i];
                 break;
                 case 23:
+                    clock->d = data[i];
+                break;
+                case 24:
+                    clock->h = data[i];
+                break;
+                case 25:
+                    clock->min = data[i];
+                break;
+                case 26:
                     clock->s = data[i];
                 break;
-             
                 default:;
                 break;
             }
         }
-        if(regAddr > 17)
+        if(regAddr > 20)
             Clock_Set_Date_And_Time(clock);
         else
         {

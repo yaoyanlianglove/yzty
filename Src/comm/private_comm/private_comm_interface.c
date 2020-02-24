@@ -88,14 +88,15 @@ void Private_Comm_Interface_Init(RemoteSignalTypeDef *remoteSignal,
     privateComm.holdingReg[11] = &configPara->ccDelay;
     privateComm.holdingReg[12] = &configPara->thAlarmTemp;
     privateComm.holdingReg[13] = &configPara->tranCapacity;
-    privateComm.holdingReg[14] = &configPara->tapTotalNum;
-    privateComm.holdingReg[15] = &configPara->tapWideHigh;
-    privateComm.holdingReg[16] = &configPara->tapWideLow;
-    privateComm.holdingReg[17] = &configPara->code;
+    privateComm.holdingReg[14] = &configPara->code;
 
+    privateComm.holdingReg[15] = &configPara->deviceInfo.tapTotalNum;
+    privateComm.holdingReg[16] = &configPara->deviceInfo.tapWideHigh;
+    privateComm.holdingReg[17] = &configPara->deviceInfo.tapWideLow;
     privateComm.holdingReg[18] = &configPara->deviceInfo.switchType;
     privateComm.holdingReg[19] = &configPara->deviceInfo.hardVersion;
     privateComm.holdingReg[20] = &configPara->deviceInfo.softVersion;
+
 
     privateComm.holdingReg[21] = &clock->y;
     privateComm.holdingReg[22] = &clock->m;
@@ -131,16 +132,26 @@ uint16_t Private_Comm_Interface_Remote_Control_Process(RemoteSignalTypeDef *remo
                 remoteSignal->autoMode   = 0;
                 remoteSignal->remoteMode = 1;
             }
+            else
+                return STATUS_CODE_OVER_ERR;
         break;
         case FUNCTION_CODE_YK:
             if(remoteSignal->autoMode == 1)
                 return STATUS_CODE_MODE_ERR;
             if(remoteSignal->lockSwitch == 1)
                 return STATUS_CODE_LOCK_ERR;
-            if(sw->currentGear == 1 && data == 2)
-                return STATUS_CODE_DW_LOW_ERR;
-            if(sw->currentGear >= configPara-> tapTotalNum && data == 1)
-                return STATUS_CODE_DW_HIGH_ERR;
+            if(data == 1)
+            {
+                if(sw->currentGear >= configPara-> deviceInfo.tapTotalNum)
+                    return STATUS_CODE_DW_HIGH_ERR;
+            }
+            else if(data == 2)
+            {
+                if(sw->currentGear == 1)
+                    return STATUS_CODE_DW_LOW_ERR;
+            }
+            else if(data != 3)
+                return STATUS_CODE_OVER_ERR;
             privateComm.switchMotion = data;
             privateComm.flagYkReady  = 1;
         break;
@@ -153,10 +164,12 @@ uint16_t Private_Comm_Interface_Remote_Control_Process(RemoteSignalTypeDef *remo
                 return STATUS_CODE_NO_YK_ERR;
             if(sw->currentGear == 1 && privateComm.switchMotion == 2)
                 return STATUS_CODE_DW_LOW_ERR;
-            if(sw->currentGear >= configPara-> tapTotalNum && privateComm.switchMotion == 1)
+            if(sw->currentGear >= configPara-> deviceInfo.tapTotalNum && privateComm.switchMotion == 1)
                 return STATUS_CODE_DW_HIGH_ERR;
             if(data == 0xFF)
                 sw->remoteMotion = privateComm.switchMotion;
+            else if(data != 0x00)
+                return STATUS_CODE_OVER_ERR;
             privateComm.flagYkReady         = 0;
             privateComm.ykReturnTimeCounter = 0;
         break;
@@ -246,7 +259,11 @@ uint16_t Private_Comm_Interface_Set_Config_Process(RemoteSignalTypeDef *remoteSi
                 if(data[i] < 5 || data[i] > 1200)
                     res = STATUS_CODE_OVER_ERR;
             break;
-            case 4:;
+            case 4:
+                if(data[i] == 300 || data[i] == 600 || data[i] == 1000)
+                    ;
+                else
+                    res = STATUS_CODE_OVER_ERR;
             break;
             case 5:;
             break;
@@ -282,6 +299,13 @@ uint16_t Private_Comm_Interface_Set_Config_Process(RemoteSignalTypeDef *remoteSi
             case 16:;
             break;
             case 17:;
+            break;
+
+            case 18:;
+            break;
+            case 19:;
+            break;
+            case 20:;
             break;
 
             case 21:
@@ -359,20 +383,30 @@ uint16_t Private_Comm_Interface_Set_Config_Process(RemoteSignalTypeDef *remoteSi
                     configPara->thAlarmTemp = data[i];
                 break;
                 case 13:
+                
                     configPara->tranCapacity = data[i];
                 break;
                 case 14:
-                    configPara->tapPer = data[i];
+                    configPara->code = data[i];
                 break;
     
                 case 15:
-                    configPara->tapWideHigh = data[i];
+                    ;
                 break;
                 case 16:
-                    configPara->tapWideLow = data[i];
+                    ;
                 break;
                 case 17:
-                    configPara->code = data[i];
+                    
+                break;
+                case 18:
+                    
+                break;
+                case 19:
+                    
+                break;
+                case 20:
+                    
                 break;
 
                 case 21:

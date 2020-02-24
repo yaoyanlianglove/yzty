@@ -22,11 +22,13 @@ extern "C" {
 #define   SWITCH_TYPE      01
 
 
-#define   CONFIG_PARA_DATA_LEN        40
+#define   CONFIG_PARA_DATA_LEN        32
 //#define   FUNCTION_TURN_CAPACITY      1    //1具有调容功能 0 无调容功能 
 #define   HEART_TIMEOUT_PERIOD        180  //秒
 
 #define   GEAR_TOTAL                  5    //开关总档位
+#define   TRAN_TAP_WIDE_HIGH          1000 //调节上限1000/10000=10%
+#define   TRAN_TAP_WIDE_LOW           1000 //调节下限1000/10000=10%
 
 
 /**
@@ -34,6 +36,9 @@ extern "C" {
   */
 typedef struct 
 {
+    uint16_t tapTotalNum;                //总档数
+    uint16_t tapWideHigh;                //调压范围高
+    uint16_t tapWideLow;                 //调压范围低
     uint16_t switchType;
     uint16_t hardVersion;
     uint16_t softVersion;
@@ -60,14 +65,11 @@ typedef struct
     uint16_t thAlarmTemp;                //温度告警阈值
     //变压器参数
     uint16_t tranCapacity;               //变压器容量
-    uint16_t tapTotalNum;                //总档数
-    uint16_t tapPer;                     //电压每档调节度
-    uint16_t tapWideHigh;                //调压范围高
-    uint16_t tapWideLow;                 //调压范围低
     //设备参数
-    uint16_t code;                       //设备编 
+    uint16_t code;                       //设备编号
     uint16_t crc; 
-    DeviceInfoTypeDef  deviceInfo;       //设备固定信息    
+    DeviceInfoTypeDef  deviceInfo;       //设备固定信息  
+      
 }ConfigParaTypeDef;
 
 

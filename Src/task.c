@@ -139,7 +139,6 @@ static UINT32 Task_YZTY_Init(VOID)
     {
         if(initRes != 0)
         {
-            dprintf("YZTY_Init failed.\r\n");
             YZTY_Refresh_Iwdg();                         //喂狗
             YZTY_Read_Telemetry();                       //读遥测
             YZTY_Read_Oil_Temp();                        //读温度
