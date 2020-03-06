@@ -42,7 +42,7 @@ void Private_Comm_Start_Rec(void)
  *****************************************************************************/
 static void Private_Comm_Send_Data(uint8_t *pData, uint16_t size)
 {
-    HAL_UART_Transmit(&PRIVATE_COMM_UART, pData, size, 0xFFFF);
+    HAL_UART_Transmit_IT(&PRIVATE_COMM_UART, pData, size);
 }
 /*****************************************************************************
  Function    : Private_Comm_Send_Status_Code

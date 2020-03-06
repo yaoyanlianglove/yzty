@@ -163,7 +163,25 @@ void SystemClock_Config(void)
   }
 }
 
+
 /* USER CODE BEGIN 4 */
+/**
+  * @brief  UART error callback.
+  * @param  huart UART handle.
+  * @retval None
+  */
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
+{
+  /* Prevent unused argument(s) compilation warning */
+	if(huart->ErrorCode&HAL_UART_ERROR_ORE)
+	{
+        dprintf("Error_Handler\r\n");
+		__HAL_UART_CLEAR_OREFLAG(huart);
+	}
+  /* NOTE : This function should not be modified, when the callback is needed,
+            the HAL_UART_ErrorCallback can be implemented in the user file.
+   */
+}
 
 /* USER CODE END 4 */
 
@@ -175,7 +193,7 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-
+  
   /* USER CODE END Error_Handler_Debug */
 }
 
