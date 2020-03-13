@@ -19,7 +19,7 @@ extern "C" {
 
 #define   HARD_VERSION     1000
 #define   SOFT_VERSION     1000 
-#define   SWITCH_TYPE      01
+#define   SWITCH_TYPE      01             //直流电机130转5档
 
 
 #define   CONFIG_PARA_DATA_LEN        32
