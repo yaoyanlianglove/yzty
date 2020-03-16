@@ -396,6 +396,8 @@ void Private_Comm_GET_REC_Response(uint8_t code)
     
     for(i = addrNum; i < endAddrNum + 1; i++)
     {
+        while(privateComm.txFinishFlag == 0)
+            ;//发送数据未完成一直等待
         privateComm.txBuffer[8 ] = (i) >> 8;
         privateComm.txBuffer[9 ] = (i) & 0xff;
         if(i < recPos + 2)
@@ -408,6 +410,7 @@ void Private_Comm_GET_REC_Response(uint8_t code)
         privateComm.txBuffer[length - 1] = crc & 0xFF;
 
         privateComm.txLength = length;
+        privateComm.txFinishFlag = 0;
         Private_Comm_Send_Data(privateComm.txBuffer, privateComm.txLength);
     } 
 }

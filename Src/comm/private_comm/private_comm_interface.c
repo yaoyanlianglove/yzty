@@ -31,6 +31,7 @@ void Private_Comm_Interface_Init(RemoteSignalTypeDef *remoteSignal,
     privateComm.coilReg[0 ] = &remoteSignal->autoMode;
     privateComm.coilReg[1 ] = &remoteSignal->remoteMode;
 
+    privateComm.txFinishFlag =  1;
     privateComm.deviceStatus =  deviceStat;
     privateComm.currentGear  =  &sw->currentGear;
     privateComm.memoryGear   =  &sw->memoryGear;

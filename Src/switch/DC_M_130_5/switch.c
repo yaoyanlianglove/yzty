@@ -268,7 +268,10 @@ SwitchStatusTypeDef Back_Gear(uint8_t r, uint8_t dir, MotorTypeDef* motor)
         Motor_Run(dir, (uint16_t)(motor->dutyCycle));
         delay_us(TIME_OF_ONE_CYCLE);
     }
-    return SWITCH_OK;
+    if(motor->motorFault == 1)
+        return SWITCH_MOTOR_ERROR;
+    else
+        return SWITCH_GEAR_ERROR;
 }
 /*****************************************************************************
  Function    : Find_Middle_Of_Gear
@@ -429,7 +432,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
             }
             else if(num2 + num < num1)
             {
-                totalNum = num1 - num - num1;
+                totalNum = num1 - num - num2;
                 return Back_Gear(totalNum, dir^1, motor);
             }
         }
@@ -446,7 +449,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
             }
             else if(num2 + num < num1)
             {
-                totalNum = num1 - num - num1;
+                totalNum = num1 - num - num2;
                 return Back_Gear(totalNum, dir^1, motor);
             }
         }
@@ -461,7 +464,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
             }
             else if(num2 + num < num1)
             {
-                totalNum = num1 - num - num1;
+                totalNum = num1 - num - num2;
                 return Back_Gear(totalNum, dir^1, motor);
             }
         }
@@ -500,7 +503,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
             }
             else if(num1 + num < num2 + num3)
             {
-                totalNum = num2 + num3 - num2 - num;
+                totalNum = num2 + num3 - num1 - num;
                 return Back_Gear(totalNum, dir, motor);
             }
         }
@@ -517,7 +520,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
             }
             else if(num1 + num < num2 + num3)
             {
-                totalNum = num2 + num3 - num2 - num;
+                totalNum = num2 + num3 - num1 - num;
                 return Back_Gear(totalNum, dir, motor);
             }
         }
@@ -532,7 +535,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
             }
             else if(num1 + num < num2 + num3)
             {
-                totalNum = num2 + num3 - num2 - num;
+                totalNum = num2 + num3 - num1 - num;
                 return Back_Gear(totalNum, dir, motor);
             }
         }

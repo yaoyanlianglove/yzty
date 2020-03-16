@@ -30,6 +30,10 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 {
     if(huart == &MODBUS_UART) 
         RS485DIR_RX;
+    else if(huart == &PRIVATE_COMM_UART)
+    {
+        privateComm.txFinishFlag = 1;
+    }
 }
 /*****************************************************************************
  Function    : HAL_UART_RxCpltCallback

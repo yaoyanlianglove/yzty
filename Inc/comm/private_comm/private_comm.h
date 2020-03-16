@@ -73,6 +73,7 @@ typedef struct
     uint8_t  rxBuffer[128];               //接收数据
     uint8_t  txBuffer[128];               //发送数据 
     uint8_t  txLength;                    //发送数据长度
+    uint8_t  txFinishFlag;                //发送完成标志
     uint8_t  rxLength;                    //接收数据长度
     uint8_t  rxFinishFlag;                //接收完成标志
     uint8_t  rxCount;                     //接收计数

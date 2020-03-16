@@ -268,7 +268,10 @@ SwitchStatusTypeDef Back_Gear(uint8_t r, uint8_t dir, MotorTypeDef* motor)
         Motor_Run(dir, (uint16_t)(motor->dutyCycle));
         delay_us(TIME_OF_ONE_CYCLE);
     }
-    return SWITCH_OK;
+    if(motor->motorFault == 1)
+        return SWITCH_MOTOR_ERROR;
+    else
+        return SWITCH_GEAR_ERROR;
 }
 /*****************************************************************************
  Function    : Find_Middle_Of_Gear
