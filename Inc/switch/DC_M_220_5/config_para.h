@@ -18,7 +18,7 @@ extern "C" {
 #include  "stdint.h"
 
 #define   HARD_VERSION     1000
-#define   SOFT_VERSION     1000 
+#define   SOFT_VERSION     1001 
 #define   SWITCH_TYPE      02    //直流电机222转5档
 
 
