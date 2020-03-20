@@ -163,7 +163,6 @@ void SystemClock_Config(void)
   }
 }
 
-
 /* USER CODE BEGIN 4 */
 /**
   * @brief  UART error callback.

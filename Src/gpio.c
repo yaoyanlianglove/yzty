@@ -66,15 +66,17 @@ void MX_GPIO_Init(void)
                           |DOUT2_Pin|DOUT1_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, LCD_SCL_Pin|LCD_SDA_Pin|DOUT9_Pin|DOUT8_Pin 
-                          |DOUT7_Pin|DOUT6_Pin|DOUT5_Pin|DOUT4_Pin 
-                          |DOUT3_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOB, LCD_SCL_Pin|LCD_SDA_Pin|DOUT9_Pin|DOUT7_Pin 
+                          |DOUT6_Pin|DOUT5_Pin|DOUT4_Pin|DOUT3_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOD, ATT7022_CS_Pin|ATT7022_RESET_Pin|RS485_DIR_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, _4G_RESET_Pin|OIL_TEMP_Pin|WIFI_RESET_Pin, GPIO_PIN_SET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(DOUT8_GPIO_Port, DOUT8_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : PtPin */
   GPIO_InitStruct.Pin = FRAM_WP_Pin;
