@@ -24,7 +24,6 @@
 void Motor_Init(MotorTypeDef *motor)
 {
     uint8_t res = 0;
-    MOTOR_ENABLE;
     motor->dutyCycle  = 700.0; 
     if(HAL_TIM_Base_Start(&htim2) != HAL_OK)
         res = 1;                //记录电机转动的圈数

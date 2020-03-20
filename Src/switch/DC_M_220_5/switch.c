@@ -675,6 +675,7 @@ SwitchStatusTypeDef Find_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef* s
 SwitchStatusTypeDef Switch_Calibration(SwitchTypeDef *sw, MotorTypeDef *motor)
 {
     SwitchStatusTypeDef res = SWITCH_OK;
+    MOTOR_ENABLE;
     if(sw->currentGear == 0)
     {
         if(sw->memoryGear > 0 && sw->memoryGear < sw->totalGear/2 + 1)
@@ -693,6 +694,7 @@ SwitchStatusTypeDef Switch_Calibration(SwitchTypeDef *sw, MotorTypeDef *motor)
     {
         return Find_Middle_Of_Gear(REVERSE, motor, sw);
     }
+    MOTOR_DISABLE;
     return res;
 }
 /*****************************************************************************
@@ -793,6 +795,7 @@ SwitchStatusTypeDef Switch_Init(SwitchTypeDef *sw, uint8_t toatlGear)
  *****************************************************************************/
 SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
 {
+    MOTOR_ENABLE;
     if(sw->motion == 1)
     {
         return Turn_Gear(FORWARD, &g_motor, sw);
@@ -801,6 +804,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
     {
         return Turn_Gear(REVERSE, &g_motor, sw);
     }
+    MOTOR_DISABLE;
     return SWITCH_OK; 
 }
 /************************ZXDQ *****END OF FILE****/
