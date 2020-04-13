@@ -98,7 +98,7 @@ int main(void)
   MX_USART1_UART_Init();
   MX_IWDG_Init();
   /* USER CODE BEGIN 2 */
-  dprintf("AV1.0.0.0 YZTY Start.\r\n");
+  dprintf("AV1.0.0.2 YZTY Start.\r\n");
   if (LOS_OK != LOS_KernelInit())
   {
     dprintf("LOS_KernelInit start failed.\r\n");

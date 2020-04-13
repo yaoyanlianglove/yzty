@@ -143,12 +143,20 @@ uint16_t Private_Comm_Interface_Remote_Control_Process(RemoteSignalTypeDef *remo
                 return STATUS_CODE_LOCK_ERR;
             if(data == 1)
             {
+#ifdef STEP_MOTOR                
+                if(sw->memoryGear >= configPara-> deviceInfo.tapTotalNum)
+#else
                 if(sw->currentGear >= configPara-> deviceInfo.tapTotalNum)
+#endif
                     return STATUS_CODE_DW_HIGH_ERR;
             }
             else if(data == 2)
             {
+#ifdef STEP_MOTOR                
+                if(sw->memoryGear == 1)
+#else
                 if(sw->currentGear == 1)
+#endif
                     return STATUS_CODE_DW_LOW_ERR;
             }
             else if(data != 3)
@@ -163,9 +171,17 @@ uint16_t Private_Comm_Interface_Remote_Control_Process(RemoteSignalTypeDef *remo
                 return STATUS_CODE_LOCK_ERR;
             if(privateComm.flagYkReady  == 0)
                 return STATUS_CODE_NO_YK_ERR;
-            if(sw->currentGear == 1 && privateComm.switchMotion == 2)
+#ifdef STEP_MOTOR                
+                if(sw->memoryGear == 1 && privateComm.switchMotion == 2)
+#else
+                if(sw->currentGear == 1 && privateComm.switchMotion == 2)
+#endif
                 return STATUS_CODE_DW_LOW_ERR;
-            if(sw->currentGear >= configPara-> deviceInfo.tapTotalNum && privateComm.switchMotion == 1)
+#ifdef STEP_MOTOR                
+                if(sw->memoryGear >= configPara-> deviceInfo.tapTotalNum && privateComm.switchMotion == 1)
+#else
+                if(sw->currentGear >= configPara-> deviceInfo.tapTotalNum && privateComm.switchMotion == 1)
+#endif
                 return STATUS_CODE_DW_HIGH_ERR;
             if(data == 0xFF)
                 sw->remoteMotion = privateComm.switchMotion;

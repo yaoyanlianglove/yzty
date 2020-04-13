@@ -504,9 +504,17 @@ static void YZTY_Go_To_Main_Tap(void)
         mainTapGear = g_switch.totalGear/2;
     else
         mainTapGear = g_switch.totalGear/2 + 1;
+#ifdef STEP_MOTOR                
+    if(g_switch.memoryGear < mainTapGear)
+#else
     if(g_switch.currentGear < mainTapGear)
+#endif
         g_switch.motion = RC_UP_VOL;
+#ifdef STEP_MOTOR                
+    else if(g_switch.memoryGear > mainTapGear)
+#else
     else if(g_switch.currentGear > mainTapGear)
+#endif
         g_switch.motion = RC_DOWN_VOL;
     else
     {
@@ -561,14 +569,22 @@ void YZTY_Control_Judge(void)
             g_switch.motion = g_switch.lcdMotion;
         if(g_switch.motion == RC_UP_VOL)
         {
+#ifdef STEP_MOTOR                
+            if(g_switch.memoryGear > g_configPara.deviceInfo.tapTotalNum - 1)
+#else
             if(g_switch.currentGear > g_configPara.deviceInfo.tapTotalNum - 1)
+#endif
                 action = RC_NONE;
             else
                 action = RC_UP_VOL;
         }
         else if(g_switch.motion == RC_DOWN_VOL)
         {
+#ifdef STEP_MOTOR                
+            if(g_switch.memoryGear < 2 )
+#else
             if(g_switch.currentGear < 2 )
+#endif
                 action = RC_NONE;
             else
                 action = RC_DOWN_VOL;
@@ -693,7 +709,12 @@ void YZTY_Storage(void)
             g_deviceStatus.storeErr = 0;
         g_saveFlag.alarmFlag = 0;   
     }
+#ifdef STEP_MOTOR                
+    g_switch.beforeMotionGear = g_switch.memoryGear;
+#else
     g_switch.beforeMotionGear = g_switch.currentGear;
+#endif
+    
  #ifdef FUNCTION_TURN_CAPACITY       
     g_switch.beforeMotionCapa = g_switch.currentCapa;
  #endif

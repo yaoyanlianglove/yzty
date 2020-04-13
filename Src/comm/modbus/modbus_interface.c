@@ -153,14 +153,22 @@ uint8_t Modbus_Interface_Remote_Control_Process(RemoteSignalTypeDef *remoteSigna
         {
             if(data[0 ] == 1)
             {
+#ifdef STEP_MOTOR
+                if(sw->memoryGear < configPara->deviceInfo.tapTotalNum && sw->memoryGear > 0)
+#else
                 if(sw->currentGear < configPara->deviceInfo.tapTotalNum && sw->currentGear > 0)
+#endif                
                     sw->remoteMotion = 1;
                 else
                     return 3;                    
             }
             else if(data[1 ] == 1)
             {
-                if(sw->currentGear < configPara->deviceInfo.tapTotalNum + 1 && sw->currentGear > 1)
+#ifdef STEP_MOTOR
+                if(sw->memoryGear < configPara->deviceInfo.tapTotalNum + 1 && sw->memoryGear > 1)
+#else
+                if(sw->currentGear < configPara->deviceInfo.tapTotalNum + 1 && sw->currentGear > 1)        
+#endif
                     sw->remoteMotion = 2;
                 else
                     return 3;

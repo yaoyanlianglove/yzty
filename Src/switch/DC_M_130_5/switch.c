@@ -795,17 +795,18 @@ SwitchStatusTypeDef Switch_Init(SwitchTypeDef *sw, uint8_t toatlGear)
  *****************************************************************************/
 SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
 {
-    MOTOR_ENABLE;
+     MOTOR_ENABLE;
+    SwitchStatusTypeDef res = SWITCH_OK;
     if(sw->motion == 1)
     {
-        return Turn_Gear(FORWARD, &g_motor, sw);
+        res = Turn_Gear(FORWARD, &g_motor, sw);  
     }
     else if(sw->motion == 2)
     {
-        return Turn_Gear(REVERSE, &g_motor, sw);
+        res =  Turn_Gear(REVERSE, &g_motor, sw);
     }
     MOTOR_DISABLE;
-    return SWITCH_OK; 
+    return res;
 }
 /************************ZXDQ *****END OF FILE****/
 

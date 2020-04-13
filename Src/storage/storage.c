@@ -193,7 +193,8 @@ StorageStatusTypeDef Save_Reboot_Counter(void)
     if(res != FRAM_WRITE_READ_OK)
         return STORAGE_READ_ERROR;
     rebootNum = (writeData[0] << 8) + writeData[1];
-    rebootNum ++;
+    if(rebootNum < 0xFFFF)
+        rebootNum ++;
     writeData[0] = rebootNum >> 8;
     writeData[1] = rebootNum & 0xFF;
     crc = CRC_16(writeData, 2);
@@ -300,7 +301,8 @@ StorageStatusTypeDef Save_Switch_Motion(ClockTypeDef          *clock,
     if(res != FRAM_WRITE_READ_OK)
         return STORAGE_READ_ERROR;
     recordSum = (readData[0] << 24) + (readData[1] << 16) + (readData[2] << 8) + readData[3];
-    recordSum++;
+    if(recordSum < 0xFFFFFFFF)
+        recordSum++;
     readData[0] = (recordSum >> 24) & 0xFF;
     readData[1] = (recordSum >> 16) & 0xFF;
     readData[2] = (recordSum >> 8 ) & 0xFF;
@@ -400,7 +402,8 @@ StorageStatusTypeDef Save_Alarm(ClockTypeDef          *clock,
     if(res != FRAM_WRITE_READ_OK)
         return STORAGE_READ_ERROR;
     recordSum = (readData[0] << 8) + readData[1];
-    recordSum++;
+    if(recordSum < 0xFFFF)
+        recordSum++;
     readData[0] = recordSum >> 8;
     readData[1] = recordSum & 0xFF;
     crc = CRC_16(readData, 2);
