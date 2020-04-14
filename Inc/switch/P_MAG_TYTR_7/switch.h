@@ -16,19 +16,62 @@ extern "C" {
 #endif
 
 #include "main.h"
-#include "motor.h"
+
+#define  ON        1
+#define  OFF       0
+
+#define  FORWARD   0
+#define  REVERSE   1
+#define  IGBT3                   1      
+#define  IGBT2fan_IGBT3zheng     2      
+#define  IGBT2zheng_IGBT3fan     3
+#define  IGBT1fan_IGBT2zheng     4 
+#define  IGBT1zheng_IGBT2fan     5
+
+#define  IGBT_TIME_OUT   80   //ms,IGBT超时时间
+#define  DCT_TIME_OUT    200  //ms，电磁铁超时时间
+  
 #define  REMOTE_SIGNAL_GEAR1       HAL_GPIO_ReadPin(DIN1_GPIO_Port, DIN1_Pin)
 #define  REMOTE_SIGNAL_GEAR2       HAL_GPIO_ReadPin(DIN2_GPIO_Port, DIN2_Pin)
-#define  REMOTE_SIGNAL_GEAR3       HAL_GPIO_ReadPin(DIN3_GPIO_Port, DIN3_Pin)
-#define  REMOTE_SIGNAL_GEAR4       HAL_GPIO_ReadPin(DIN4_GPIO_Port, DIN4_Pin)
-#define  REMOTE_SIGNAL_GEAR5       HAL_GPIO_ReadPin(DIN5_GPIO_Port, DIN5_Pin)
-#define  REMOTE_SIGNAL_GEAR6       HAL_GPIO_ReadPin(DIN6_GPIO_Port, DIN6_Pin)
-#define  REMOTE_SIGNAL_GEAR7       HAL_GPIO_ReadPin(DIN7_GPIO_Port, DIN7_Pin)
-#define  REMOTE_SIGNAL_GEAR8       HAL_GPIO_ReadPin(DIN8_GPIO_Port, DIN8_Pin)
-#define  REMOTE_SIGNAL_GEAR9       HAL_GPIO_ReadPin(DIN9_GPIO_Port, DIN9_Pin)
-#define  REMOTE_SIGNAL_GEAR10       HAL_GPIO_ReadPin(DIN9_GPIO_Port, DIN10_Pin)  //需要确定？
+#define  REMOTE_SIGNAL_GEAR3       HAL_GPIO_ReadPin(DIN10_GPIO_Port, DIN10_Pin)
+
+#define  REMOTE_SIGNAL_LARGE       HAL_GPIO_ReadPin(DIN3_GPIO_Port, DIN3_Pin) 
+#define  REMOTE_SIGNAL_SMALL       HAL_GPIO_ReadPin(DIN5_GPIO_Port, DIN5_Pin)
+
+#define  REMOTE_SIGNAL_TY_DIANCITIE       HAL_GPIO_ReadPin(DIN4_GPIO_Port, DIN4_Pin)
+#define  REMOTE_SIGNAL_TR_DIANCITIE       HAL_GPIO_ReadPin(DIN6_GPIO_Port, DIN6_Pin)
+
+
+#define  REMOTE_SIGNAL_CHARGE      HAL_GPIO_ReadPin(DIN10_GPIO_Port, DIN10_Pin)
+
 #define  REMOTE_SIGNAL_SUB_DITH_TIME 10        //遥信去抖时间 
 
+
+#define  IGBT3_MOTION_HIGH         HAL_GPIO_WritePin(DOUT12_GPIO_Port, DOUT12_Pin, GPIO_PIN_SET)
+#define  IGBT3_MOTION_LOW          HAL_GPIO_WritePin(DOUT12_GPIO_Port, DOUT12_Pin, GPIO_PIN_RESET)
+#define  IGBT3_DIR_HIGH            HAL_GPIO_WritePin(DOUT11_GPIO_Port, DOUT11_Pin, GPIO_PIN_SET)
+#define  IGBT3_DIR_LOW             HAL_GPIO_WritePin(DOUT11_GPIO_Port, DOUT11_Pin, GPIO_PIN_RESET)
+
+#define  IGBT2_MOTION_HIGH         HAL_GPIO_WritePin(DOUT4_GPIO_Port, DOUT4_Pin, GPIO_PIN_SET)
+#define  IGBT2_MOTION_LOW          HAL_GPIO_WritePin(DOUT4_GPIO_Port, DOUT4_Pin, GPIO_PIN_RESET)
+#define  IGBT2_DIR_HIGH            HAL_GPIO_WritePin(DOUT3_GPIO_Port, DOUT3_Pin, GPIO_PIN_SET)
+#define  IGBT2_DIR_LOW             HAL_GPIO_WritePin(DOUT3_GPIO_Port, DOUT3_Pin, GPIO_PIN_RESET)
+
+#define  IGBT1_MOTION_HIGH         HAL_GPIO_WritePin(DOUT2_GPIO_Port, DOUT2_Pin, GPIO_PIN_SET)
+#define  IGBT1_MOTION_LOW          HAL_GPIO_WritePin(DOUT2_GPIO_Port, DOUT2_Pin, GPIO_PIN_RESET)  
+#define  IGBT1_DIR_HIGH            HAL_GPIO_WritePin(DOUT1_GPIO_Port, DOUT1_Pin, GPIO_PIN_SET)
+#define  IGBT1_DIR_LOW             HAL_GPIO_WritePin(DOUT1_GPIO_Port, DOUT1_Pin, GPIO_PIN_RESET)  
+
+#define  IGBT_TR_MOTION_HIGH       HAL_GPIO_WritePin(DOUT6_GPIO_Port, DOUT6_Pin, GPIO_PIN_SET)
+#define  IGBT_TR_MOTION_LOW        HAL_GPIO_WritePin(DOUT6_GPIO_Port, DOUT6_Pin, GPIO_PIN_RESET) 
+#define  IGBT_TR_DIR_HIGH          HAL_GPIO_WritePin(DOUT5_GPIO_Port, DOUT5_Pin, GPIO_PIN_SET)
+#define  IGBT_TR_DIR_LOW           HAL_GPIO_WritePin(DOUT5_GPIO_Port, DOUT5_Pin, GPIO_PIN_RESET) 
+
+#define  TR_DIANCITIE_HIGH         HAL_GPIO_WritePin(DOUT10_GPIO_Port, DOUT10_Pin, GPIO_PIN_SET)
+#define  TR_DIANCITIE_LOW          HAL_GPIO_WritePin(DOUT10_GPIO_Port, DOUT10_Pin, GPIO_PIN_RESET)
+
+#define  TY_DIANCITIE_HIGH         HAL_GPIO_WritePin(DOUT8_GPIO_Port, DOUT8_Pin, GPIO_PIN_SET)
+#define  TY_DIANCITIE_LOW          HAL_GPIO_WritePin(DOUT8_GPIO_Port, DOUT8_Pin, GPIO_PIN_RESET)
 
 /**
   * @brief  Gear status structures definition
@@ -45,7 +88,8 @@ typedef enum
 {
     SWITCH_OK                    = 0x00U,
     SWITCH_GEAR_ERROR            = 0x01U,
-    SWITCH_ERROR                 = 0x02U
+    SWITCH_ERROR                 = 0x02U,
+    SWITCH_TURN_FAIL             = 0x03U
 } SwitchStatusTypeDef; 
 
 /**
@@ -108,7 +152,6 @@ typedef struct
 void     Gear_Signal_Time_Counter(GearSignalTypeDef *gearSignal);
 GearStatusTypeDef    Read_Gear(SwitchTypeDef* sw, GearSignalTypeDef* gearSignal);
 GearStatusTypeDef    Gear_Check(SwitchTypeDef *sw, GearSignalTypeDef *gearSignal);
-SwitchStatusTypeDef  Switch_Calibration(SwitchTypeDef* sw, MotorCfgTypeDef* motor);
 SwitchStatusTypeDef  Switch_Init(SwitchTypeDef* sw, uint8_t toatlGear);
 SwitchStatusTypeDef  Switch_Control(SwitchTypeDef* sw);
 

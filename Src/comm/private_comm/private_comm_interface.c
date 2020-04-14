@@ -56,7 +56,7 @@ void Private_Comm_Interface_Init(RemoteSignalTypeDef *remoteSignal,
     privateComm.discreteInputReg[16] = &remoteSignal->gearSignal.gear15;
     privateComm.discreteInputReg[17] = &remoteSignal->gearSignal.gear16;
     privateComm.discreteInputReg[18] = &remoteSignal->gearSignal.gear17;
-    privateComm.discreteInputReg[19] = &remoteSignal->capacity;
+    privateComm.discreteInputReg[19] = &remoteSignal->gearSignal.capacity;
     privateComm.discreteInputReg[20] = &remoteSignal->lockSwitch;
     privateComm.discreteInputReg[21] = &remoteSignal->oilPosAlarm;
     privateComm.discreteInputReg[22] = &remoteSignal->oilTemAlarm;
@@ -65,7 +65,7 @@ void Private_Comm_Interface_Init(RemoteSignalTypeDef *remoteSignal,
     privateComm.discreteInputReg[25] = &remoteSignal->lowVoltageAlarm;
     privateComm.discreteInputReg[26] = &remoteSignal->highVoltageAlarm;
     privateComm.discreteInputReg[27] = &remoteSignal->gearFault;
-    privateComm.discreteInputReg[28] = &remoteSignal->motorFault;
+    privateComm.discreteInputReg[28] = &remoteSignal->switchFault;
     privateComm.discreteInputReg[29] = &remoteSignal->turnGearFail;
     privateComm.discreteInputReg[30] = &remoteSignal->turnCapFail;
     privateComm.discreteInputReg[31] = &remoteSignal->initFail;

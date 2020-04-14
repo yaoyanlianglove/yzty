@@ -488,7 +488,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorCfgTypeDef *motorCfg, 
             }
         }
         else
-            return Back_Gear(dir^1, step, SWITCH_MOTOR_ERROR, motorCfg);
+            return Back_Gear(dir^1, step, SWITCH_ERROR, motorCfg);
     }
     return Go_To_Middle(dir^1, motorCfg, sw);
 }

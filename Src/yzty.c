@@ -153,8 +153,8 @@ uint8_t YZTY_Init(void)
         res = 1;
         if(swStatus == SWITCH_GEAR_ERROR)
             g_remoteSignal.gearFault = 1;
-        else if(swStatus == SWITCH_MOTOR_ERROR)
-            g_remoteSignal.motorFault = 1;
+        else if(swStatus == SWITCH_ERROR)
+            g_remoteSignal.switchFault = 1;
     }
     if(res != 0)
     {
@@ -340,7 +340,7 @@ void YZTY_Device_Status_Judge(void)
     g_deviceStatus.sampleErr    = g_remoteSignal.sampleErr        ; 
     g_deviceStatus.storeErr     = g_remoteSignal.storeErr         ;     
     g_deviceStatus.gearFault    = g_remoteSignal.gearFault        ;     
-    g_deviceStatus.motorFault   = g_remoteSignal.motorFault       ;     
+    g_deviceStatus.motorFault   = g_remoteSignal.switchFault       ;     
     g_deviceStatus.powerOff     = g_remoteSignal.powerOffAlarm    ;     
     g_deviceStatus.overCurrent  = g_remoteSignal.overCurrentAlarm ;     
     g_deviceStatus.lowVoltage   = g_remoteSignal.lowVoltageAlarm  ;     
@@ -423,7 +423,7 @@ void YZTY_Lock_Judge(void)
 {
     if(g_remoteSignal.overCurrentAlarm == 1 || g_remoteSignal.highVoltageAlarm == 1 || 
        g_remoteSignal.lowVoltageAlarm  == 1 || g_remoteSignal.gearFault        == 1 ||
-       g_remoteSignal.motorFault       == 1 || g_remoteSignal.powerOffAlarm    == 1)
+       g_remoteSignal.switchFault       == 1 || g_remoteSignal.powerOffAlarm    == 1)
         g_remoteSignal.lockSwitch = 1;
     else
         g_remoteSignal.lockSwitch = 0;
@@ -464,8 +464,8 @@ uint8_t YZTY_Switch_Action(void)
     {
         if(res == SWITCH_GEAR_ERROR)
             g_remoteSignal.gearFault = 1;
-        else if(res == SWITCH_MOTOR_ERROR)
-            g_remoteSignal.motorFault = 1;
+        else if(res == SWITCH_ERROR)
+            g_remoteSignal.switchFault = 1;
         return 1;
     }
     return 0;

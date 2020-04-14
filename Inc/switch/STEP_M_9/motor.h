@@ -20,8 +20,6 @@ extern "C" {
 #define     REVERSE   1  
 
 
-#define     DELAY_GEAR_REMOTE_SIGNAL  1
-
 /**
   * @brief  Motor structures definition
   */

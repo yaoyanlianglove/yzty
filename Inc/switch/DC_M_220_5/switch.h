@@ -41,7 +41,7 @@ typedef enum
 {
     SWITCH_OK                    = 0x00U,
     SWITCH_GEAR_ERROR            = 0x01U,
-    SWITCH_MOTOR_ERROR           = 0x02U
+    SWITCH_ERROR                 = 0x02U
 } SwitchStatusTypeDef; 
 
 /**
@@ -75,7 +75,8 @@ typedef struct
     uint8_t  gear14;                   //档位：14
     uint8_t  gear15;                   //档位：15
     uint8_t  gear16;                   //档位：16
-    uint8_t  gear17;                   //档位：17       
+    uint8_t  gear17;                   //档位：17  
+    uint8_t  capacity;                   //容量    0 大容量 1 小容量      
 }GearSignalTypeDef;  
 /**
   * @brief  Switch structures definition

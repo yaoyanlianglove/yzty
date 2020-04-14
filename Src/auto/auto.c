@@ -77,14 +77,14 @@ uint8_t Auto_Control(ACSampleTypeDef *sample, ConfigParaTypeDef *configPara
     s = (sqrt(sample->pa * sample->pa + sample->qa * sample->qa) +
          sqrt(sample->pb * sample->pb + sample->qb * sample->qb) +
          sqrt(sample->pc * sample->pc + sample->qc * sample->qc)) * configPara->ctRatio;
-    if(remoteSignal->capacity == 0)
+    if(remoteSignal->gearSignal.capacity == 0)
     {
         if(s < configPara->thChangeCapacity)
             autoChangeCapaFlag = 1;
         else
             autoChangeCapaFlag = 0;
     }
-    else if(remoteSignal->capacity == 1)
+    else if(remoteSignal->gearSignal.capacity == 1)
     {
         if(s > configPara->thChangeCapacity)
             autoChangeCapaFlag = 1;

@@ -71,7 +71,6 @@ typedef struct
     uint8_t  autoMode;                   //自动
     uint8_t  remoteMode;                 //遥控           
     GearSignalTypeDef gearSignal;        //档位遥信   
-    uint8_t  capacity;                   //容量    0 大容量 1 小容量
     uint8_t  lockSwitch;                 //闭锁开关 
     uint8_t  initFail;                   //初始化失败           
     uint8_t  oilPosAlarm;                //油位告警
@@ -81,7 +80,7 @@ typedef struct
     uint8_t  lowVoltageAlarm;            //低压告警
     uint8_t  highVoltageAlarm;           //高压告警
     uint8_t  gearFault;                  //档位故障
-    uint8_t  motorFault;                 //电机故障
+    uint8_t  switchFault;                //开关故障
     uint8_t  turnGearFail;               //调档失败
     uint8_t  turnCapFail;                //调容失败
 

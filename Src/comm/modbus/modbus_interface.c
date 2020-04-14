@@ -46,7 +46,7 @@ void Modbus_Interface_Init(RemoteSignalTypeDef *remoteSignal, ConfigParaTypeDef 
     modbus.discreteInputReg[16] = &remoteSignal->gearSignal.gear15;
     modbus.discreteInputReg[17] = &remoteSignal->gearSignal.gear16;
     modbus.discreteInputReg[18] = &remoteSignal->gearSignal.gear17;
-    modbus.discreteInputReg[19] = &remoteSignal->capacity;
+    modbus.discreteInputReg[19] = &remoteSignal->gearSignal.capacity;
     modbus.discreteInputReg[20] = &remoteSignal->lockSwitch;
     modbus.discreteInputReg[21] = &remoteSignal->oilPosAlarm;
     modbus.discreteInputReg[22] = &remoteSignal->oilTemAlarm;
@@ -55,7 +55,7 @@ void Modbus_Interface_Init(RemoteSignalTypeDef *remoteSignal, ConfigParaTypeDef 
     modbus.discreteInputReg[25] = &remoteSignal->lowVoltageAlarm;
     modbus.discreteInputReg[26] = &remoteSignal->highVoltageAlarm;
     modbus.discreteInputReg[27] = &remoteSignal->gearFault;
-    modbus.discreteInputReg[28] = &remoteSignal->motorFault;
+    modbus.discreteInputReg[28] = &remoteSignal->switchFault;
     modbus.discreteInputReg[29] = &remoteSignal->turnGearFail;
     modbus.discreteInputReg[30] = &remoteSignal->turnCapFail;
     modbus.discreteInputReg[31] = &remoteSignal->initFail;
@@ -189,14 +189,14 @@ uint8_t Modbus_Interface_Remote_Control_Process(RemoteSignalTypeDef *remoteSigna
             return 4;
         if(data[0 ] == 1 && data[1 ] == 0)
         {
-            if(remoteSignal->capacity == 1)   //当前小容量 10往大容量调
+            if(remoteSignal->gearSignal.capacity == 1)   //当前小容量 10往大容量调
                 sw->remoteMotion = 3;  //调容
             else
                 return 3;
         }
         else if(data[0 ] == 0 && data[1 ] == 1)
         {
-            if(remoteSignal->capacity == 0)  //当前大容量 01往小容量调
+            if(remoteSignal->gearSignal.capacity == 0)  //当前大容量 01往小容量调
                 sw->remoteMotion = 3;  //调容
              else
                 return 3;
