@@ -269,7 +269,7 @@ uint16_t Private_Comm_Interface_Set_Config_Process(RemoteSignalTypeDef *remoteSi
                     res = STATUS_CODE_OVER_ERR;
             break;
             case 2:
-                if(data[i] < 10 || data[i] > 3600)
+                if(data[i] < 5 || data[i] > 3600)
                     res = STATUS_CODE_OVER_ERR;
             break;
             case 3:
