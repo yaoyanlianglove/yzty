@@ -249,7 +249,7 @@ uint8_t Modbus_Interface_Set_Config_Process(RemoteSignalTypeDef *remoteSignal,
                     res = 3;
             break;
             case 2:
-                if(data[i] < 10 || data[i] > 3600)
+                if(data[i] < 5 || data[i] > 3600)
                     res = 3;
             break;
             case 3:
