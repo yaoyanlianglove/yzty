@@ -302,7 +302,8 @@ void YZTY_Time_Counter(void)
     if(oilTmpConvertSpace > 0)
         oilTmpConvertSpace--;
     Remote_Signal_Time_Counter(&g_remoteSignal);
-    Led_Control_Counter(currentDeciveStatus, g_switch.currentGear);
+    //以记忆挡位为准
+    Led_Control_Counter(g_deviceStatus.lockSwitch, g_switch.memoryGear, g_switch.currentCapa);
     Modbus_Rx_Space_Counter();
 }
 /*****************************************************************************
