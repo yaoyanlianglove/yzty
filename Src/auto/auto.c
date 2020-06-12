@@ -169,7 +169,7 @@ void Auto_Control_Time_Counter(uint32_t tyDelay
     {
         if(autoChangeCapaConfigCount < trDelay)
             autoChangeCapaConfigCount++;
-        else if(autoControlMotion == 0)     //无调压动作的情况下调容
+        else     //调容调压同时满足，调容后判断先执行
         {
             autoControlMotion = 3;
         }

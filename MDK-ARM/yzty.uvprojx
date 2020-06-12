@@ -1306,6 +1306,33 @@
               </Aads>
             </GroupArmAds>
           </GroupOption>
+          <Files>
+            <File>
+              <FileName>spi_tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\spi_tmc262\spi_tmc262.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\switch_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\tmc262.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Application/Switch/STEP_M_9</GroupName>
@@ -1475,6 +1502,33 @@
               </Aads>
             </GroupArmAds>
           </GroupOption>
+          <Files>
+            <File>
+              <FileName>spi_tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\spi_tmc262\spi_tmc262.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\switch_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\tmc262.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
@@ -2781,6 +2835,33 @@
               </Aads>
             </GroupArmAds>
           </GroupOption>
+          <Files>
+            <File>
+              <FileName>spi_tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\spi_tmc262\spi_tmc262.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\switch_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\tmc262.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Application/Switch/STEP_M_9</GroupName>
@@ -2950,6 +3031,33 @@
               </Aads>
             </GroupArmAds>
           </GroupOption>
+          <Files>
+            <File>
+              <FileName>spi_tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\spi_tmc262\spi_tmc262.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\switch_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\tmc262.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
@@ -4256,6 +4364,33 @@
               </Aads>
             </GroupArmAds>
           </GroupOption>
+          <Files>
+            <File>
+              <FileName>spi_tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\spi_tmc262\spi_tmc262.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\switch_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\tmc262.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Application/Switch/STEP_M_9</GroupName>
@@ -4425,6 +4560,33 @@
               </Aads>
             </GroupArmAds>
           </GroupOption>
+          <Files>
+            <File>
+              <FileName>spi_tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\spi_tmc262\spi_tmc262.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\switch_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\tmc262.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
@@ -5799,6 +5961,33 @@
               </Aads>
             </GroupArmAds>
           </GroupOption>
+          <Files>
+            <File>
+              <FileName>spi_tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\spi_tmc262\spi_tmc262.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\switch_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\tmc262.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Application/Switch/STEP_M_9</GroupName>
@@ -5968,6 +6157,33 @@
               </Aads>
             </GroupArmAds>
           </GroupOption>
+          <Files>
+            <File>
+              <FileName>spi_tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\spi_tmc262\spi_tmc262.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\switch_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\tmc262.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
@@ -7342,6 +7558,33 @@
               </Aads>
             </GroupArmAds>
           </GroupOption>
+          <Files>
+            <File>
+              <FileName>spi_tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\spi_tmc262\spi_tmc262.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\switch_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\tmc262.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Application/Switch/STEP_M_9</GroupName>
@@ -7511,6 +7754,33 @@
               </Aads>
             </GroupArmAds>
           </GroupOption>
+          <Files>
+            <File>
+              <FileName>spi_tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\spi_tmc262\spi_tmc262.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\switch_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\tmc262.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
@@ -8885,6 +9155,33 @@
               </Aads>
             </GroupArmAds>
           </GroupOption>
+          <Files>
+            <File>
+              <FileName>spi_tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\spi_tmc262\spi_tmc262.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\switch_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\tmc262.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Application/Switch/STEP_M_9</GroupName>
@@ -9054,6 +9351,33 @@
               </Aads>
             </GroupArmAds>
           </GroupOption>
+          <Files>
+            <File>
+              <FileName>spi_tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\spi_tmc262\spi_tmc262.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\switch_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\tmc262.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
@@ -10496,6 +10820,33 @@
               </Aads>
             </GroupArmAds>
           </GroupOption>
+          <Files>
+            <File>
+              <FileName>spi_tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\spi_tmc262\spi_tmc262.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\switch_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\tmc262.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Application/Switch/STEP_M_9</GroupName>
@@ -10665,6 +11016,33 @@
               </Aads>
             </GroupArmAds>
           </GroupOption>
+          <Files>
+            <File>
+              <FileName>spi_tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\spi_tmc262\spi_tmc262.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\switch_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\tmc262.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
@@ -10780,8 +11158,8 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\yzty\DC_M_220_5\</OutputDirectory>
-          <OutputName>yzty_DC_M_220_5</OutputName>
+          <OutputDirectory>.\yzty\STEP_M_5\</OutputDirectory>
+          <OutputName>yzty_STEP_M_5</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -11068,7 +11446,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xE,USE_HAL_DRIVER,STM32F103xE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\OS_CONFIG;..\Middlewares\LiteOS\arch\arm\arm-m\include;..\Middlewares\LiteOS\kernel\include;..\Middlewares\LiteOS\kernel\base\include;..\Middlewares\LiteOS\kernel\extended\include;..\Inc\auto;..\Inc\clock;..\Inc\comm;..\Inc\comm\modbus;..\Inc\comm\private_comm;..\Inc\i2c_soft;..\Inc\LCD;..\Inc\led;..\Inc\remote_signal;..\Inc\storage;..\Inc\storage\fram;..\Inc\switch;..\Inc\telemetry;..\Inc\telemetry\AC_sampling;..\Inc\telemetry\AC_sampling\att7022;..\Inc\telemetry\oil_temp;..\Inc\switch\DC_M_220_5</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\OS_CONFIG;..\Middlewares\LiteOS\arch\arm\arm-m\include;..\Middlewares\LiteOS\kernel\include;..\Middlewares\LiteOS\kernel\base\include;..\Middlewares\LiteOS\kernel\extended\include;..\Inc\auto;..\Inc\clock;..\Inc\comm;..\Inc\comm\modbus;..\Inc\comm\private_comm;..\Inc\i2c_soft;..\Inc\LCD;..\Inc\led;..\Inc\remote_signal;..\Inc\storage;..\Inc\storage\fram;..\Inc\switch;..\Inc\telemetry;..\Inc\telemetry\AC_sampling;..\Inc\telemetry\AC_sampling\att7022;..\Inc\telemetry\oil_temp;..\Inc\switch\STEP_M_5\spi_tmc262;..\Inc\switch\STEP_M_5</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -11584,6 +11962,74 @@
         </Group>
         <Group>
           <GroupName>Application/Switch/DC_M_220_5</GroupName>
+          <GroupOption>
+            <CommonProperty>
+              <UseCPPCompiler>0</UseCPPCompiler>
+              <RVCTCodeConst>0</RVCTCodeConst>
+              <RVCTZI>0</RVCTZI>
+              <RVCTOtherData>0</RVCTOtherData>
+              <ModuleSelection>0</ModuleSelection>
+              <IncludeInBuild>0</IncludeInBuild>
+              <AlwaysBuild>2</AlwaysBuild>
+              <GenerateAssemblyFile>2</GenerateAssemblyFile>
+              <AssembleAssemblyFile>2</AssembleAssemblyFile>
+              <PublicsOnly>2</PublicsOnly>
+              <StopOnExitCode>11</StopOnExitCode>
+              <CustomArgument></CustomArgument>
+              <IncludeLibraryModules></IncludeLibraryModules>
+              <ComprImg>1</ComprImg>
+            </CommonProperty>
+            <GroupArmAds>
+              <Cads>
+                <interw>2</interw>
+                <Optim>0</Optim>
+                <oTime>2</oTime>
+                <SplitLS>2</SplitLS>
+                <OneElfS>2</OneElfS>
+                <Strict>2</Strict>
+                <EnumInt>2</EnumInt>
+                <PlainCh>2</PlainCh>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <wLevel>0</wLevel>
+                <uThumb>2</uThumb>
+                <uSurpInc>2</uSurpInc>
+                <uC99>2</uC99>
+                <useXO>2</useXO>
+                <v6Lang>0</v6Lang>
+                <v6LangP>0</v6LangP>
+                <vShortEn>2</vShortEn>
+                <vShortWch>2</vShortWch>
+                <v6Lto>2</v6Lto>
+                <v6WtE>2</v6WtE>
+                <v6Rtti>2</v6Rtti>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Cads>
+              <Aads>
+                <interw>2</interw>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <thumb>2</thumb>
+                <SplitLS>2</SplitLS>
+                <SwStkChk>2</SwStkChk>
+                <NoWarn>2</NoWarn>
+                <uSurpInc>2</uSurpInc>
+                <useXO>2</useXO>
+                <uClangAs>2</uClangAs>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Aads>
+            </GroupArmAds>
+          </GroupOption>
           <Files>
             <File>
               <FileName>motor.c</FileName>
@@ -11978,7 +12424,7 @@
               <RVCTZI>0</RVCTZI>
               <RVCTOtherData>0</RVCTOtherData>
               <ModuleSelection>0</ModuleSelection>
-              <IncludeInBuild>0</IncludeInBuild>
+              <IncludeInBuild>1</IncludeInBuild>
               <AlwaysBuild>2</AlwaysBuild>
               <GenerateAssemblyFile>2</GenerateAssemblyFile>
               <AssembleAssemblyFile>2</AssembleAssemblyFile>
@@ -12039,6 +12485,33 @@
               </Aads>
             </GroupArmAds>
           </GroupOption>
+          <Files>
+            <File>
+              <FileName>spi_tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\spi_tmc262\spi_tmc262.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\switch_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\tmc262.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Application/Switch/STEP_M_9</GroupName>
@@ -12208,6 +12681,33 @@
               </Aads>
             </GroupArmAds>
           </GroupOption>
+          <Files>
+            <File>
+              <FileName>spi_tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\spi_tmc262\spi_tmc262.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\switch_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\tmc262.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
@@ -13650,6 +14150,33 @@
               </Aads>
             </GroupArmAds>
           </GroupOption>
+          <Files>
+            <File>
+              <FileName>spi_tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\spi_tmc262\spi_tmc262.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\switch_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\tmc262.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Application/Switch/STEP_M_9</GroupName>
@@ -13819,6 +14346,33 @@
               </Aads>
             </GroupArmAds>
           </GroupOption>
+          <Files>
+            <File>
+              <FileName>spi_tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\spi_tmc262\spi_tmc262.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\switch_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\tmc262.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
@@ -13934,7 +14488,7 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\yzty\</OutputDirectory>
+          <OutputDirectory>.\yzty\STEP_M_17\</OutputDirectory>
           <OutputName>yzty_STEP_M_17</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
@@ -14222,7 +14776,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xE,USE_HAL_DRIVER,STM32F103xE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\OS_CONFIG;..\Middlewares\LiteOS\arch\arm\arm-m\include;..\Middlewares\LiteOS\kernel\include;..\Middlewares\LiteOS\kernel\base\include;..\Middlewares\LiteOS\kernel\extended\include;..\Inc\auto;..\Inc\clock;..\Inc\comm;..\Inc\comm\modbus;..\Inc\comm\private_comm;..\Inc\i2c_soft;..\Inc\LCD;..\Inc\led;..\Inc\remote_signal;..\Inc\storage;..\Inc\storage\fram;..\Inc\switch;..\Inc\telemetry;..\Inc\telemetry\AC_sampling;..\Inc\telemetry\AC_sampling\att7022;..\Inc\telemetry\oil_temp;..\Inc\switch\STEP_M_17</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\OS_CONFIG;..\Middlewares\LiteOS\arch\arm\arm-m\include;..\Middlewares\LiteOS\kernel\include;..\Middlewares\LiteOS\kernel\base\include;..\Middlewares\LiteOS\kernel\extended\include;..\Inc\auto;..\Inc\clock;..\Inc\comm;..\Inc\comm\modbus;..\Inc\comm\private_comm;..\Inc\i2c_soft;..\Inc\LCD;..\Inc\led;..\Inc\remote_signal;..\Inc\storage;..\Inc\storage\fram;..\Inc\switch;..\Inc\telemetry;..\Inc\telemetry\AC_sampling;..\Inc\telemetry\AC_sampling\att7022;..\Inc\telemetry\oil_temp;..\Inc\switch\STEP_M_17;..\Inc\switch\STEP_M_17\spi_tmc262</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -15261,6 +15815,33 @@
               </Aads>
             </GroupArmAds>
           </GroupOption>
+          <Files>
+            <File>
+              <FileName>spi_tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\spi_tmc262\spi_tmc262.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\switch_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_5\tmc262.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Application/Switch/STEP_M_9</GroupName>
@@ -15430,6 +16011,33 @@
               </Aads>
             </GroupArmAds>
           </GroupOption>
+          <Files>
+            <File>
+              <FileName>spi_tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\spi_tmc262\spi_tmc262.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\switch_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>tmc262.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\switch\STEP_M_17\tmc262.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>

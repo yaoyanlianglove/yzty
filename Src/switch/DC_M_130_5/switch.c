@@ -315,7 +315,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
             totalNum = num;
             return Back_Gear(totalNum, dir^1, motor);
         }
-        else if(num > R_OF_ONE_GEAR + 5)  //超转数
+        else if(num > R_OF_ON_GEAR + 5)  //超转数
         {
             sw->gearFault = 1;
             Motor_Standby();
@@ -380,7 +380,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
                 return Back_Gear(totalNum, dir^1, motor);
             }
         }
-        else if(num > R_OF_ONE_GEAR + 5)  //超转数
+        else if(num > R_OF_ON_GEAR + 5)  //超转数
         {
             sw->gearFault = 1;
             Motor_Standby();
@@ -453,7 +453,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
                 return Back_Gear(totalNum, dir^1, motor);
             }
         }
-        else if(num > R_OF_ONE_GEAR + 5)  //超转数
+        else if(num > R_OF_ON_GEAR + 5)  //超转数
         {
             sw->gearFault = 1;
             Motor_Standby();
@@ -524,7 +524,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
                 return Back_Gear(totalNum, dir, motor);
             }
         }
-        else if(num > R_OF_ONE_GEAR + 5)  //超转数
+        else if(num > R_OF_ON_GEAR + 5)  //超转数
         {
             sw->gearFault = 1;
             Motor_Standby();

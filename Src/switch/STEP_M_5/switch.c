@@ -228,11 +228,11 @@ uint8_t Read_Gear_No_Delay(void)
         temp++;
         gear9 = 9;
     }
-    if(REMOTE_SIGNAL_GEAR10 == 0)
-    {
-        temp++;
-        gear10 = 10;
-    }
+    //if(REMOTE_SIGNAL_GEAR10 == 0)
+    //{
+    //    temp++;
+    //    gear10 = 10;
+    //}
     
     if(temp == 1)
     {
@@ -349,11 +349,11 @@ GearStatusTypeDef Read_Gear(SwitchTypeDef *sw, GearSignalTypeDef *gearSignal)
         temp++;
         gear9 = 9;
     }
-    //if(gearSignal->gear10 == 1)
-    //{
-    //    temp++;
-    //    gear10 = 10;
-    //}
+    if(gearSignal->gear10 == 1)
+    {
+        temp++;
+        gear10 = 10;
+    }
      
     if(temp == 1)
     {

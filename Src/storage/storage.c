@@ -428,7 +428,7 @@ StorageStatusTypeDef Save_Default_Config(ConfigParaTypeDef *cfgPara)
 
     cfgPara->thDownVoltage        = 233;
     cfgPara->thUpVoltage          = 225;
-    cfgPara->tySpace              = 10; 
+    cfgPara->tySpace              = 5; 
     cfgPara->tyDelay              = 300;
     cfgPara->ctRatio              = 300; 
     cfgPara->lockOverCurrent      = 400;

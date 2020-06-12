@@ -545,12 +545,12 @@ ARM Macro Assembler    Page 9
               00000000 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
-ork --depend=.\yzty\dc_m_220_5\startup_stm32f103xe.d -o.\yzty\dc_m_220_5\startu
-p_stm32f103xe.o -IF:\ZX-YZTY\yzty\MDK-ARM\RTE\_yzty_DC_M_220_5 -IC:\Keil_v5\ARM
-\PACK\ARM\CMSIS\5.0.0\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.
-3.0\Device\Include --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSI
-ON SETA 522" --predefine="_RTE_ SETA 1" --predefine="STM32F10X_HD SETA 1" --lis
-t=startup_stm32f103xe.lst startup_stm32f103xe.s
+ork --depend=.\yzty\step_m_17\startup_stm32f103xe.d -o.\yzty\step_m_17\startup_
+stm32f103xe.o -IF:\ZX-YZTY\yzty\MDK-ARM\RTE\_yzty_STEP_M_17 -IC:\Keil_v5\ARM\PA
+CK\ARM\CMSIS\5.0.0\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0
+\Device\Include --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION 
+SETA 522" --predefine="_RTE_ SETA 1" --predefine="STM32F10X_HD SETA 1" --list=s
+tartup_stm32f103xe.lst startup_stm32f103xe.s
 
 
 

@@ -19,16 +19,15 @@ extern "C" {
 
 #define   HARD_VERSION     1000
 #define   SOFT_VERSION     1001 
-#define   SWITCH_TYPE      0x25             //永磁调容调压7档
+#define   SWITCH_TYPE      0x13             //步进电机17档
 
-#define   P_MAG_SWITCH   1
+#define   STEP_MOTOR   1
 
 #define   CONFIG_PARA_DATA_LEN        32
-#define   FUNCTION_TURN_CAPACITY      1    //具有调容功能
-#define   TURN_P_MAG_MIN_SPACE        15   //永磁开关的动作最小间隔
+//#define   FUNCTION_TURN_CAPACITY      1    //1具有调容功能 0 无调容功能 
 #define   HEART_TIMEOUT_PERIOD        180  //秒
 
-#define   GEAR_TOTAL                  7    //开关总档位
+#define   GEAR_TOTAL                  17   //开关总档位
 #define   TRAN_TAP_WIDE_HIGH          1000 //调节上限1000/10000=10%
 #define   TRAN_TAP_WIDE_LOW           1000 //调节下限1000/10000=10%
 

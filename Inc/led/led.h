@@ -16,7 +16,6 @@ extern "C" {
 #endif
 
 #include "main.h"
-#define   LED_ALARM_CONTROL_PERIOD  3
 #define   LED_CAPA_CONTROL_PERIOD   3
 
 #define  LED_RED_OFF        HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_SET)

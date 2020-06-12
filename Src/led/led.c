@@ -39,6 +39,18 @@ static void Led_Green_On(void)
     LED_GREEN_ON;
 }
 /*****************************************************************************
+ Function    : Led_Yellow_On
+ Description : None
+ Input       : None
+ Output      : None
+ Return      : None
+ *****************************************************************************/
+static void Led_Yellow_On(void)
+{
+    LED_RED_ON;
+    LED_GREEN_ON;
+}
+/*****************************************************************************
  Function    : Led_Off
  Description : None
  Input       : None
@@ -59,22 +71,26 @@ static void Led_Off(void)
  *****************************************************************************/
 void Led_Control_Counter(uint8_t deviceStatus, uint8_t gear, uint8_t capa)
 {
+    uint8_t LED_ALARM_CONTROL_PERIOD = 0;
+    if(deviceStatus == 0)
+        LED_ALARM_CONTROL_PERIOD = 0;
+    else
+        LED_ALARM_CONTROL_PERIOD = 3;
+
     if(ledMSTimeCounter < 1000)
     {
         ledMSTimeCounter++;
         if(ledMSTimeCounter == 400)
         {
+            
             if(ledSecTimeCounter < LED_ALARM_CONTROL_PERIOD)
-                Led_Red_On();
+                Led_Yellow_On();
             else if(ledSecTimeCounter >= LED_ALARM_CONTROL_PERIOD && 
                 ledSecTimeCounter < (LED_ALARM_CONTROL_PERIOD + LED_CAPA_CONTROL_PERIOD))
             {
-                if(capa == 0)//大容量
-                    Led_Green_On();
-                else
-                    Led_Off();
+                Led_Red_On();
             }
-            else if(gear > 0 && gear < GEAR_TOTAL)
+            else if(ledSecTimeCounter < LED_ALARM_CONTROL_PERIOD + LED_CAPA_CONTROL_PERIOD + gear)
                 Led_Green_On();
         }
         if(ledMSTimeCounter == 600)
@@ -86,15 +102,22 @@ void Led_Control_Counter(uint8_t deviceStatus, uint8_t gear, uint8_t capa)
             }
             else if(ledSecTimeCounter >= LED_ALARM_CONTROL_PERIOD && 
                 ledSecTimeCounter < (LED_ALARM_CONTROL_PERIOD + LED_CAPA_CONTROL_PERIOD))
-                ;
-            else
+            {
+                if(capa == 0)//大容量
+#ifdef FUNCTION_TURN_CAPACITY
+                    Led_Off();
+#else
+                    ;
+#endif
+            }
+            else 
                 Led_Off();
         }
     }
     else
     {
         ledMSTimeCounter = 0;
-        if(ledSecTimeCounter < LED_ALARM_CONTROL_PERIOD + LED_CAPA_CONTROL_PERIOD + gear - 1)
+        if(ledSecTimeCounter < LED_ALARM_CONTROL_PERIOD + LED_CAPA_CONTROL_PERIOD + gear)
             ledSecTimeCounter++;
         else
             ledSecTimeCounter = 0;

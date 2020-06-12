@@ -33,7 +33,9 @@ SaveFlagTypeDef                      g_saveFlag;
 ClockTypeDef                         g_clock;
 LCDStatusTypeDef                     g_lcdStatus;
 
-
+#ifdef P_MAG_SWITCH
+volatile uint32_t pMagTySpace = TURN_P_MAG_MIN_SPACE;               //永磁开关调压间隔时间计数
+#endif
 volatile uint32_t tySpace = 0;                   //开关动作时间间隔
 uint32_t msCount = 0;                            //毫秒计数器
 int16_t  telemetryReg[32] = {0};                 //遥测输入寄存器，通信地址映射用
@@ -288,6 +290,10 @@ void YZTY_Time_Counter(void)
         msCount = 0;
         if(tySpace > 0)
             tySpace--;
+#ifdef P_MAG_SWITCH
+        if(pMagTySpace > 0)
+            pMagTySpace--;
+#endif
         Auto_Control_Time_Counter(g_configPara.tyDelay
 #ifdef FUNCTION_TURN_CAPACITY  
     , g_configPara.ccDelay, g_configPara.tranCapacity
@@ -424,7 +430,7 @@ void YZTY_Lock_Judge(void)
 {
     if(g_remoteSignal.overCurrentAlarm == 1 || g_remoteSignal.highVoltageAlarm == 1 || 
        g_remoteSignal.lowVoltageAlarm  == 1 || g_remoteSignal.gearFault        == 1 ||
-       g_remoteSignal.switchFault       == 1 || g_remoteSignal.powerOffAlarm    == 1)
+       g_remoteSignal.switchFault      == 1 || g_remoteSignal.powerOffAlarm    == 1)
         g_remoteSignal.lockSwitch = 1;
     else
         g_remoteSignal.lockSwitch = 0;
@@ -500,7 +506,26 @@ void YZTY_Hand_Judge(void)
  *****************************************************************************/
 static void YZTY_Go_To_Main_Tap(void)
 {
-    uint8_t mainTapGear;
+#ifdef P_MAG_SWITCH
+#ifdef FUNCTION_TURN_CAPACITY  //永磁调容调压开关需要上电回大容量
+    if(g_switch.currentCapa == 1)
+    {
+        if(pMagTySpace > 0)
+            return;
+        if(YZTY_Switch_Action() != 0)
+            g_remoteSignal.turnCapFail = 1;
+        else
+            g_remoteSignal.turnCapFail = 0;
+        g_switch.lastMotion     = RC_TURN_CAPA;
+        g_saveFlag.switchMotionFlag = 1;
+        pMagTySpace = TURN_P_MAG_MIN_SPACE;
+    }
+#endif  
+    g_switch.motion = RC_NONE; //永磁调压开关不需要找主分接
+    goToMainTapFlag = 1;
+    return;
+#else
+		uint8_t mainTapGear;
     if(g_switch.totalGear % 2 == 0)
         mainTapGear = g_switch.totalGear/2;
     else
@@ -532,6 +557,7 @@ static void YZTY_Go_To_Main_Tap(void)
         g_switch.lastMotion     = g_switch.motion;
         g_saveFlag.switchMotionFlag = 1;
     } 
+#endif
 }
 /*****************************************************************************
  Function    : YZTY_Control_Judge
@@ -590,6 +616,10 @@ void YZTY_Control_Judge(void)
             else
                 action = RC_DOWN_VOL;
         }
+#ifdef FUNCTION_TURN_CAPACITY
+        else if(g_switch.motion == RC_TURN_CAPA)
+            action = RC_TURN_CAPA;
+#endif        
         else
             action = RC_NONE;
     }
@@ -598,7 +628,11 @@ void YZTY_Control_Judge(void)
 
     if((action == RC_UP_VOL || action == RC_DOWN_VOL))
     {
-        if(tySpace == 0)
+        if(tySpace == 0 
+#ifdef P_MAG_SWITCH
+            && pMagTySpace == 0
+#endif
+            )
         {
             if(YZTY_Switch_Action() != 0)
                 g_remoteSignal.turnGearFail = 1;
@@ -607,6 +641,9 @@ void YZTY_Control_Judge(void)
             g_switch.lastMotion     = g_switch.motion;
             g_saveFlag.switchMotionFlag = 1;
             tySpace = g_configPara.tySpace;
+#ifdef P_MAG_SWITCH
+            pMagTySpace = TURN_P_MAG_MIN_SPACE;
+#endif
             if(g_remoteSignal.autoMode == 1)
                 Auto_Control_Clear_Motion();
         }
@@ -614,15 +651,22 @@ void YZTY_Control_Judge(void)
 #ifdef FUNCTION_TURN_CAPACITY
     else if(action == RC_TURN_CAPA)
     {
-        if(tySpace == 0)
+        if(tySpace == 0
+#ifdef P_MAG_SWITCH
+            && pMagTySpace == 0
+#endif
+				)
         {
             if(YZTY_Switch_Action() != 0)
-                g_remoteSignal.turnGearFail = 1;
+                g_remoteSignal.turnCapFail = 1;
             else
-                g_remoteSignal.turnGearFail = 0;
+                g_remoteSignal.turnCapFail = 0;
             g_switch.lastMotion     = g_switch.motion;
             g_saveFlag.switchMotionFlag = 1;
             tySpace = g_configPara.tySpace;
+#ifdef P_MAG_SWITCH
+            pMagTySpace = TURN_P_MAG_MIN_SPACE;
+#endif
             if(g_remoteSignal.autoMode == 1)
                 Auto_Control_Capa_Clear_Motion();
         } 
