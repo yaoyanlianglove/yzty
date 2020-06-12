@@ -110,7 +110,7 @@ void Led_Control_Counter(uint8_t deviceStatus, uint8_t gear, uint8_t capa)
                     ;
 #endif
             }
-            else 
+            else if(gear > 0 && gear <= SWITCH_TYPE)
                 Led_Off();
         }
     }
