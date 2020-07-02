@@ -124,6 +124,9 @@ uint8_t Modbus_Interface_Remote_Control_Process(RemoteSignalTypeDef *remoteSigna
                 if(remoteSignal->autoMode == 0)
                 {
                     Auto_Control_Clear_Motion();         //手动切自动，自动参数清零
+#ifdef FUNCTION_TURN_CAPACITY  
+                    Auto_Control_Capa_Clear_Motion();
+#endif
                     remoteSignal->autoMode   = data[0 ];
                     remoteSignal->remoteMode = data[1 ];
                 }
@@ -133,6 +136,9 @@ uint8_t Modbus_Interface_Remote_Control_Process(RemoteSignalTypeDef *remoteSigna
                 if(remoteSignal->remoteMode == 0)
                 {
                     Auto_Control_Clear_Motion();         //自动切手动，自动参数清零
+#ifdef FUNCTION_TURN_CAPACITY  
+                    Auto_Control_Capa_Clear_Motion();
+#endif
                     remoteSignal->autoMode   = data[0 ];
                     remoteSignal->remoteMode = data[1 ];
                 }

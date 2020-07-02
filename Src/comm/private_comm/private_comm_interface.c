@@ -125,13 +125,27 @@ uint16_t Private_Comm_Interface_Remote_Control_Process(RemoteSignalTypeDef *remo
         case FUNCTION_CODE_MODE:
             if(data == 0)
             {
-                remoteSignal->autoMode   = 1;
-                remoteSignal->remoteMode = 0;
+                if(remoteSignal->autoMode == 0)
+                {
+                    Auto_Control_Clear_Motion();         //手动切自动，自动参数清零
+#ifdef FUNCTION_TURN_CAPACITY  
+                    Auto_Control_Capa_Clear_Motion();
+#endif
+                    remoteSignal->autoMode   = 1;
+                    remoteSignal->remoteMode = 0;
+                }
             }
             else if(data == 1)
             {
-                remoteSignal->autoMode   = 0;
-                remoteSignal->remoteMode = 1;
+                if(remoteSignal->remoteMode == 0)
+                {
+                    Auto_Control_Clear_Motion();         //自动切手动，自动参数清零
+#ifdef FUNCTION_TURN_CAPACITY  
+                    Auto_Control_Capa_Clear_Motion();
+#endif
+                    remoteSignal->autoMode   = 0;
+                    remoteSignal->remoteMode = 1;
+                } 
             }
             else
                 return STATUS_CODE_OVER_ERR;

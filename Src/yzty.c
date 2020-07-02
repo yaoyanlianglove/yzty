@@ -347,7 +347,7 @@ void YZTY_Device_Status_Judge(void)
     g_deviceStatus.sampleErr    = g_remoteSignal.sampleErr        ; 
     g_deviceStatus.storeErr     = g_remoteSignal.storeErr         ;     
     g_deviceStatus.gearFault    = g_remoteSignal.gearFault        ;     
-    g_deviceStatus.motorFault   = g_remoteSignal.switchFault       ;     
+    g_deviceStatus.motorFault   = g_remoteSignal.switchFault      ;     
     g_deviceStatus.powerOff     = g_remoteSignal.powerOffAlarm    ;     
     g_deviceStatus.overCurrent  = g_remoteSignal.overCurrentAlarm ;     
     g_deviceStatus.lowVoltage   = g_remoteSignal.lowVoltageAlarm  ;     
