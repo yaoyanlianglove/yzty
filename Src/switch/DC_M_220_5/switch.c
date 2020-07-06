@@ -432,7 +432,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
             }
             else if(num2 + num < num1)
             {
-                totalNum = num1 - num - num1;
+                totalNum = num1 - num - num2;
                 return Back_Gear(totalNum, dir^1, motor);
             }
         }
@@ -449,7 +449,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
             }
             else if(num2 + num < num1)
             {
-                totalNum = num1 - num - num1;
+                totalNum = num1 - num - num2;
                 return Back_Gear(totalNum, dir^1, motor);
             }
         }
@@ -464,7 +464,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
             }
             else if(num2 + num < num1)
             {
-                totalNum = num1 - num - num1;
+                totalNum = num1 - num - num2;
                 return Back_Gear(totalNum, dir^1, motor);
             }
         }
@@ -503,7 +503,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
             }
             else if(num1 + num < num2 + num3)
             {
-                totalNum = num2 + num3 - num2 - num;
+                totalNum = num2 + num3 - num1 - num;
                 return Back_Gear(totalNum, dir, motor);
             }
         }
@@ -520,7 +520,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
             }
             else if(num1 + num < num2 + num3)
             {
-                totalNum = num2 + num3 - num2 - num;
+                totalNum = num2 + num3 - num1 - num;
                 return Back_Gear(totalNum, dir, motor);
             }
         }
@@ -535,7 +535,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
             }
             else if(num1 + num < num2 + num3)
             {
-                totalNum = num2 + num3 - num2 - num;
+                totalNum = num2 + num3 - num1 - num;
                 return Back_Gear(totalNum, dir, motor);
             }
         }

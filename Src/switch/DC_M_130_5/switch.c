@@ -795,7 +795,7 @@ SwitchStatusTypeDef Switch_Init(SwitchTypeDef *sw, uint8_t toatlGear)
  *****************************************************************************/
 SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
 {
-     MOTOR_ENABLE;
+    MOTOR_ENABLE;
     SwitchStatusTypeDef res = SWITCH_OK;
     if(sw->motion == 1)
     {
