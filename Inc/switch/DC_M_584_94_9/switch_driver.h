@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * File Name          : switch_driver.c
+  * File Name          : switch_driver.h
   * Description        : This file provides code for the configuration
   *                      of the TIM instances.
   ******************************************************************************
@@ -16,32 +16,34 @@
   *
   ******************************************************************************
   */
+/* Define to prevent recursive inclusion -------------------------------------*/
+#ifndef __switch_driver_H
+#define __switch_driver_H
+#ifdef __cplusplus
+ extern "C" {
+#endif
 
+#include "main.h"
 /* Includes ------------------------------------------------------------------*/
-#include "switch_driver.h"
-#include "tmc262.h"
-#include "spi_tmc262.h"
-#include "motor.h"
-/*****************************************************************************
- Function    : Switch_Driver_Init
- Description : None
- Input       : None
- Output      : None
- Return      : None
- *****************************************************************************/
-void Switch_Driver_Init(void)
-{
 
-    /*Configure GPIO pins : PGPin PGPin PGPin PGPin 
-                           PGPin PGPin */
-    GPIO_InitStruct.Pin = LED5_Pin|LED6_Pin|DOUT13_Pin|DOUT12_Pin 
-                            |DOUT11_Pin|DOUT10_Pin;
-    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
-    SPI_TMC262_GPIO_Init();
-    TMC262_GPIO_Init();
+extern TIM_HandleTypeDef htim2;
+extern TIM_HandleTypeDef htim4;
+
+                        
+void Switch_Driver_Init(void);
+                    
+
+#ifdef __cplusplus
 }
+#endif
+#endif /*__ tim_H */
+
+/**
+  * @}
+  */
+
+/**
+  * @}
+  */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

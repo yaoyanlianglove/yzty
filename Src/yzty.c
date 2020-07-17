@@ -60,6 +60,8 @@ volatile  uint8_t lowVoltageCount  = 1;
 volatile  uint8_t lowVoltageFlag   = 1;
 volatile  uint8_t highVoltageCount = 1;
 volatile  uint8_t highVoltageFlag  = 1;
+volatile  uint8_t powerOffCount    = 1;
+volatile  uint8_t powerOffFlag     = 1;
 /***********保护相关结束************************************************************/
 /*****************************************************************************
  Function    : YZTY_Init
@@ -391,6 +393,13 @@ void YZTY_Protect_Judge(void)
         highVoltageFlag = 1;
     else
         highVoltageFlag = 0;
+
+    if(g_telemetry.sample.ua < 120 || 
+       g_telemetry.sample.ub < 120 || 
+       g_telemetry.sample.uc < 120)
+        powerOffFlag = 1;
+    else
+        powerOffFlag = 0;
     if(g_remoteSignal.overCurrentAlarm != overCurrentFlag)
     {
         if(overCurrentCount < PROTECT_SUB_DITH_TIME)
@@ -418,6 +427,16 @@ void YZTY_Protect_Judge(void)
     }
     else
         lowVoltageCount = 0;
+
+    if(g_remoteSignal.powerOffAlarm != powerOffFlag)
+    {
+        if(powerOffCount < PROTECT_SUB_DITH_TIME)
+            powerOffCount++;
+        else
+            g_remoteSignal.powerOffAlarm = powerOffFlag;
+    }
+    else
+        powerOffCount = 0;
 }
 /*****************************************************************************
  Function    : YZTY_Lock_Judge

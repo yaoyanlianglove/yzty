@@ -685,14 +685,17 @@ SwitchStatusTypeDef Switch_Calibration(SwitchTypeDef *sw, MotorTypeDef *motor)
     }
     //如果档位存在，直接找中，如果档位不存在，找档成功以后执行找中
     if(res != SWITCH_OK)
+    {
+        MOTOR_DISABLE
         return res;
+    }
     if(sw->currentGear > 0 && sw->currentGear < 4)
     {
-        return Find_Middle_Of_Gear(FORWARD, motor, sw);
+        res = Find_Middle_Of_Gear(FORWARD, motor, sw);
     }
     else if(sw->currentGear > 3 && sw->currentGear < 6)
     {
-        return Find_Middle_Of_Gear(REVERSE, motor, sw);
+        res = Find_Middle_Of_Gear(REVERSE, motor, sw);
     }
     MOTOR_DISABLE;
     return res;

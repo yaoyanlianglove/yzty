@@ -96,8 +96,10 @@ void Error_Handler(void);
 #define DIN2_GPIO_Port GPIOB
 #define DIN1_Pin GPIO_PIN_1
 #define DIN1_GPIO_Port GPIOB
-#define POWER_CHECK_Pin GPIO_PIN_11
-#define POWER_CHECK_GPIO_Port GPIOF
+#define QIE_MOTOR_Pin GPIO_PIN_11
+#define QIE_MOTOR_GPIO_Port GPIOF
+#define QIE_MOTOR_CTL_GPIO_Port GPIOG
+#define QIE_MOTOR_CTL_Pin GPIO_PIN_11
 #define LED2_Pin GPIO_PIN_13
 #define LED2_GPIO_Port GPIOF
 #define LED3_Pin GPIO_PIN_14

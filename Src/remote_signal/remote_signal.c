@@ -16,7 +16,6 @@
 
 
 volatile  uint16_t oilCount      = 1;
-volatile  uint16_t powerOffCount = 1;
 volatile  uint16_t handEnBCT     = 1;
 volatile  uint16_t handUpBCT     = 1;
 volatile  uint16_t handDwBCT     = 1;
@@ -216,18 +215,6 @@ void Remote_Signal_Time_Counter(RemoteSignalTypeDef *remoteSignal)
     }
     else 
         oilCount = 0;
-    //主电源失电
-    if(remoteSignal->powerOffAlarm == REMOTE_SIGNAL_POWER_CHECK)
-    {
-        if(powerOffCount < REMOTE_SIGNAL_SUB_DITH_TIME)
-            powerOffCount++;
-        else
-        {
-            remoteSignal->powerOffAlarm = REMOTE_SIGNAL_POWER_CHECK ^ 1;
-        }
-    }
-    else 
-        powerOffCount = 0; 
     Gear_Signal_Time_Counter(&(remoteSignal->gearSignal));
     Hand_Button_Time_Counter(&(remoteSignal->handButton));
     LCD_Button_Time_Counter(&(remoteSignal->lcdButton));

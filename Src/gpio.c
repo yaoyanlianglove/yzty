@@ -125,10 +125,10 @@ void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PtPin */
-  GPIO_InitStruct.Pin = POWER_CHECK_Pin;
+  GPIO_InitStruct.Pin = QIE_MOTOR_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(POWER_CHECK_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(QIE_MOTOR_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PFPin PFPin PFPin */
   GPIO_InitStruct.Pin = LED2_Pin|LED3_Pin|LED4_Pin;
@@ -140,7 +140,7 @@ void MX_GPIO_Init(void)
   /*Configure GPIO pins : PGPin PGPin PGPin PGPin 
                            PGPin PGPin */
   GPIO_InitStruct.Pin = LED5_Pin|LED6_Pin|DOUT13_Pin|DOUT12_Pin 
-                          |DOUT11_Pin|DOUT10_Pin;
+                          |DOUT11_Pin|DOUT10_Pin|QIE_MOTOR_CTL_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

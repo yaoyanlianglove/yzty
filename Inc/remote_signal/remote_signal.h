@@ -32,8 +32,6 @@ extern "C" {
 #define  REMOTE_SIGNAL_LCD_HOME              HAL_GPIO_ReadPin(KEY4_GPIO_Port, KEY4_Pin)
 #define  REMOTE_SIGNAL_LCD_NEXT              HAL_GPIO_ReadPin(KEY5_GPIO_Port, KEY5_Pin)
             
-#define  REMOTE_SIGNAL_POWER_CHECK           HAL_GPIO_ReadPin(POWER_CHECK_GPIO_Port, POWER_CHECK_Pin)  
-
 
 
 #define  BUTTON_CONFIRM_TIME         100       //按钮确认时间 
