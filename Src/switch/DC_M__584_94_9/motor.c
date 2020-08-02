@@ -85,7 +85,7 @@ float Motor_Speed_Up(float dutyCycle, uint8_t motorType)
         R_STEP = Q_R_STEP;
     if(dutyCycle > 30.0)
     {
-        return dutyCycle = dutyCycle - X_R_STEP;
+        return dutyCycle = dutyCycle - R_STEP;
     }
     return dutyCycle;
 }

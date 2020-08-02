@@ -16925,7 +16925,7 @@
       </Groups>
     </Target>
     <Target>
-      <TargetName>yzty_DC_M_584_94_8</TargetName>
+      <TargetName>yzty_DC_M_584_94_9</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060422::V5.06 update 4 (build 422)::ARMCC</pCCUsed>
@@ -18551,7 +18551,7 @@
         <targetInfos>
           <targetInfo name="yzty"/>
           <targetInfo name="yzty_DC_M_220_5"/>
-          <targetInfo name="yzty_DC_M_584_94_8"/>
+          <targetInfo name="yzty_DC_M_584_94_9"/>
           <targetInfo name="yzty_STEP_M_17"/>
         </targetInfos>
       </component>

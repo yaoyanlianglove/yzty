@@ -1152,11 +1152,16 @@ SwitchStatusTypeDef Turn_Q_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef*
  *****************************************************************************/
 SwitchStatusTypeDef Switch_Init(SwitchTypeDef *sw, uint8_t toatlGear)
 {
+    SwitchStatusTypeDef res = SWITCH_OK;;
     sw->totalGear     = toatlGear;
     sw->motion        = 0;
     sw->lastMotion    = 0;
+    MOTOR_ENABLE;
     Motor_Init(&g_motor);
-    return Switch_Calibration(sw, &g_motor); 
+    res = Switch_Calibration(sw, &g_motor)
+    QIE_MOTOR_CTL_Q; //结束后，停在Q电机，控制继电器处于断电状态
+    MOTOR_DISABLE;
+    return res; 
 }
  /*****************************************************************************
  Function    : Switch_Control
@@ -1271,6 +1276,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
                 res = SWITCH_ERROR;
         }
     }
+    QIE_MOTOR_CTL_Q; //结束后，停在Q电机，控制继电器处于断电状态
     MOTOR_DISABLE;
     return res;
 }
