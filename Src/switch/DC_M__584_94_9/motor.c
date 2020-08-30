@@ -33,6 +33,7 @@ void Motor_Init(MotorTypeDef *motor)
         res = 1;
     if(res != 0)
         Error_Handler();
+    Motor_Standby();
 }
 /*****************************************************************************
  Function    : Motor_Get_Cycle

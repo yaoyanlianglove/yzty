@@ -676,6 +676,7 @@ SwitchStatusTypeDef Switch_Calibration(SwitchTypeDef *sw, MotorTypeDef *motor)
 {
     SwitchStatusTypeDef res = SWITCH_OK;
     MOTOR_ENABLE;
+    Motor_Standby();
     if(sw->currentGear == 0)
     {
         if(sw->memoryGear > 0 && sw->memoryGear < sw->totalGear/2 + 1)
@@ -799,6 +800,7 @@ SwitchStatusTypeDef Switch_Init(SwitchTypeDef *sw, uint8_t toatlGear)
 SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
 {
     MOTOR_ENABLE;
+    Motor_Standby();
     SwitchStatusTypeDef res = SWITCH_OK;
     if(sw->motion == 1)
     {
