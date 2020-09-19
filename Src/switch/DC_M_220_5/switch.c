@@ -606,7 +606,9 @@ SwitchStatusTypeDef Find_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef* s
 {
     uint16_t num   = 0;
     uint32_t count = 0;
-    uint8_t  gear, gear1;
+    uint8_t  gear  = 0;
+    uint8_t  gear1 = 0;
+
     uint16_t delay = 0;
     float    speed = 0.0;
     motor->dutyCycle = 700;      //找档电机速度要设置，初始为700

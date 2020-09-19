@@ -485,7 +485,8 @@ uint16_t Private_Comm_Interface_Set_Config_Process(RemoteSignalTypeDef *remoteSi
 uint16_t Private_Comm_Interface_Get_Rec_Process(uint8_t codeType, uint16_t addrNum,  uint8_t *data)
 {
     uint16_t res = 0;
-    uint16_t addrStart, length;
+    uint16_t addrStart = 0;
+    uint16_t length = 0;;
     if(codeType == FUNCTION_CODE_GET_T_REC)
     {
         length = SWITCH_MOTION_RECORD_PER_LEN;

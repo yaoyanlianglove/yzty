@@ -201,7 +201,7 @@ void Gear_Signal_Time_Counter(GearSignalTypeDef *gearSignal)
 uint8_t Read_Gear_No_Delay(void)
 {
     uint8_t temp = 0;
-    uint8_t curGear;
+    uint8_t curGear = 0;
     uint8_t gear1 = 0; 
     uint8_t gear2 = 0; 
     uint8_t gear3 = 0; 
@@ -1108,7 +1108,7 @@ void Motor_Select(uint8_t motorType)
         QIE_MOTOR_CTL_X;
     }
     //切换继电器动作需要时间
-    while(REMOTE_SIGNAL_QIE_MOTOR == value && waitTime < 10)
+    while(REMOTE_SIGNAL_QIE_MOTOR != value && waitTime < 1000)
     {
         delay_ms(1);
         waitTime ++;
@@ -1125,8 +1125,6 @@ void Motor_Select(uint8_t motorType)
 SwitchStatusTypeDef Switch_Calibration(SwitchTypeDef *sw, MotorTypeDef *motor)
 {
     SwitchStatusTypeDef res = SWITCH_OK;
-    MOTOR_ENABLE;
-    Motor_Standby();
     if(sw->currentGear == 0)
     {
         MOTOR_DISABLE;
@@ -1136,7 +1134,7 @@ SwitchStatusTypeDef Switch_Calibration(SwitchTypeDef *sw, MotorTypeDef *motor)
     if(sw->currentGear > 0 && sw->currentGear < sw->totalGear/2 + 2)
     {
         Motor_Select(MOTOR_X);
-        if(REMOTE_SIGNAL_QIE_MOTOR == 1)
+        if(REMOTE_SIGNAL_QIE_MOTOR == 0)
             res = Find_Middle_Of_Gear(FORWARD, motor, sw, MOTOR_X);
         else
             res = SWITCH_ERROR;
@@ -1144,7 +1142,7 @@ SwitchStatusTypeDef Switch_Calibration(SwitchTypeDef *sw, MotorTypeDef *motor)
     else if(sw->currentGear > sw->totalGear/2 + 1 && sw->currentGear < sw->totalGear + 1)
     {
         Motor_Select(MOTOR_X);
-        if(REMOTE_SIGNAL_QIE_MOTOR == 1)
+        if(REMOTE_SIGNAL_QIE_MOTOR == 0)
             res = Find_Middle_Of_Gear(REVERSE, motor, sw, MOTOR_X);
         else
             res = SWITCH_ERROR;
@@ -1157,7 +1155,7 @@ SwitchStatusTypeDef Switch_Calibration(SwitchTypeDef *sw, MotorTypeDef *motor)
     if(realGear.gearA == 1)
     {
         Motor_Select(MOTOR_Q);
-        if(REMOTE_SIGNAL_QIE_MOTOR == 0)
+        if(REMOTE_SIGNAL_QIE_MOTOR == 1)
             res = Find_Middle_Of_Gear(FORWARD, motor, sw, MOTOR_Q);
         else
             res = SWITCH_ERROR;
@@ -1165,13 +1163,12 @@ SwitchStatusTypeDef Switch_Calibration(SwitchTypeDef *sw, MotorTypeDef *motor)
     else 
     {
         Motor_Select(MOTOR_Q);
-        if(REMOTE_SIGNAL_QIE_MOTOR == 0)
+        if(REMOTE_SIGNAL_QIE_MOTOR == 1)
             res = Find_Middle_Of_Gear(REVERSE, motor, sw, MOTOR_Q);
         else
             res = SWITCH_ERROR;
     }
-    Motor_Select(MOTOR_Q); //结束后，停在Q电机，控制继电器处于断电状态
-    MOTOR_DISABLE;
+   
     return res;
 }
 /*****************************************************************************
@@ -1188,7 +1185,11 @@ SwitchStatusTypeDef Switch_Init(SwitchTypeDef *sw, uint8_t toatlGear)
     sw->motion        = 0;
     sw->lastMotion    = 0;
     Motor_Init(&g_motor);
+    MOTOR_ENABLE;
+    Motor_Standby();
     res = Switch_Calibration(sw, &g_motor);
+    Motor_Select(MOTOR_Q); //结束后，停在Q电机，控制继电器处于断电状态
+    MOTOR_DISABLE;
     return res; 
 }
  /*****************************************************************************
@@ -1208,14 +1209,14 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
         if(XGear%2 == 0 && realGear.gearA == 0)
         {
             Motor_Select(MOTOR_X);
-            if(REMOTE_SIGNAL_QIE_MOTOR == 1)
+            if(REMOTE_SIGNAL_QIE_MOTOR == 0)
                 res = Turn_X_Gear(FORWARD, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
             if(res != SWITCH_OK)
                 return res;
             Motor_Select(MOTOR_Q);
-            if(REMOTE_SIGNAL_QIE_MOTOR == 0)
+            if(REMOTE_SIGNAL_QIE_MOTOR == 1)
                 res = Turn_Q_Gear(FORWARD, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
@@ -1223,7 +1224,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
         else if(XGear%2 == 1 && realGear.gearA == 0) 
         {
             Motor_Select(MOTOR_Q);
-            if(REMOTE_SIGNAL_QIE_MOTOR == 0)
+            if(REMOTE_SIGNAL_QIE_MOTOR == 1)
                 res = Turn_Q_Gear(FORWARD, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
@@ -1231,7 +1232,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
         else if(XGear%2 == 0 && realGear.gearB == 0)
         {
             Motor_Select(MOTOR_Q);
-            if(REMOTE_SIGNAL_QIE_MOTOR == 0)
+            if(REMOTE_SIGNAL_QIE_MOTOR == 1)
                 res = Turn_Q_Gear(REVERSE, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
@@ -1239,14 +1240,14 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
         else if(XGear%2 == 1 && realGear.gearB == 0)
         {
             Motor_Select(MOTOR_X);
-            if(REMOTE_SIGNAL_QIE_MOTOR == 1)
+            if(REMOTE_SIGNAL_QIE_MOTOR == 0)
                 res = Turn_X_Gear(FORWARD, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
             if(res != SWITCH_OK)
                 return res;
             Motor_Select(MOTOR_Q);
-            if(REMOTE_SIGNAL_QIE_MOTOR == 0)
+            if(REMOTE_SIGNAL_QIE_MOTOR == 1)
                 res = Turn_Q_Gear(REVERSE, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
@@ -1258,7 +1259,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
         if(XGear%2 == 0 && realGear.gearA == 0)
         {
             Motor_Select(MOTOR_Q);
-            if(REMOTE_SIGNAL_QIE_MOTOR == 0)
+            if(REMOTE_SIGNAL_QIE_MOTOR == 1)
                 res = Turn_Q_Gear(FORWARD, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
@@ -1266,7 +1267,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
         else if(XGear%2 == 1 && realGear.gearA == 0) 
         {
             Motor_Select(MOTOR_X);
-            if(REMOTE_SIGNAL_QIE_MOTOR == 1)
+            if(REMOTE_SIGNAL_QIE_MOTOR == 0)
                 res = Turn_X_Gear(REVERSE, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
@@ -1274,7 +1275,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
             if(res != SWITCH_OK)
                 return res;
             Motor_Select(MOTOR_Q);
-            if(REMOTE_SIGNAL_QIE_MOTOR == 0)
+            if(REMOTE_SIGNAL_QIE_MOTOR == 1)
                 res = Turn_Q_Gear(FORWARD, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
@@ -1282,7 +1283,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
         else if(XGear%2 == 0 && realGear.gearB == 0)
         {
             Motor_Select(MOTOR_X);
-            if(REMOTE_SIGNAL_QIE_MOTOR == 1)
+            if(REMOTE_SIGNAL_QIE_MOTOR == 0)
                 res = Turn_X_Gear(REVERSE, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
@@ -1290,7 +1291,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
             if(res != SWITCH_OK)
                 return res;
             Motor_Select(MOTOR_Q);
-            if(REMOTE_SIGNAL_QIE_MOTOR == 0)
+            if(REMOTE_SIGNAL_QIE_MOTOR == 1)
                 res = Turn_Q_Gear(REVERSE, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
@@ -1298,7 +1299,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
         else if(XGear%2 == 1 && realGear.gearB == 0)
         {
             Motor_Select(MOTOR_Q);
-            if(REMOTE_SIGNAL_QIE_MOTOR == 0)
+            if(REMOTE_SIGNAL_QIE_MOTOR == 1)
                 res = Turn_Q_Gear(REVERSE, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
