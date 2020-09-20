@@ -256,7 +256,7 @@ uint8_t Read_Gear_No_Delay(void)
         { 
             curGear = gear1 + gear2 + gear3 + gear4 + gear5 + gear6 + gear7 + gear8;
             XGear = curGear;
-            if((curGear % 2) == 0)
+            if((curGear % 2) != 0)
                 curGear =  curGear + 1;
         }
         else if(REMOTE_SIGNAL_GEARA == 0 && REMOTE_SIGNAL_GEARB == 1)
@@ -544,7 +544,8 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
     uint16_t MOTOR_TURN_TIMEOUT;   
     float    MOTOR_TURN_OVER_SPEED;
     uint16_t R_OF_ON_GEAR;         
-    uint16_t OVER_ON_GEAR;         
+    uint16_t OVER_ON_GEAR;   
+
 
     if(motorType == MOTOR_X)
     {
@@ -698,7 +699,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
         }
         else
         {
-            if(REMOTE_SIGNAL_GEARA == 0 && REMOTE_SIGNAL_GEARB == 0)
+            if(REMOTE_SIGNAL_GEARA ^ REMOTE_SIGNAL_GEARB)
             {
                 delay++;
                 if(delay > DELAY_GEAR_REMOTE_SIGNAL)
@@ -1097,6 +1098,7 @@ void Motor_Select(uint8_t motorType)
     uint16_t waitTime = 0;
     uint8_t value = 0;
     MOTOR_DISABLE;
+    delay_ms(500);
     if(motorType == MOTOR_Q)
     {
         value = 1;
@@ -1113,6 +1115,7 @@ void Motor_Select(uint8_t motorType)
         delay_ms(1);
         waitTime ++;
     }
+    delay_ms(500);
     MOTOR_ENABLE;
 }
 /*****************************************************************************
