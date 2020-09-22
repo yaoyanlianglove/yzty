@@ -47,7 +47,7 @@ extern "C" {
 #define     Q_MOTOR_TURN_OVER_SPEED     20.0 //
 
 
-#define     DELAY_GEAR_REMOTE_SIGNAL  1
+#define     DELAY_GEAR_REMOTE_SIGNAL  4
 
 /**
   * @brief  Motor structures definition

@@ -32,7 +32,7 @@ extern "C" {
 #define     MOTOR_TURN_TIMEOUT        2000
 #define     MOTOR_TURN_OVER_SPEED     18.0
 
-#define     DELAY_GEAR_REMOTE_SIGNAL  1
+#define     DELAY_GEAR_REMOTE_SIGNAL  4
 
 /**
   * @brief  Motor structures definition

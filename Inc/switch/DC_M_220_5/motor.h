@@ -32,7 +32,7 @@ extern "C" {
 #define     MOTOR_TURN_TIMEOUT        2000
 #define     MOTOR_TURN_OVER_SPEED     20.0 //222转的直流电机的开关与130转的开关不一样，所以转速有区别
 
-#define     DELAY_GEAR_REMOTE_SIGNAL  1
+#define     DELAY_GEAR_REMOTE_SIGNAL  4
 
 /**
   * @brief  Motor structures definition

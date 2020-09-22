@@ -1115,7 +1115,7 @@ void Motor_Select(uint8_t motorType)
         delay_ms(1);
         waitTime ++;
     }
-    delay_ms(500);
+    delay_ms(1000);//切换继电器需要时间500ms延时不够
     MOTOR_ENABLE;
 }
 /*****************************************************************************
