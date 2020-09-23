@@ -891,19 +891,22 @@ SwitchStatusTypeDef Go_To_Middle(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef
 
     uint16_t TIME_OF_ONE_CYCLE;
     uint16_t MOTOR_TURN_TIMEOUT;   
-    float    MOTOR_TURN_OVER_SPEED;        
+    float    MOTOR_TURN_OVER_SPEED; 
+    uint16_t R_OF_ON_GEAR;       
 
     if(motorType == MOTOR_X)
     {
         TIME_OF_ONE_CYCLE     = X_TIME_OF_ONE_CYCLE;
         MOTOR_TURN_TIMEOUT    = X_MOTOR_TURN_TIMEOUT;
         MOTOR_TURN_OVER_SPEED = X_MOTOR_TURN_OVER_SPEED;
+        R_OF_ON_GEAR          = X_R_OF_ON_GEAR;
     }
     else
     {
         TIME_OF_ONE_CYCLE     = Q_TIME_OF_ONE_CYCLE;
         MOTOR_TURN_TIMEOUT    = Q_MOTOR_TURN_TIMEOUT;
         MOTOR_TURN_OVER_SPEED = Q_MOTOR_TURN_OVER_SPEED;
+        R_OF_ON_GEAR          = Q_R_OF_ON_GEAR;
     }
     Motor_Clear_Number_Of_Turns();
     motor->dutyCycle = 700;
@@ -924,7 +927,7 @@ SwitchStatusTypeDef Go_To_Middle(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef
             Motor_Standby();
             return Back_Gear(num, dir^1, motor, motorType);
         }
-        else if(num >= (X_R_OF_ON_GEAR/2 - 1))  //按转过的圈数返回
+        else if(num >= (R_OF_ON_GEAR/2 - 1))  //按转过的圈数返回
         {
             Motor_Standby();
             break;
@@ -1029,10 +1032,10 @@ SwitchStatusTypeDef Turn_Q_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef*
     /************预期档位***************************/
     if(dir == FORWARD)
     {
-        expectQGear = 0;
+        expectQGear = 1;
     }
     else
-        expectQGear = 1;
+        expectQGear = 0;
 
     Motor_Clear_Number_Of_Turns();
     while(1)
@@ -1063,7 +1066,7 @@ SwitchStatusTypeDef Turn_Q_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef*
         }
         if(flagGetGear == 0)
         {
-            if(REMOTE_SIGNAL_QIE_MOTOR == expectQGear)
+            if((REMOTE_SIGNAL_GEARA == expectQGear)  && (REMOTE_SIGNAL_GEARB == (expectQGear^1)))
             {
                 delay++;
                 if(delay > DELAY_GEAR_REMOTE_SIGNAL)
@@ -1097,8 +1100,9 @@ void Motor_Select(uint8_t motorType)
 {
     uint16_t waitTime = 0;
     uint8_t value = 0;
-    MOTOR_DISABLE;
     delay_ms(500);
+    MOTOR_DISABLE;
+    delay_ms(200);
     if(motorType == MOTOR_Q)
     {
         value = 1;
@@ -1209,7 +1213,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
     if(sw->motion == 1)
     {
         sw->expectGear = sw->currentGear + 1;
-        if(XGear%2 == 0 && realGear.gearA == 0)
+        if(XGear%2 == 0 && realGear.gearA == 1)
         {
             Motor_Select(MOTOR_X);
             if(REMOTE_SIGNAL_QIE_MOTOR == 0)
@@ -1217,14 +1221,18 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
             else
                 res = SWITCH_ERROR;
             if(res != SWITCH_OK)
+            {
+                Motor_Select(MOTOR_Q); //结束后，停在Q电机，控制继电器处于断电状态
+                MOTOR_DISABLE;
                 return res;
+            }
             Motor_Select(MOTOR_Q);
             if(REMOTE_SIGNAL_QIE_MOTOR == 1)
                 res = Turn_Q_Gear(FORWARD, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
         }
-        else if(XGear%2 == 1 && realGear.gearA == 0) 
+        else if(XGear%2 == 1 && realGear.gearA == 1) 
         {
             Motor_Select(MOTOR_Q);
             if(REMOTE_SIGNAL_QIE_MOTOR == 1)
@@ -1232,7 +1240,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
             else
                 res = SWITCH_ERROR;
         }
-        else if(XGear%2 == 0 && realGear.gearB == 0)
+        else if(XGear%2 == 0 && realGear.gearB == 1)
         {
             Motor_Select(MOTOR_Q);
             if(REMOTE_SIGNAL_QIE_MOTOR == 1)
@@ -1240,7 +1248,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
             else
                 res = SWITCH_ERROR;
         }
-        else if(XGear%2 == 1 && realGear.gearB == 0)
+        else if(XGear%2 == 1 && realGear.gearB == 1)
         {
             Motor_Select(MOTOR_X);
             if(REMOTE_SIGNAL_QIE_MOTOR == 0)
@@ -1248,7 +1256,11 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
             else
                 res = SWITCH_ERROR;
             if(res != SWITCH_OK)
+            {
+                Motor_Select(MOTOR_Q); //结束后，停在Q电机，控制继电器处于断电状态
+                MOTOR_DISABLE;
                 return res;
+            }
             Motor_Select(MOTOR_Q);
             if(REMOTE_SIGNAL_QIE_MOTOR == 1)
                 res = Turn_Q_Gear(REVERSE, &g_motor, sw);
@@ -1259,7 +1271,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
     else if(sw->motion == 2)
     {
         sw->expectGear = sw->currentGear - 1;
-        if(XGear%2 == 0 && realGear.gearA == 0)
+        if(XGear%2 == 0 && realGear.gearA == 1)
         {
             Motor_Select(MOTOR_Q);
             if(REMOTE_SIGNAL_QIE_MOTOR == 1)
@@ -1267,7 +1279,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
             else
                 res = SWITCH_ERROR;
         }
-        else if(XGear%2 == 1 && realGear.gearA == 0) 
+        else if(XGear%2 == 1 && realGear.gearA == 1) 
         {
             Motor_Select(MOTOR_X);
             if(REMOTE_SIGNAL_QIE_MOTOR == 0)
@@ -1276,30 +1288,37 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
                 res = SWITCH_ERROR;
             
             if(res != SWITCH_OK)
+            {
+                Motor_Select(MOTOR_Q); //结束后，停在Q电机，控制继电器处于断电状态
+                MOTOR_DISABLE;
                 return res;
+            }
             Motor_Select(MOTOR_Q);
             if(REMOTE_SIGNAL_QIE_MOTOR == 1)
                 res = Turn_Q_Gear(FORWARD, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
         }
-        else if(XGear%2 == 0 && realGear.gearB == 0)
+        else if(XGear%2 == 0 && realGear.gearB == 1)
         {
             Motor_Select(MOTOR_X);
             if(REMOTE_SIGNAL_QIE_MOTOR == 0)
                 res = Turn_X_Gear(REVERSE, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
-            res = Turn_X_Gear(REVERSE, &g_motor, sw);
             if(res != SWITCH_OK)
+            {
+                Motor_Select(MOTOR_Q); //结束后，停在Q电机，控制继电器处于断电状态
+                MOTOR_DISABLE;
                 return res;
+            }
             Motor_Select(MOTOR_Q);
             if(REMOTE_SIGNAL_QIE_MOTOR == 1)
                 res = Turn_Q_Gear(REVERSE, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
         }
-        else if(XGear%2 == 1 && realGear.gearB == 0)
+        else if(XGear%2 == 1 && realGear.gearB == 1)
         {
             Motor_Select(MOTOR_Q);
             if(REMOTE_SIGNAL_QIE_MOTOR == 1)
