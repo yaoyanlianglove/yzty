@@ -468,7 +468,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorTypeDef *motor, Switch
                 return Back_Gear(totalNum, dir^1, motor);
             }
         }
-        if(Read_Gear_No_Delay() == sw->expectGear)
+        if(Read_Gear_No_Delay() == sw->expectGear && num > R_OF_ON_GEAR/2)
         {
             delay++;
             if(delay > DELAY_GEAR_REMOTE_SIGNAL)
