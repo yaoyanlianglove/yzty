@@ -1134,7 +1134,6 @@ SwitchStatusTypeDef Switch_Calibration(SwitchTypeDef *sw, MotorTypeDef *motor)
     SwitchStatusTypeDef res = SWITCH_OK;
     if(sw->currentGear == 0)
     {
-        MOTOR_DISABLE;
         return SWITCH_GEAR_ERROR;
     }
     //双电机，只找中，找不了档
@@ -1156,7 +1155,6 @@ SwitchStatusTypeDef Switch_Calibration(SwitchTypeDef *sw, MotorTypeDef *motor)
     }
     if(res != SWITCH_OK)
     {
-        MOTOR_DISABLE;
         return res;
     }
     if(realGear.gearA == 1)
@@ -1209,6 +1207,7 @@ SwitchStatusTypeDef Switch_Init(SwitchTypeDef *sw, uint8_t toatlGear)
 SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
 {
     MOTOR_ENABLE;
+    Motor_Standby();
     SwitchStatusTypeDef res = SWITCH_OK;
     if(sw->motion == 1)
     {

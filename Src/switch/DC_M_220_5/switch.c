@@ -689,6 +689,7 @@ SwitchStatusTypeDef Switch_Calibration(SwitchTypeDef *sw, MotorTypeDef *motor)
     //如果档位存在，直接找中，如果档位不存在，找档成功以后执行找中
     if(res != SWITCH_OK)
     {
+        delay_ms(200);
         MOTOR_DISABLE;
         return res;
     }
@@ -700,6 +701,7 @@ SwitchStatusTypeDef Switch_Calibration(SwitchTypeDef *sw, MotorTypeDef *motor)
     {
         res = Find_Middle_Of_Gear(REVERSE, motor, sw);
     }
+    delay_ms(200);
     MOTOR_DISABLE;
     return res;
 }
@@ -812,6 +814,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
     {
         res =  Turn_Gear(REVERSE, &g_motor, sw);
     }
+    delay_ms(200);
     MOTOR_DISABLE;
     return res;
 }
