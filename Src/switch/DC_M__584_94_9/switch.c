@@ -462,7 +462,7 @@ GearStatusTypeDef Read_Gear(SwitchTypeDef *sw, GearSignalTypeDef *gearSignal)
  Output      : None
  Return      : 0-sucess,1-failed;
  *****************************************************************************/
-SwitchStatusTypeDef Back_Gear(uint8_t r, uint8_t dir, MotorTypeDef* motor, uint8_t motorType)
+SwitchStatusTypeDef Back_Gear(uint16_t r, uint8_t dir, MotorTypeDef* motor, uint8_t motorType)
 {
     uint16_t num      = 0;
     uint32_t count    = 0;
@@ -1027,7 +1027,7 @@ SwitchStatusTypeDef Turn_Q_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef*
     uint8_t  flagGetGear = 0;
     float    speed       = 0.0;
     motor->dutyCycle     = 700;   
-    
+    uint8_t expectGear   = 0;
     uint8_t expectQGear;
     /************预期档位***************************/
     if(dir == FORWARD)
@@ -1036,6 +1036,14 @@ SwitchStatusTypeDef Turn_Q_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef*
     }
     else
         expectQGear = 0;
+    if(sw->motion == 1)
+    {
+        expectGear = sw->currentGear + 1;
+    }
+    else if(sw->motion == 2)
+    {
+        expectGear = sw->currentGear - 1;
+    }
 
     Motor_Clear_Number_Of_Turns();
     while(1)
@@ -1045,7 +1053,7 @@ SwitchStatusTypeDef Turn_Q_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef*
         else  //超时
         {
             sw->gearFault = 1;
-            gearFaultArray[sw->currentGear] = 1;
+            gearFaultArray[expectGear] = 1;
             Motor_Standby();
             return Back_Gear(num , dir^1, motor, MOTOR_Q);
         }
@@ -1060,7 +1068,7 @@ SwitchStatusTypeDef Turn_Q_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef*
         else if(num > Q_R_OF_ONE_GEAR + Q_OVER_ON_GEAR)  //超转数
         {
             sw->gearFault = 1;
-            gearFaultArray[sw->currentGear] = 1;
+            gearFaultArray[expectGear] = 1;
             Motor_Standby();
             return Back_Gear(num , dir^1, motor, MOTOR_Q);
         }

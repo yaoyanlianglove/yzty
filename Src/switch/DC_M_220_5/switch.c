@@ -230,7 +230,7 @@ GearStatusTypeDef Read_Gear(SwitchTypeDef *sw, GearSignalTypeDef *gearSignal)
  Output      : None
  Return      : 0-sucess,1-failed;
  *****************************************************************************/
-SwitchStatusTypeDef Back_Gear(uint8_t r, uint8_t dir, MotorTypeDef* motor)
+SwitchStatusTypeDef Back_Gear(uint16_t r, uint8_t dir, MotorTypeDef* motor)
 {
     uint16_t num      = 0;
     uint32_t count    = 0;
