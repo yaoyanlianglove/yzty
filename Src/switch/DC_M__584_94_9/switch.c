@@ -909,7 +909,7 @@ SwitchStatusTypeDef Go_To_Middle(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef
         R_OF_ON_GEAR          = Q_R_OF_ON_GEAR;
     }
     Motor_Clear_Number_Of_Turns();
-    motor->dutyCycle = 700;
+    motor->dutyCycle = 500;
     while(1)
     {
         if(count < (1000/TIME_OF_ONE_CYCLE)*MOTOR_TURN_TIMEOUT)
@@ -925,7 +925,7 @@ SwitchStatusTypeDef Go_To_Middle(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef
         {
             motor->motorFault = 1;
             Motor_Standby();
-            return Back_Gear(num, dir^1, motor, motorType);
+            return SWITCH_ERROR;
         }
         else if(num >= (R_OF_ON_GEAR/2 - 1))  //按转过的圈数返回
         {

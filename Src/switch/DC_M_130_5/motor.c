@@ -94,7 +94,7 @@ float Motor_Speed_Up(float dutyCycle)
  *****************************************************************************/
 float Motor_Slow_Down(float dutyCycle)
 {
-    if(dutyCycle < 800.0)
+    if(dutyCycle < 700.0)
     {
         return dutyCycle = dutyCycle + R_STEP;
     }
