@@ -30,7 +30,7 @@ extern "C" {
 #define     TIME_OF_ONE_CYCLE    1        //电机运行的周期延时1us  代码固有周期3.5us：电机控制while(1)的周期 
 
 #define     MOTOR_TURN_TIMEOUT        2000
-#define     MOTOR_TURN_OVER_SPEED     30.0
+#define     MOTOR_TURN_OVER_SPEED     5.0
 
 #define     DELAY_GEAR_REMOTE_SIGNAL  1
 
