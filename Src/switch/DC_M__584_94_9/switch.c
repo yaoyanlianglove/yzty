@@ -485,6 +485,7 @@ SwitchStatusTypeDef Back_Gear(uint16_t r, uint8_t dir, MotorTypeDef* motor, uint
     }
     Motor_Clear_Number_Of_Turns();
     motor->dutyCycle = 700;
+    delay_ms(30);
     while(1)
     {
         if(count < (1000/TIME_OF_ONE_CYCLE)*MOTOR_TURN_TIMEOUT)
