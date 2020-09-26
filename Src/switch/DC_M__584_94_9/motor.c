@@ -104,7 +104,7 @@ float Motor_Slow_Down(float dutyCycle, uint8_t motorType)
         R_STEP = X_R_STEP;
     else
         R_STEP = Q_R_STEP;
-    if(dutyCycle < 800.0)
+    if(dutyCycle < 700.0)
     {
         return dutyCycle = dutyCycle + R_STEP;
     }
