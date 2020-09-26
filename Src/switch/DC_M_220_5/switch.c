@@ -686,6 +686,7 @@ SwitchStatusTypeDef Switch_Calibration(SwitchTypeDef *sw, MotorTypeDef *motor)
         else
             res = Find_Gear(REVERSE, motor, sw);
     }
+    /*直流电机每次都找中，上电找中，没意义，而且在找挡位边缘时，判断没有挡位有干扰，容易引起误判
     //如果档位存在，直接找中，如果档位不存在，找档成功以后执行找中
     if(res != SWITCH_OK)
     {
@@ -701,6 +702,7 @@ SwitchStatusTypeDef Switch_Calibration(SwitchTypeDef *sw, MotorTypeDef *motor)
     {
         res = Find_Middle_Of_Gear(REVERSE, motor, sw);
     }
+    */
     delay_ms(200);
     MOTOR_DISABLE;
     return res;

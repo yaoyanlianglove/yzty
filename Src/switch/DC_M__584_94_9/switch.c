@@ -1140,6 +1140,7 @@ void Motor_Select(uint8_t motorType)
 SwitchStatusTypeDef Switch_Calibration(SwitchTypeDef *sw, MotorTypeDef *motor)
 {
     SwitchStatusTypeDef res = SWITCH_OK;
+    /*直流电机每次都找中，上电找中，没意义，而且在找挡位边缘时，判断没有挡位有干扰，容易引起误判
     if(sw->currentGear == 0)
     {
         return SWITCH_GEAR_ERROR;
@@ -1180,8 +1181,8 @@ SwitchStatusTypeDef Switch_Calibration(SwitchTypeDef *sw, MotorTypeDef *motor)
             res = Find_Middle_Of_Gear(REVERSE, motor, sw, MOTOR_Q);
         else
             res = SWITCH_ERROR;
-    }
-   
+    }  
+    */
     return res;
 }
 /*****************************************************************************
