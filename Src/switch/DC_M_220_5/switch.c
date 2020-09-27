@@ -642,7 +642,7 @@ SwitchStatusTypeDef Find_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef* s
             return Back_Gear(num , dir^1, motor);
         }
         gear = Read_Gear_No_Delay();
-        if(gear != 0)
+        if(gear != 0 && gear != 0xff)
         {
             if(delay == 0)
                 gear1 = gear;

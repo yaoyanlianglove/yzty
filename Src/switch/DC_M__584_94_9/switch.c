@@ -453,7 +453,7 @@ GearStatusTypeDef Read_Gear(SwitchTypeDef *sw, GearSignalTypeDef *gearSignal)
         Real_Gear_To_Virtual_Gear(sw, gearSignal, 1);
         return GEAR_ERROR;
     }
-		return GEAR_OK;
+    return GEAR_OK;
 }
 /*****************************************************************************
  Function    : Back_Gear
