@@ -39,18 +39,6 @@ static void Led_Green_On(void)
     LED_GREEN_ON;
 }
 /*****************************************************************************
- Function    : Led_Yellow_On
- Description : None
- Input       : None
- Output      : None
- Return      : None
- *****************************************************************************/
-static void Led_Yellow_On(void)
-{
-    LED_RED_ON;
-    LED_GREEN_ON;
-}
-/*****************************************************************************
  Function    : Led_Off
  Description : None
  Input       : None
@@ -61,6 +49,18 @@ static void Led_Off(void)
 {
     LED_RED_OFF;
     LED_GREEN_OFF;
+}
+/*****************************************************************************
+ Function    : Led_Yellow_On
+ Description : None
+ Input       : None
+ Output      : None
+ Return      : None
+ *****************************************************************************/
+static void Led_Yellow_On(void)
+{
+    LED_RED_ON;
+    LED_GREEN_ON;
 }
 /*****************************************************************************
  Function    : Led_Control_Counter
@@ -110,7 +110,7 @@ void Led_Control_Counter(uint8_t deviceStatus, uint8_t gear, uint8_t capa)
                     ;
 #endif
             }
-            else if(gear > 0 && gear <= SWITCH_TYPE)
+            else if(gear > 0 && gear <= GEAR_TOTAL)
                 Led_Off();
         }
     }
