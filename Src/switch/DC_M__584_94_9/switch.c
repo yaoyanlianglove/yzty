@@ -1033,10 +1033,10 @@ SwitchStatusTypeDef Turn_Q_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef*
     /************预期档位***************************/
     if(dir == FORWARD)
     {
-        expectQGear = 1;
+        expectQGear = 0;
     }
     else
-        expectQGear = 0;
+        expectQGear = 1;
     if(sw->motion == 1)
     {
         expectGear = sw->currentGear + 1;
@@ -1237,7 +1237,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
             }
             Motor_Select(MOTOR_Q);
             if(REMOTE_SIGNAL_QIE_MOTOR == 1)
-                res = Turn_Q_Gear(FORWARD, &g_motor, sw);
+                res = Turn_Q_Gear(REVERSE, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
         }
@@ -1245,7 +1245,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
         {
             Motor_Select(MOTOR_Q);
             if(REMOTE_SIGNAL_QIE_MOTOR == 1)
-                res = Turn_Q_Gear(FORWARD, &g_motor, sw);
+                res = Turn_Q_Gear(REVERSE, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
         }
@@ -1253,7 +1253,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
         {
             Motor_Select(MOTOR_Q);
             if(REMOTE_SIGNAL_QIE_MOTOR == 1)
-                res = Turn_Q_Gear(REVERSE, &g_motor, sw);
+                res = Turn_Q_Gear(FORWARD, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
         }
@@ -1272,7 +1272,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
             }
             Motor_Select(MOTOR_Q);
             if(REMOTE_SIGNAL_QIE_MOTOR == 1)
-                res = Turn_Q_Gear(REVERSE, &g_motor, sw);
+                res = Turn_Q_Gear(FORWARD, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
         }
@@ -1284,7 +1284,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
         {
             Motor_Select(MOTOR_Q);
             if(REMOTE_SIGNAL_QIE_MOTOR == 1)
-                res = Turn_Q_Gear(FORWARD, &g_motor, sw);
+                res = Turn_Q_Gear(REVERSE, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
         }
@@ -1304,7 +1304,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
             }
             Motor_Select(MOTOR_Q);
             if(REMOTE_SIGNAL_QIE_MOTOR == 1)
-                res = Turn_Q_Gear(FORWARD, &g_motor, sw);
+                res = Turn_Q_Gear(REVERSE, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
         }
@@ -1323,7 +1323,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
             }
             Motor_Select(MOTOR_Q);
             if(REMOTE_SIGNAL_QIE_MOTOR == 1)
-                res = Turn_Q_Gear(REVERSE, &g_motor, sw);
+                res = Turn_Q_Gear(FORWARD, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
         }
@@ -1331,7 +1331,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
         {
             Motor_Select(MOTOR_Q);
             if(REMOTE_SIGNAL_QIE_MOTOR == 1)
-                res = Turn_Q_Gear(REVERSE, &g_motor, sw);
+                res = Turn_Q_Gear(FORWARD, &g_motor, sw);
             else
                 res = SWITCH_ERROR;
         }
