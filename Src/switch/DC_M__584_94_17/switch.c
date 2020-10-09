@@ -787,6 +787,8 @@ SwitchStatusTypeDef Turn_Q_Gear(uint8_t dir, MotorTypeDef* motor, SwitchTypeDef*
                 if(delay > DELAY_GEAR_REMOTE_SIGNAL)
                 {
                     flagGetGear = 1;
+                    sw->currentGear = sw->expectGear;
+                    sw->memoryGear  = sw->expectGear;
                     Motor_Standby();
                     return Go_To_Middle(dir, motor, sw, MOTOR_Q);
                 }
@@ -974,9 +976,24 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
     if(res != SWITCH_OK)
         return res;
     //---------------------------------------------------------------------------------------
+    uint8_t motion = 0;
+    if(sw->motion == 1)
+    {
+        if(sw->currentGear > (GEAR_TOTAL/2))
+            motion = 1;
+        else
+            motion = 2;
+    }
+    else if(sw->motion == 2)
+    {
+        if(sw->currentGear > (GEAR_TOTAL/2 + 1))
+            motion = 2;
+        else
+            motion = 1;
+    }
     MOTOR_ENABLE;
     Motor_Standby();
-    if(sw->motion == 1)
+    if(motion == 1)
     {
         sw->expectGear = sw->currentGear + 1;
         if(XGear%2 == 0 && realGear.gearA == 1)
@@ -1034,7 +1051,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
                 res = SWITCH_ERROR;
         }
     }
-    else if(sw->motion == 2)
+    else if(motion == 2)
     {
         sw->expectGear = sw->currentGear - 1;
         if(XGear%2 == 0 && realGear.gearA == 1)
@@ -1094,13 +1111,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
         }
     }
     Motor_Select(MOTOR_Q); //结束后，停在Q电机，控制继电器处于断电状态
-    MOTOR_DISABLE;
-    if(res == SWITCH_OK)
-    {
-        sw->currentGear = sw->expectGear;
-        sw->memoryGear  = sw->expectGear;
-    }
-        
+    MOTOR_DISABLE;     
     return res;
 }
 /************************ZXDQ *****END OF FILE****/
