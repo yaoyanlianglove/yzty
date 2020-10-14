@@ -28,8 +28,8 @@ extern "C" {
 #define  IGBT1fan_IGBT2zheng     4 
 #define  IGBT1zheng_IGBT2fan     5
 
-#define  IGBT_TIME_OUT   80   //ms,IGBT超时时间
-#define  DCT_TIME_OUT    200  //ms，电磁铁超时时间
+#define  IGBT_TIME_OUT   60   //ms,IGBT超时时间
+#define  DCT_TIME_OUT    140  //ms，电磁铁超时时间
   
 #define  REMOTE_SIGNAL_GEAR1       HAL_GPIO_ReadPin(DIN1_GPIO_Port, DIN1_Pin)
 #define  REMOTE_SIGNAL_GEAR2       HAL_GPIO_ReadPin(DIN2_GPIO_Port, DIN2_Pin)

@@ -464,9 +464,9 @@ GearStatusTypeDef Read_Gear(SwitchTypeDef *sw, GearSignalTypeDef *gearSignal)
                 curGear = curGear;
 
             if(realGear.gear0 == 1)
-                sw->currentGear = sw->currentGear + 9;
+                sw->currentGear = curGear + 9;
             else
-                sw->currentGear = 9 - sw->currentGear;
+                sw->currentGear = 9 - curGear;
             Real_Gear_To_Virtual_Gear(sw, gearSignal, 0);
             return GEAR_OK;
         }
@@ -480,9 +480,9 @@ GearStatusTypeDef Read_Gear(SwitchTypeDef *sw, GearSignalTypeDef *gearSignal)
                 curGear = curGear;
 
             if(realGear.gear0 == 1)
-                sw->currentGear = sw->currentGear + 9;
+                sw->currentGear = curGear + 9;
             else
-                sw->currentGear = 9 - sw->currentGear;
+                sw->currentGear = 9 - curGear;
 
             Real_Gear_To_Virtual_Gear(sw, gearSignal, 0);
             return GEAR_OK;
@@ -887,6 +887,13 @@ SwitchStatusTypeDef Igbt_Opration(SwitchTypeDef* sw)
     uint16_t timeOutIGBT   = 0;
     uint16_t timeOutDCT    = 0;
     uint8_t  flagIGBTOn    = 0;
+    if(realGear.gear0 == 1 && sw->motion == 2)
+        IGBT_DIR_LOW;
+    else if(realGear.gear0 == 0 && sw->motion == 1)
+        IGBT_DIR_HIGH;
+    else
+        return res;
+    delay_ms(1000);
     DIANCHITIE_LOW;
     while(1)
     {
@@ -897,16 +904,7 @@ SwitchStatusTypeDef Igbt_Opration(SwitchTypeDef* sw)
                 readDCTCount++;
             else
             {
-                if(sw->motion == 1)
-                {
-                    IGBT_DIR_LOW;
-                    IGBT_MOTION_LOW;
-                }
-                else if(sw->motion == 2)
-                {
-                    IGBT_DIR_HIGH;
-                    IGBT_MOTION_LOW;
-                }
+                IGBT_MOTION_LOW;
                 flagIGBTOn = 1;
             }
         }
@@ -979,6 +977,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
     uint8_t motion = 0;
     if(sw->motion == 1)
     {
+        sw->expectGear = sw->currentGear + 1;
         if(sw->currentGear > (GEAR_TOTAL/2))
             motion = 1;
         else
@@ -986,6 +985,7 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
     }
     else if(sw->motion == 2)
     {
+        sw->expectGear = sw->currentGear - 1;
         if(sw->currentGear > (GEAR_TOTAL/2 + 1))
             motion = 2;
         else
@@ -995,7 +995,6 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
     Motor_Standby();
     if(motion == 1)
     {
-        sw->expectGear = sw->currentGear + 1;
         if(XGear%2 == 0 && realGear.gearA == 1)
         {
             Motor_Select(MOTOR_X);
@@ -1053,7 +1052,6 @@ SwitchStatusTypeDef Switch_Control(SwitchTypeDef* sw)
     }
     else if(motion == 2)
     {
-        sw->expectGear = sw->currentGear - 1;
         if(XGear%2 == 0 && realGear.gearA == 1)
         {
             Motor_Select(MOTOR_Q);
