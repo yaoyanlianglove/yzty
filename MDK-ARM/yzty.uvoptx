@@ -1990,7 +1990,7 @@
   </Target>
 
   <Target>
-    <TargetName>yzty_DC_M_584_94_9</TargetName>
+    <TargetName>yzty_DC_M_584_120_9</TargetName>
     <ToolsetNumber>0x4</ToolsetNumber>
     <ToolsetName>ARM-ADS</ToolsetName>
     <TargetOption>
@@ -2181,7 +2181,7 @@
   </Target>
 
   <Target>
-    <TargetName>yzty_DC_M_584_94_17</TargetName>
+    <TargetName>yzty_DC_M_584_120_17</TargetName>
     <ToolsetNumber>0x4</ToolsetNumber>
     <ToolsetName>ARM-ADS</ToolsetName>
     <TargetOption>
@@ -3628,8 +3628,8 @@
   </Group>
 
   <Group>
-    <GroupName>Application/Switch/DC_M_584_94_9</GroupName>
-    <tvExp>0</tvExp>
+    <GroupName>Application/Switch/DC_M_584_120_9</GroupName>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -3640,7 +3640,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\switch\DC_M__584_94_9\motor.c</PathWithFileName>
+      <PathWithFileName>..\Src\switch\DC_M__584_120_9\motor.c</PathWithFileName>
       <FilenameWithoutPath>motor.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -3649,10 +3649,10 @@
       <GroupNumber>17</GroupNumber>
       <FileNumber>96</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\switch\DC_M__584_94_9\switch.c</PathWithFileName>
+      <PathWithFileName>..\Src\switch\DC_M__584_120_9\switch.c</PathWithFileName>
       <FilenameWithoutPath>switch.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -3664,7 +3664,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\switch\DC_M__584_94_9\switch_driver.c</PathWithFileName>
+      <PathWithFileName>..\Src\switch\DC_M__584_120_9\switch_driver.c</PathWithFileName>
       <FilenameWithoutPath>switch_driver.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -3672,7 +3672,7 @@
   </Group>
 
   <Group>
-    <GroupName>Application/Switch/DC_M_584_94_17</GroupName>
+    <GroupName>Application/Switch/DC_M_584_120_17</GroupName>
     <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -3684,7 +3684,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\switch\DC_M__584_94_17\motor.c</PathWithFileName>
+      <PathWithFileName>..\Src\switch\DC_M__584_120_17\motor.c</PathWithFileName>
       <FilenameWithoutPath>motor.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -3696,7 +3696,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\switch\DC_M__584_94_17\switch.c</PathWithFileName>
+      <PathWithFileName>..\Src\switch\DC_M__584_120_17\switch.c</PathWithFileName>
       <FilenameWithoutPath>switch.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -3708,7 +3708,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\switch\DC_M__584_94_17\switch_driver.c</PathWithFileName>
+      <PathWithFileName>..\Src\switch\DC_M__584_120_17\switch_driver.c</PathWithFileName>
       <FilenameWithoutPath>switch_driver.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>

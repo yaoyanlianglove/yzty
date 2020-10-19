@@ -1531,7 +1531,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_9</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_9</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -1604,22 +1604,22 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_17</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_17</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -1692,17 +1692,17 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3236,7 +3236,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_9</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_9</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -3309,22 +3309,22 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_17</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_17</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -3397,17 +3397,17 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4941,7 +4941,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_9</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_9</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -5014,22 +5014,22 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_17</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_17</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -5102,17 +5102,17 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -6714,7 +6714,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_9</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_9</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -6787,22 +6787,22 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_17</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_17</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -6875,17 +6875,17 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -8487,7 +8487,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_9</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_9</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -8560,22 +8560,22 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_17</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_17</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -8648,17 +8648,17 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -10260,7 +10260,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_9</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_9</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -10333,22 +10333,22 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_17</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_17</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -10421,17 +10421,17 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -12101,7 +12101,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_9</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_9</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -12174,22 +12174,22 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_17</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_17</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -12262,17 +12262,17 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -13942,7 +13942,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_9</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_9</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -14015,22 +14015,22 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_17</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_17</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -14103,17 +14103,17 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -15783,7 +15783,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_9</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_9</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -15856,22 +15856,22 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_17</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_17</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -15944,17 +15944,17 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -17624,7 +17624,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_9</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_9</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -17697,22 +17697,22 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_17</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_17</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -17785,17 +17785,17 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -17805,7 +17805,7 @@
       </Groups>
     </Target>
     <Target>
-      <TargetName>yzty_DC_M_584_94_9</TargetName>
+      <TargetName>yzty_DC_M_584_120_9</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060422::V5.06 update 4 (build 422)::ARMCC</pCCUsed>
@@ -17845,8 +17845,8 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\yzty\DC_M_584_94_9\</OutputDirectory>
-          <OutputName>yzty_DC_M_584_94_9</OutputName>
+          <OutputDirectory>.\yzty\DC_M_584_120_9\</OutputDirectory>
+          <OutputName>yzty_DC_M_584_120_9</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -18133,7 +18133,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xE,USE_HAL_DRIVER,STM32F103xE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\OS_CONFIG;..\Middlewares\LiteOS\arch\arm\arm-m\include;..\Middlewares\LiteOS\kernel\include;..\Middlewares\LiteOS\kernel\base\include;..\Middlewares\LiteOS\kernel\extended\include;..\Inc\auto;..\Inc\clock;..\Inc\comm;..\Inc\comm\modbus;..\Inc\comm\private_comm;..\Inc\i2c_soft;..\Inc\LCD;..\Inc\led;..\Inc\remote_signal;..\Inc\storage;..\Inc\storage\fram;..\Inc\switch;..\Inc\telemetry;..\Inc\telemetry\AC_sampling;..\Inc\telemetry\AC_sampling\att7022;..\Inc\telemetry\oil_temp;..\Inc\switch\DC_M_584_94_9</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\OS_CONFIG;..\Middlewares\LiteOS\arch\arm\arm-m\include;..\Middlewares\LiteOS\kernel\include;..\Middlewares\LiteOS\kernel\base\include;..\Middlewares\LiteOS\kernel\extended\include;..\Inc\auto;..\Inc\clock;..\Inc\comm;..\Inc\comm\modbus;..\Inc\comm\private_comm;..\Inc\i2c_soft;..\Inc\LCD;..\Inc\led;..\Inc\remote_signal;..\Inc\storage;..\Inc\storage\fram;..\Inc\switch;..\Inc\telemetry;..\Inc\telemetry\AC_sampling;..\Inc\telemetry\AC_sampling\att7022;..\Inc\telemetry\oil_temp;..\Inc\switch\DC_M_584_120_9</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -19397,27 +19397,27 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_9</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_9</GroupName>
           <Files>
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_17</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_17</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -19490,17 +19490,17 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -19510,7 +19510,7 @@
       </Groups>
     </Target>
     <Target>
-      <TargetName>yzty_DC_M_584_94_17</TargetName>
+      <TargetName>yzty_DC_M_584_120_17</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060422::V5.06 update 4 (build 422)::ARMCC</pCCUsed>
@@ -19550,8 +19550,8 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\yzty\DC_M_584_94_17\</OutputDirectory>
-          <OutputName>yzty_DC_M_584_94_17</OutputName>
+          <OutputDirectory>.\yzty\DC_M_584_120_17\</OutputDirectory>
+          <OutputName>yzty_DC_M_584_120_17</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -19838,7 +19838,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xE,USE_HAL_DRIVER,STM32F103xE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\OS_CONFIG;..\Middlewares\LiteOS\arch\arm\arm-m\include;..\Middlewares\LiteOS\kernel\include;..\Middlewares\LiteOS\kernel\base\include;..\Middlewares\LiteOS\kernel\extended\include;..\Inc\auto;..\Inc\clock;..\Inc\comm;..\Inc\comm\modbus;..\Inc\comm\private_comm;..\Inc\i2c_soft;..\Inc\LCD;..\Inc\led;..\Inc\remote_signal;..\Inc\storage;..\Inc\storage\fram;..\Inc\switch;..\Inc\telemetry;..\Inc\telemetry\AC_sampling;..\Inc\telemetry\AC_sampling\att7022;..\Inc\telemetry\oil_temp;..\Inc\switch\DC_M_584_94_17</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\OS_CONFIG;..\Middlewares\LiteOS\arch\arm\arm-m\include;..\Middlewares\LiteOS\kernel\include;..\Middlewares\LiteOS\kernel\base\include;..\Middlewares\LiteOS\kernel\extended\include;..\Inc\auto;..\Inc\clock;..\Inc\comm;..\Inc\comm\modbus;..\Inc\comm\private_comm;..\Inc\i2c_soft;..\Inc\LCD;..\Inc\led;..\Inc\remote_signal;..\Inc\storage;..\Inc\storage\fram;..\Inc\switch;..\Inc\telemetry;..\Inc\telemetry\AC_sampling;..\Inc\telemetry\AC_sampling\att7022;..\Inc\telemetry\oil_temp;..\Inc\switch\DC_M_584_120_17</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -21102,7 +21102,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_9</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_9</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -21175,37 +21175,37 @@
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_9\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_9\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/Switch/DC_M_584_94_17</GroupName>
+          <GroupName>Application/Switch/DC_M_584_120_17</GroupName>
           <Files>
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\motor.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\motor.c</FilePath>
             </File>
             <File>
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch.c</FilePath>
             </File>
             <File>
               <FileName>switch_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\switch\DC_M__584_94_17\switch_driver.c</FilePath>
+              <FilePath>..\Src\switch\DC_M__584_120_17\switch_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -21224,8 +21224,8 @@
         <targetInfos>
           <targetInfo name="yzty"/>
           <targetInfo name="yzty_DC_M_220_5"/>
-          <targetInfo name="yzty_DC_M_584_94_17"/>
-          <targetInfo name="yzty_DC_M_584_94_9"/>
+          <targetInfo name="yzty_DC_M_584_120_17"/>
+          <targetInfo name="yzty_DC_M_584_120_9"/>
           <targetInfo name="yzty_P_MAG_TYTR_3"/>
           <targetInfo name="yzty_P_MAG_TYTR_5"/>
           <targetInfo name="yzty_P_MAG_TYTR_7"/>
