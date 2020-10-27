@@ -243,6 +243,52 @@ void LCD_Display_Menu(uint8_t select, uint8_t isRefresh)
     }
 }
 /*****************************************************************************
+ Function    : Font_Number_Array
+ Description : None
+ Input       : None
+ Output      : None
+ Return      : None
+ *****************************************************************************/
+uint8_t Font_Number_Array(uint8_t num)
+{
+    uint8_t res = 0;
+    switch(num)
+    {
+        case 0:
+        res = 0;
+        break;
+        case 1:
+        res = 1;
+        break;
+        case 2:
+        res = 2;
+        break;
+        case 3:
+        res = 3;
+        break;
+        case 4:
+        res = 4;
+        break;
+        case 5:
+        res = 5;
+        break;
+        case 6:
+        res = 6;
+        break;
+        case 7:
+        res = 7;
+        break;
+        case 8:
+        res = 8;
+        break;
+        case 9:
+        res = 9;
+        break;
+        default:;
+    }
+    return res;
+}
+/*****************************************************************************
  Function    : LCD_Display_RealStatus
  Description : None
  Input       : None
@@ -257,13 +303,13 @@ void LCD_Display_RealStatus(SwitchTypeDef *sw, uint16_t version, float oilTemp, 
     {
         LCD_Refresh_Screen();
         LCD_Display_One_Hanzi(0, 0, 22 , &FONT_Capital[21][16],16);//V
-        LCD_Display_One_Hanzi(0, 0, 30, &FONT_Number[version/1000 ][16],16);
+        LCD_Display_One_Hanzi(0, 0, 30, &FONT_Number[Font_Number_Array(version/1000) ][16],16);
         LCD_Display_One_Hanzi(0, 0, 38, &FONT_Characters[0][16],16);//.
-        LCD_Display_One_Hanzi(0, 0, 46, &FONT_Number[(version%1000)/100 ][16],16);
+        LCD_Display_One_Hanzi(0, 0, 46, &FONT_Number[Font_Number_Array((version%1000)/100) ][16],16);
         LCD_Display_One_Hanzi(0, 0, 54, &FONT_Characters[0][16],16);
-        LCD_Display_One_Hanzi(0, 0, 62, &FONT_Number[(version%100)/10 ][16],16);
+        LCD_Display_One_Hanzi(0, 0, 62, &FONT_Number[Font_Number_Array((version%100)/10) ][16],16);
         LCD_Display_One_Hanzi(0, 0, 70, &FONT_Characters[0][16],16);
-        LCD_Display_One_Hanzi(0, 0, 78, &FONT_Number[version%10 ][16],16);
+        LCD_Display_One_Hanzi(0, 0, 78, &FONT_Number[Font_Number_Array(version%10) ][16],16);
 
         LCD_Display_One_Hanzi(1, 2, 12, &FONT_Chinese[30][16], 16); 
         LCD_Display_One_Hanzi(1, 2, 28, &FONT_Chinese[32][16], 16);
@@ -284,48 +330,56 @@ void LCD_Display_RealStatus(SwitchTypeDef *sw, uint16_t version, float oilTemp, 
     if(temp < 0)
         LCD_Display_One_Hanzi(0, 2, 52, &FONT_Characters[2][16], 16);
     else
-        LCD_Display_One_Hanzi(0, 2, 52, FONT_Cap, 16);
+        LCD_Display_One_Hanzi(0, 2, 52, &FONT_Cap[0][16], 16);
         
 
-    if(abs(temp) > 999)
-        LCD_Display_One_Hanzi(0, 2, 60, &FONT_Number[temp/1000][16], 16);
+    if(abs(temp) > 999 && abs(temp) < 10000)
+        LCD_Display_One_Hanzi(0, 2, 60, &FONT_Number[Font_Number_Array(temp/1000)][16], 16);
     else
-        LCD_Display_One_Hanzi(0, 2, 60, FONT_Cap, 16);
+        LCD_Display_One_Hanzi(0, 2, 60, &FONT_Cap[0][16], 16);
     if(abs(temp) > 99)
-        LCD_Display_One_Hanzi(0, 2, 68, &FONT_Number[(temp%1000)/100][16], 16);
+        LCD_Display_One_Hanzi(0, 2, 68, &FONT_Number[Font_Number_Array((temp%1000)/100)][16], 16);
     else
-        LCD_Display_One_Hanzi(0, 2, 68, FONT_Cap, 16);
+        LCD_Display_One_Hanzi(0, 2, 68, &FONT_Cap[0][16], 16);
     if(abs(temp) > 9)
-        LCD_Display_One_Hanzi(0, 2, 76, &FONT_Number[(temp%100)/10][16], 16);
+        LCD_Display_One_Hanzi(0, 2, 76, &FONT_Number[Font_Number_Array((temp%100)/10)][16], 16);
     else
-        LCD_Display_One_Hanzi(0, 2, 76, FONT_Cap, 16);
+        LCD_Display_One_Hanzi(0, 2, 76, &FONT_Cap[0][16], 16);
     if(abs(temp) > 0)
         LCD_Display_One_Hanzi(0, 2, 84, &FONT_Characters[0][16], 16);
     else
-        LCD_Display_One_Hanzi(0, 2, 84, FONT_Cap, 16);
-    LCD_Display_One_Hanzi(0, 2, 90, &FONT_Number[(temp%10)][16], 16);
+        LCD_Display_One_Hanzi(0, 2, 84, &FONT_Cap[0][16], 16);
+    LCD_Display_One_Hanzi(0, 2, 90, &FONT_Number[Font_Number_Array(temp%10)][16], 16);
 
-    if(deviceStatus > 9999)
-        LCD_Display_One_Hanzi(0, 4, 60, &FONT_Number[deviceStatus/10000][16], 16);
+    if(deviceStatus > 9999 && deviceStatus < 100000)
+        LCD_Display_One_Hanzi(0, 4, 60, &FONT_Number[Font_Number_Array(deviceStatus/10000)][16], 16);
     else
-        LCD_Display_One_Hanzi(0, 4, 60, FONT_Cap, 16);
+        LCD_Display_One_Hanzi(0, 4, 60, &FONT_Cap[0][16], 16);
     if(deviceStatus > 999)
-        LCD_Display_One_Hanzi(0, 4, 68, &FONT_Number[(deviceStatus%10000)/1000][16], 16);
+        LCD_Display_One_Hanzi(0, 4, 68, &FONT_Number[Font_Number_Array((deviceStatus%10000)/1000)][16], 16);
     else
-        LCD_Display_One_Hanzi(0, 4, 68, FONT_Cap, 16);
+        LCD_Display_One_Hanzi(0, 4, 68, &FONT_Cap[0][16], 16);
     if(deviceStatus > 99)
-        LCD_Display_One_Hanzi(0, 4, 76, &FONT_Number[(deviceStatus%1000)/100][16], 16);
+        LCD_Display_One_Hanzi(0, 4, 76, &FONT_Number[Font_Number_Array((deviceStatus%1000)/100)][16], 16);
     else
-        LCD_Display_One_Hanzi(0, 4, 76, FONT_Cap, 16);
+        LCD_Display_One_Hanzi(0, 4, 76, &FONT_Cap[0][16], 16);
     if(deviceStatus > 9)
-        LCD_Display_One_Hanzi(0, 4, 84, &FONT_Number[(deviceStatus%100)/10][16], 16);
+        LCD_Display_One_Hanzi(0, 4, 84, &FONT_Number[Font_Number_Array((deviceStatus%100)/10)][16], 16);
     else
-        LCD_Display_One_Hanzi(0, 4, 84, FONT_Cap, 16);
+        LCD_Display_One_Hanzi(0, 4, 84, &FONT_Cap[0][16], 16);
 
-    LCD_Display_One_Hanzi(0, 4, 90, &FONT_Number[(deviceStatus%10)/1][16], 16);
+    LCD_Display_One_Hanzi(0, 4, 90, &FONT_Number[Font_Number_Array((deviceStatus%10)/1)][16], 16);
 
-    LCD_Display_One_Hanzi(0, 6, 42, &FONT_Number[sw->currentGear/10][16], 16);
-    LCD_Display_One_Hanzi(0, 6, 50, &FONT_Number[sw->currentGear%10][16], 16);  
+    if(sw->currentGear < 20)
+    {
+        LCD_Display_One_Hanzi(0, 6, 42, &FONT_Number[Font_Number_Array(sw->currentGear/10)][16], 16);
+        LCD_Display_One_Hanzi(0, 6, 50, &FONT_Number[Font_Number_Array(sw->currentGear%10)][16], 16); 
+    }
+    else
+    {
+        LCD_Display_One_Hanzi(0, 6, 42, &FONT_Capital[5][16], 16);
+        LCD_Display_One_Hanzi(0, 6, 50, &FONT_Capital[5][16], 16);
+    } 
     
     if(sw->currentCapa == 0)
         LCD_Display_One_Hanzi(1, 6, 102, &FONT_Chinese[42][16], 16);  
@@ -341,9 +395,9 @@ void LCD_Display_RealStatus(SwitchTypeDef *sw, uint16_t version, float oilTemp, 
  *****************************************************************************/
 void LCD_Display_Monitor(LCDStatusTypeDef *lcdStatus, TelemetryTypeDef *telemetry)
 {
-    uint32_t temp;
-    int16_t  oilTemp;
-    int16_t  envTemp;
+    uint32_t temp = 0;
+    int16_t  oilTemp = 0;
+    int16_t  envTemp = 0;
     
     uint8_t  i;
     uint8_t  sign;
@@ -374,11 +428,15 @@ void LCD_Display_Monitor(LCDStatusTypeDef *lcdStatus, TelemetryTypeDef *telemetr
                     temp = (uint32_t)(telemetry->sample.ub*10);
                 else if(i == 3 && telemetry->sample.uc < 300)
                     temp = (uint32_t)(telemetry->sample.uc*10);
-                LCD_Display_One_Hanzi(0, 2*i, 36, &FONT_Number[temp/1000][16], 16);
-                LCD_Display_One_Hanzi(0, 2*i, 44, &FONT_Number[(temp%1000)/100][16], 16);
-                LCD_Display_One_Hanzi(0, 2*i, 52, &FONT_Number[(temp%100)/10][16], 16);
-                LCD_Display_One_Hanzi(0, 2*i, 60, &FONT_Characters[0][16], 16);
-                LCD_Display_One_Hanzi(0, 2*i, 68, &FONT_Number[temp%10][16], 16);
+                if(temp < 9999)
+				{
+                    LCD_Display_One_Hanzi(0, 2*i, 36, &FONT_Number[Font_Number_Array(temp/1000)][16], 16);
+                    LCD_Display_One_Hanzi(0, 2*i, 44, &FONT_Number[Font_Number_Array((temp%1000)/100)][16], 16);
+                    LCD_Display_One_Hanzi(0, 2*i, 52, &FONT_Number[Font_Number_Array((temp%100)/10)][16], 16);
+                    LCD_Display_One_Hanzi(0, 2*i, 60, &FONT_Characters[0][16], 16);
+                    LCD_Display_One_Hanzi(0, 2*i, 68, &FONT_Number[Font_Number_Array(temp%10)][16], 16);
+				}
+                
             }
         break;
         case 2:
@@ -397,11 +455,14 @@ void LCD_Display_Monitor(LCDStatusTypeDef *lcdStatus, TelemetryTypeDef *telemetr
                     temp = (uint32_t)(telemetry->sample.ib*1000);
                 else if(i == 3 && telemetry->sample.ic < 10)
                     temp = (uint32_t)(telemetry->sample.ic*1000);
-                LCD_Display_One_Hanzi(0, 2*i, 36, &FONT_Number[temp/1000][16], 16);
-                LCD_Display_One_Hanzi(0, 2*i, 44, &FONT_Characters[0][16], 16);
-                LCD_Display_One_Hanzi(0, 2*i, 52, &FONT_Number[(temp%1000)/100][16], 16);
-                LCD_Display_One_Hanzi(0, 2*i, 60, &FONT_Number[(temp%100)/10][16], 16);
-                LCD_Display_One_Hanzi(0, 2*i, 68, &FONT_Number[temp%10][16], 16);
+                if(temp < 9999)
+                {
+                    LCD_Display_One_Hanzi(0, 2*i, 36, &FONT_Number[Font_Number_Array(temp/1000)][16], 16);
+                    LCD_Display_One_Hanzi(0, 2*i, 44, &FONT_Characters[0][16], 16);
+                    LCD_Display_One_Hanzi(0, 2*i, 52, &FONT_Number[Font_Number_Array((temp%1000)/100)][16], 16);
+                    LCD_Display_One_Hanzi(0, 2*i, 60, &FONT_Number[Font_Number_Array((temp%100)/10)][16], 16);
+                    LCD_Display_One_Hanzi(0, 2*i, 68, &FONT_Number[Font_Number_Array(temp%10)][16], 16);
+                } 
             }
         break;
         case 3:
@@ -440,11 +501,14 @@ void LCD_Display_Monitor(LCDStatusTypeDef *lcdStatus, TelemetryTypeDef *telemetr
                 if(sign == 1)
                     LCD_Display_One_Hanzi(0, 2*i, 28, &FONT_Characters[2][16], 16);
                 else
-                    LCD_Display_One_Hanzi(0, 2*i, 28, FONT_Cap, 16);
-                LCD_Display_One_Hanzi(0, 2*i, 36, &FONT_Number[temp/1000][16], 16);
-                LCD_Display_One_Hanzi(0, 2*i, 44, &FONT_Number[(temp%1000)/100][16], 16);
-                LCD_Display_One_Hanzi(0, 2*i, 52, &FONT_Number[(temp%100)/10][16], 16);
-                LCD_Display_One_Hanzi(0, 2*i, 60, &FONT_Number[temp%10][16], 16);
+                    LCD_Display_One_Hanzi(0, 2*i, 28, &FONT_Cap[0][16], 16);
+                if(temp < 9999)
+                {
+                    LCD_Display_One_Hanzi(0, 2*i, 36, &FONT_Number[Font_Number_Array(temp/1000)][16], 16);
+                    LCD_Display_One_Hanzi(0, 2*i, 44, &FONT_Number[Font_Number_Array((temp%1000)/100)][16], 16);
+                    LCD_Display_One_Hanzi(0, 2*i, 52, &FONT_Number[Font_Number_Array((temp%100)/10)][16], 16);
+                    LCD_Display_One_Hanzi(0, 2*i, 60, &FONT_Number[Font_Number_Array(temp%10)][16], 16);
+                }
             }
         break;
         case 4:
@@ -484,11 +548,14 @@ void LCD_Display_Monitor(LCDStatusTypeDef *lcdStatus, TelemetryTypeDef *telemetr
                 if(sign == 1)
                     LCD_Display_One_Hanzi(0, 2*i, 28, &FONT_Characters[2][16], 16);
                 else
-                    LCD_Display_One_Hanzi(0, 2*i, 28, FONT_Cap, 16);
-                LCD_Display_One_Hanzi(0, 2*i, 36, &FONT_Number[temp/1000][16], 16);
-                LCD_Display_One_Hanzi(0, 2*i, 44, &FONT_Number[(temp%1000)/100][16], 16);
-                LCD_Display_One_Hanzi(0, 2*i, 52, &FONT_Number[(temp%100)/10][16], 16);
-                LCD_Display_One_Hanzi(0, 2*i, 60, &FONT_Number[temp%10][16], 16);
+                    LCD_Display_One_Hanzi(0, 2*i, 28, &FONT_Cap[0][16], 16);
+                if(temp < 9999)
+                {
+                    LCD_Display_One_Hanzi(0, 2*i, 36, &FONT_Number[Font_Number_Array(temp/1000)][16], 16);
+                    LCD_Display_One_Hanzi(0, 2*i, 44, &FONT_Number[Font_Number_Array((temp%1000)/100)][16], 16);
+                    LCD_Display_One_Hanzi(0, 2*i, 52, &FONT_Number[Font_Number_Array((temp%100)/10)][16], 16);
+                    LCD_Display_One_Hanzi(0, 2*i, 60, &FONT_Number[Font_Number_Array(temp%10)][16], 16);
+                } 
             }
         break;
         case 5:
@@ -509,13 +576,15 @@ void LCD_Display_Monitor(LCDStatusTypeDef *lcdStatus, TelemetryTypeDef *telemetr
             if(sign == 1)
                 LCD_Display_One_Hanzi(0, 2, 76, &FONT_Characters[2][16], 16);
             else
-                LCD_Display_One_Hanzi(0, 2, 76, FONT_Cap, 16);
-            
-            LCD_Display_One_Hanzi(0, 2, 84,  &FONT_Number[temp/1000][16], 16);
-            LCD_Display_One_Hanzi(0, 2, 92,  &FONT_Characters[0][16], 16);
-            LCD_Display_One_Hanzi(0, 2, 100,  &FONT_Number[(temp%1000)/100][16], 16);
-            LCD_Display_One_Hanzi(0, 2, 108, &FONT_Number[(temp%100)/10][16], 16);
-            LCD_Display_One_Hanzi(0, 2, 116, &FONT_Number[temp%10][16], 16);
+                LCD_Display_One_Hanzi(0, 2, 76, &FONT_Cap[0][16], 16);
+            if(temp < 9999)
+            {
+                LCD_Display_One_Hanzi(0, 2, 84,  &FONT_Number[Font_Number_Array(temp/1000)][16], 16);
+                LCD_Display_One_Hanzi(0, 2, 92,  &FONT_Characters[0][16], 16);
+                LCD_Display_One_Hanzi(0, 2, 100,  &FONT_Number[Font_Number_Array((temp%1000)/100)][16], 16);
+                LCD_Display_One_Hanzi(0, 2, 108, &FONT_Number[Font_Number_Array((temp%100)/10)][16], 16);
+                LCD_Display_One_Hanzi(0, 2, 116, &FONT_Number[Font_Number_Array(temp%10)][16], 16);
+            }
             if(lcdStatus->isRefresh == 0)
             {
                 LCD_Display_One_Hanzi(1, 4, 4, &FONT_Chinese[58][16], 16);
@@ -525,12 +594,14 @@ void LCD_Display_Monitor(LCDStatusTypeDef *lcdStatus, TelemetryTypeDef *telemetr
             if(telemetry->sample.freq < 100)
                 temp = (uint32_t)(telemetry->sample.freq*100);
             
-
-            LCD_Display_One_Hanzi(0, 4, 76,  &FONT_Number[temp/1000][16], 16);
-            LCD_Display_One_Hanzi(0, 4, 84,  &FONT_Number[(temp%1000)/100][16], 16);
-            LCD_Display_One_Hanzi(0, 4, 92,  &FONT_Characters[0][16], 16);
-            LCD_Display_One_Hanzi(0, 4, 100, &FONT_Number[(temp%100)/10][16], 16);
-            LCD_Display_One_Hanzi(0, 4, 108, &FONT_Number[temp%10][16], 16);
+            if(temp < 9999)
+            {
+                LCD_Display_One_Hanzi(0, 4, 76,  &FONT_Number[Font_Number_Array(temp/1000)][16], 16);
+                LCD_Display_One_Hanzi(0, 4, 84,  &FONT_Number[Font_Number_Array((temp%1000)/100)][16], 16);
+                LCD_Display_One_Hanzi(0, 4, 92,  &FONT_Characters[0][16], 16);
+                LCD_Display_One_Hanzi(0, 4, 100, &FONT_Number[Font_Number_Array((temp%100)/10)][16], 16);
+                LCD_Display_One_Hanzi(0, 4, 108, &FONT_Number[Font_Number_Array(temp%10)][16], 16);
+            }
             if(lcdStatus->isRefresh == 0)
             {
                 LCD_Display_One_Hanzi(1, 6, 4, &FONT_Chinese[46][16], 16);
@@ -544,24 +615,24 @@ void LCD_Display_Monitor(LCDStatusTypeDef *lcdStatus, TelemetryTypeDef *telemetr
             if(envTemp < 0)
                 LCD_Display_One_Hanzi(0, 6, 76, &FONT_Characters[2][16], 16);
             else
-                LCD_Display_One_Hanzi(0, 6, 76, FONT_Cap, 16);
+                LCD_Display_One_Hanzi(0, 6, 76, &FONT_Cap[0][16], 16);
             if(abs(envTemp) > 999)
-                LCD_Display_One_Hanzi(0, 6, 84, &FONT_Number[envTemp/1000][16], 16);
+                LCD_Display_One_Hanzi(0, 6, 84, &FONT_Number[Font_Number_Array(envTemp/1000)][16], 16);
             else
-                LCD_Display_One_Hanzi(0, 6, 84, FONT_Cap, 16);
+                LCD_Display_One_Hanzi(0, 6, 84, &FONT_Cap[0][16], 16);
             if(abs(envTemp) > 99)
-                LCD_Display_One_Hanzi(0, 6, 92, &FONT_Number[(envTemp%1000)/100][16], 16);
+                LCD_Display_One_Hanzi(0, 6, 92, &FONT_Number[Font_Number_Array((envTemp%1000)/100)][16], 16);
             else
-                LCD_Display_One_Hanzi(0, 6, 92, FONT_Cap, 16);
+                LCD_Display_One_Hanzi(0, 6, 92, &FONT_Cap[0][16], 16);
             if(abs(envTemp) > 9)
-                LCD_Display_One_Hanzi(0, 6, 100, &FONT_Number[(envTemp%100)/10][16], 16);
+                LCD_Display_One_Hanzi(0, 6, 100, &FONT_Number[Font_Number_Array((envTemp%100)/10)][16], 16);
             else
-                LCD_Display_One_Hanzi(0, 6, 100, FONT_Cap, 16);
+                LCD_Display_One_Hanzi(0, 6, 100, &FONT_Cap[0][16], 16);
             if(abs(envTemp) > 0)
                 LCD_Display_One_Hanzi(0, 6, 108, &FONT_Characters[0][16], 16);
             else
-                LCD_Display_One_Hanzi(0, 6, 108, FONT_Cap, 16);
-            LCD_Display_One_Hanzi(0, 6, 116, &FONT_Number[(envTemp%10)][16], 16);
+                LCD_Display_One_Hanzi(0, 6, 108, &FONT_Cap[0][16], 16);
+            LCD_Display_One_Hanzi(0, 6, 116, &FONT_Number[Font_Number_Array(envTemp%10)][16], 16);
         break;
         case 6:
             if(lcdStatus->isRefresh == 0)
@@ -574,24 +645,24 @@ void LCD_Display_Monitor(LCDStatusTypeDef *lcdStatus, TelemetryTypeDef *telemetr
             if(oilTemp < 0)
                 LCD_Display_One_Hanzi(0, 2, 44, &FONT_Characters[2][16], 16);
             else
-                LCD_Display_One_Hanzi(0, 2, 44, FONT_Cap, 16);
-            if(abs(oilTemp) > 999)
-                LCD_Display_One_Hanzi(0, 2, 52, &FONT_Number[oilTemp/1000][16], 16);
+                LCD_Display_One_Hanzi(0, 2, 44, &FONT_Cap[0][16], 16);
+            if(abs(oilTemp) > 999 && abs(oilTemp) < 10000)
+                LCD_Display_One_Hanzi(0, 2, 52, &FONT_Number[Font_Number_Array(oilTemp/1000)][16], 16);
             else
-                LCD_Display_One_Hanzi(0, 2, 52, FONT_Cap, 16);
+                LCD_Display_One_Hanzi(0, 2, 52, &FONT_Cap[0][16], 16);
             if(abs(oilTemp) > 99)
-                LCD_Display_One_Hanzi(0, 2, 60, &FONT_Number[(oilTemp%1000)/100][16], 16);
+                LCD_Display_One_Hanzi(0, 2, 60, &FONT_Number[Font_Number_Array((oilTemp%1000)/100)][16], 16);
             else
-                LCD_Display_One_Hanzi(0, 2, 60, FONT_Cap, 16);
+                LCD_Display_One_Hanzi(0, 2, 60, &FONT_Cap[0][16], 16);
             if(abs(oilTemp) > 9)
-                LCD_Display_One_Hanzi(0, 2, 68, &FONT_Number[(oilTemp%100)/10][16], 16);
+                LCD_Display_One_Hanzi(0, 2, 68, &FONT_Number[Font_Number_Array((oilTemp%100)/10)][16], 16);
             else
-                LCD_Display_One_Hanzi(0, 2, 68, FONT_Cap, 16);
+                LCD_Display_One_Hanzi(0, 2, 68, &FONT_Cap[0][16], 16);
             if(abs(oilTemp) > 0)
                 LCD_Display_One_Hanzi(0, 2, 76, &FONT_Characters[0][16], 16);
             else
-                LCD_Display_One_Hanzi(0, 2, 76, FONT_Cap, 16);
-            LCD_Display_One_Hanzi(0, 2, 104, &FONT_Number[(oilTemp%10)][16], 16);  
+                LCD_Display_One_Hanzi(0, 2, 76, &FONT_Cap[0][16], 16);
+            LCD_Display_One_Hanzi(0, 2, 104, &FONT_Number[Font_Number_Array(oilTemp%10)][16], 16);  
         break;
         default:;
         break;
@@ -633,12 +704,17 @@ void LCD_Display_Control(LCDStatusTypeDef *lcdStatus, SwitchTypeDef *sw)
             
             if(d < 10)
             {
-                LCD_Display_One_Hanzi(0, 2, 92, &FONT_Number[d][16], 16); 
+                LCD_Display_One_Hanzi(0, 2, 92, &FONT_Number[Font_Number_Array(d)][16], 16); 
+            }
+            else if(d >=10 && d < 100)
+            {
+                LCD_Display_One_Hanzi(0, 2, 92, &FONT_Number[Font_Number_Array(d/10)][16], 16); 
+                LCD_Display_One_Hanzi(0, 2, 100, &FONT_Number[Font_Number_Array(d%10)][16], 16); 
             }
             else
             {
-                LCD_Display_One_Hanzi(0, 2, 92, &FONT_Number[d/10][16], 16); 
-                LCD_Display_One_Hanzi(0, 2, 100, &FONT_Number[d%10][16], 16); 
+                LCD_Display_One_Hanzi(0, 2, 92, &FONT_Capital[5][16], 16);
+                LCD_Display_One_Hanzi(0, 2, 100, &FONT_Capital[5][16], 16);
             }
             if(lcdStatus->isRefresh == 0)
             {
@@ -869,29 +945,29 @@ void LCD_Display_Logo(ClockTypeDef *clock)
 
     
     if((clock->y/10) < 10)
-        LCD_Display_One_Hanzi(0,4,36 , &FONT_Number[clock->y/10][16],16);
+        LCD_Display_One_Hanzi(0,4,36 , &FONT_Number[Font_Number_Array(clock->y/10)][16],16);
     else    
         LCD_Display_One_Hanzi(0,4,36 , &FONT_Number[1][16],16);
-    LCD_Display_One_Hanzi(0,4,44 , &FONT_Number[clock->y%10][16],16);    //年
+    LCD_Display_One_Hanzi(0,4,44 , &FONT_Number[Font_Number_Array(clock->y%10)][16],16);    //年
     LCD_Display_One_Hanzi(0,4,52 , &FONT_Characters[2][16],16);
     
-    LCD_Display_One_Hanzi(0,4,60 , &FONT_Number[clock->m/10][16],16); 
-    LCD_Display_One_Hanzi(0,4,68 , &FONT_Number[clock->m%10][16],16);    //月
+    LCD_Display_One_Hanzi(0,4,60 , &FONT_Number[Font_Number_Array(clock->m/10)][16],16); 
+    LCD_Display_One_Hanzi(0,4,68 , &FONT_Number[Font_Number_Array(clock->m%10)][16],16);    //月
     LCD_Display_One_Hanzi(0,4,76 , &FONT_Characters[2][16],16);
     
-    LCD_Display_One_Hanzi(0,4,84 , &FONT_Number[clock->d/10][16],16);   
-    LCD_Display_One_Hanzi(0,4,92 , &FONT_Number[clock->d%10][16],16);    //日
+    LCD_Display_One_Hanzi(0,4,84 , &FONT_Number[Font_Number_Array(clock->d/10)][16],16);   
+    LCD_Display_One_Hanzi(0,4,92 , &FONT_Number[Font_Number_Array(clock->d%10)][16],16);    //日
 
-    LCD_Display_One_Hanzi(0,6,36 , &FONT_Number[clock->h/10][16],16);  
-    LCD_Display_One_Hanzi(0,6,44 , &FONT_Number[clock->h%10][16],16);    //时
+    LCD_Display_One_Hanzi(0,6,36 , &FONT_Number[Font_Number_Array(clock->h/10)][16],16);  
+    LCD_Display_One_Hanzi(0,6,44 , &FONT_Number[Font_Number_Array(clock->h%10)][16],16);    //时
     LCD_Display_One_Hanzi(0,6,52 , &FONT_Characters[1][16],16);
     
-    LCD_Display_One_Hanzi(0,6,60 , &FONT_Number[clock->min/10][16],16);    
-    LCD_Display_One_Hanzi(0,6,68 , &FONT_Number[clock->min%10][16],16);  //分
+    LCD_Display_One_Hanzi(0,6,60 , &FONT_Number[Font_Number_Array(clock->min/10)][16],16);    
+    LCD_Display_One_Hanzi(0,6,68 , &FONT_Number[Font_Number_Array(clock->min%10)][16],16);  //分
     LCD_Display_One_Hanzi(0,6,76 , &FONT_Characters[1][16],16);
     
-    LCD_Display_One_Hanzi(0,6,84 , &FONT_Number[clock->s/10][16],16);    
-    LCD_Display_One_Hanzi(0,6,92 , &FONT_Number[clock->s%10][16],16);    //秒
+    LCD_Display_One_Hanzi(0,6,84 , &FONT_Number[Font_Number_Array(clock->s/10)][16],16);    
+    LCD_Display_One_Hanzi(0,6,92 , &FONT_Number[Font_Number_Array(clock->s%10)][16],16);    //秒
 }
 /************************ZXDQ *****END OF FILE****/
 

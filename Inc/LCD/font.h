@@ -22,7 +22,7 @@ extern uint8_t FONT_Number[][16];
 extern uint8_t FONT_Capital[][16];
 extern uint8_t FONT_Characters[][16];
 extern uint8_t FONT_Chinese[][16];
-extern uint8_t FONT_Cap[16];
+extern uint8_t FONT_Cap[][16];
 
 #ifdef __cplusplus
 }
