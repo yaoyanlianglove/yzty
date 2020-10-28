@@ -542,13 +542,12 @@ ARM Macro Assembler    Page 9
               E000ED04 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
-ork --depend=.\yzty\dc_m_584_120_17\los_dispatch_keil.d -o.\yzty\dc_m_584_120_1
-7\los_dispatch_keil.o -I.\RTE\_yzty_DC_M_584_120_17 -IC:\Keil_v5\ARM\PACK\ARM\C
-MSIS\5.0.1\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\
-Include --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 523
-" --predefine="_RTE_ SETA 1" --predefine="STM32F10X_HD SETA 1" --list=los_dispa
-tch_keil.lst ..\Middlewares\LiteOS\arch\arm\arm-m\cortex-m3\keil\los_dispatch_k
-eil.S
+ork --depend=.\yzty\p_mag_tytr7\los_dispatch_keil.d -o.\yzty\p_mag_tytr7\los_di
+spatch_keil.o -I.\RTE\_yzty_P_MAG_TYTR_7 -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\
+CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include --p
+redefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 523" --predefi
+ne="_RTE_ SETA 1" --predefine="STM32F10X_HD SETA 1" --list=los_dispatch_keil.ls
+t ..\Middlewares\LiteOS\arch\arm\arm-m\cortex-m3\keil\los_dispatch_keil.S
 
 
 
