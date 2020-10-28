@@ -12,7 +12,8 @@
 #include "usart.h"
 #include "crc.h"
 #include "yzty.h"
-#include "config_para.h"
+#include "config_para.h" 
+#include <string.h>
 
 ModbusTypeDef modbus;  
 uint8_t modbusRxBuffer;
@@ -78,6 +79,7 @@ uint8_t Modbus_Function_01_Process(void)
     uint16_t regNum    = 0;
     uint8_t  length    = 0;
     uint8_t  i, j;
+    memset(modbus.txBuffer, 0x00, 128);
     modbus.txBuffer[0] = MODBUS_DEVICE_ID;
     modbus.txBuffer[1] = modbus.rxBuffer[1];
     
@@ -118,6 +120,8 @@ uint8_t Modbus_Function_02_Process(void)
     uint16_t regNum    = 0;
     uint8_t  length    = 0;
     uint8_t  i, j;
+
+    memset(modbus.txBuffer, 0x00, 128);
     modbus.txBuffer[0] = MODBUS_DEVICE_ID;
     modbus.txBuffer[1] = modbus.rxBuffer[1];
     
@@ -158,6 +162,7 @@ uint8_t Modbus_Function_03_Process(void)
     uint16_t regNum    = 0;
     uint8_t  length    = 0;
     uint8_t  i;
+    memset(modbus.txBuffer, 0x00, 128);
     modbus.txBuffer[0] = MODBUS_DEVICE_ID;
     modbus.txBuffer[1] = modbus.rxBuffer[1];
     
@@ -195,6 +200,7 @@ uint8_t Modbus_Function_04_Process(void)
     uint16_t regNum    = 0;
     uint8_t  length    = 0;
     uint8_t  i;
+    memset(modbus.txBuffer, 0x00, 128);
     modbus.txBuffer[0] = MODBUS_DEVICE_ID;
     modbus.txBuffer[1] = modbus.rxBuffer[1];
     
@@ -232,6 +238,7 @@ uint8_t Modbus_Function_05_Process(void)
     uint8_t  length    = 0;
     uint8_t  res = 0;
     uint8_t  data[32];
+    memset(modbus.txBuffer, 0x00, 128);
     modbus.txBuffer[0] = MODBUS_DEVICE_ID;
     modbus.txBuffer[1] = modbus.rxBuffer[1];
     regStart = (modbus.rxBuffer[2] << 8) + modbus.rxBuffer[3];
@@ -278,6 +285,7 @@ uint8_t Modbus_Function_06_Process(void)
     uint8_t  length    = 0;
     uint8_t  res = 0;
     uint16_t data[32];
+    memset(modbus.txBuffer, 0x00, 128);
     modbus.txBuffer[0] = MODBUS_DEVICE_ID;
     modbus.txBuffer[1] = modbus.rxBuffer[1];
 
@@ -319,6 +327,7 @@ uint8_t Modbus_Function_15_Process(void)
     uint8_t  res       = 0;
     uint8_t  i, j;
     uint8_t data[32] = {0};
+    memset(modbus.txBuffer, 0x00, 128);
     modbus.txBuffer[0] = MODBUS_DEVICE_ID;
     modbus.txBuffer[1] = modbus.rxBuffer[1];
     regStart = (modbus.rxBuffer[2] << 8) + modbus.rxBuffer[3];
@@ -371,6 +380,7 @@ uint8_t Modbus_Function_16_Process(void)
     uint8_t  res       = 0;
     uint8_t  i;
     uint16_t data[32];
+    memset(modbus.txBuffer, 0x00, 128);
     modbus.txBuffer[0] = MODBUS_DEVICE_ID;
     modbus.txBuffer[1] = modbus.rxBuffer[1];
 
@@ -411,6 +421,7 @@ uint8_t Modbus_Function_16_Process(void)
 void Modbus_Function_Err_Process(uint8_t errCode)
 {
     uint16_t crc = 0;
+    memset(modbus.txBuffer, 0x00, 128);
     modbus.txBuffer[0] = MODBUS_DEVICE_ID;
     modbus.txBuffer[1] = modbus.rxBuffer[1] | 0x80;
     modbus.txBuffer[2] = errCode;

@@ -17,6 +17,7 @@
 #include "config_para.h"
 #include "storage.h"
 #include "fram_addr_map.h"
+#include <string.h>
 
 PrivateCommTypeDef  privateComm;
 uint8_t privateCommRxBuffer;
@@ -54,6 +55,7 @@ static void Private_Comm_Send_Data(uint8_t *pData, uint16_t size)
 static void Private_Comm_Send_Status_Code(uint16_t errorCode)
 {
     uint16_t crc;
+    memset(privateComm.txBuffer, 0x00, 128);
     privateComm.txBuffer[0] = SEND_DATA_HEAD_H;
     privateComm.txBuffer[1] = SEND_DATA_HEAD_L;
     privateComm.txBuffer[2] = PRIVATE_COMM_DEVICE_ID;
@@ -100,6 +102,7 @@ void Private_Comm_Rev_Data_Check(void)
 static void Private_Comm_Heart_Response(void)
 {
     uint16_t crc;
+    memset(privateComm.txBuffer, 0x00, 128);
     privateComm.txBuffer[0] = SEND_DATA_HEAD_H;
     privateComm.txBuffer[1] = SEND_DATA_HEAD_L;
     privateComm.txBuffer[2] = PRIVATE_COMM_DEVICE_ID;
@@ -162,6 +165,7 @@ static void Private_Comm_Control_Response(uint8_t code)
 {
     uint16_t crc;
     uint16_t res;
+    memset(privateComm.txBuffer, 0x00, 128);
     privateComm.txBuffer[0 ] = SEND_DATA_HEAD_H;
     privateComm.txBuffer[1 ] = SEND_DATA_HEAD_L;
     privateComm.txBuffer[2 ] = PRIVATE_COMM_DEVICE_ID;
@@ -196,6 +200,7 @@ static void Private_Comm_SET_Response(uint8_t code)
     uint16_t res;
     uint16_t data[64];
     uint8_t  i, regStart, regNum;
+    memset(privateComm.txBuffer, 0x00, 128);
     privateComm.txBuffer[0 ] = SEND_DATA_HEAD_H;
     privateComm.txBuffer[1 ] = SEND_DATA_HEAD_L;
     privateComm.txBuffer[2 ] = PRIVATE_COMM_DEVICE_ID;
@@ -242,6 +247,7 @@ static void Private_Comm_GET_Response(uint8_t code)
 {
     uint16_t crc;
     uint8_t  i, regStart, regNum, length;
+    memset(privateComm.txBuffer, 0x00, 128);
     privateComm.txBuffer[0 ] = SEND_DATA_HEAD_H;
     privateComm.txBuffer[1 ] = SEND_DATA_HEAD_L;
     privateComm.txBuffer[2 ] = PRIVATE_COMM_DEVICE_ID;
@@ -286,6 +292,7 @@ static void Private_Comm_YC_Response(void)
 {
     uint16_t crc;
     uint8_t i;
+    memset(privateComm.txBuffer, 0x00, 128);
     privateComm.txBuffer[0 ] = SEND_DATA_HEAD_H;
     privateComm.txBuffer[1 ] = SEND_DATA_HEAD_L;
     privateComm.txBuffer[2 ] = PRIVATE_COMM_DEVICE_ID;
@@ -320,6 +327,7 @@ static void Private_Comm_Calibration_Response(void)
 
     if(i == 0)
         i = 0.0001;
+    memset(privateComm.txBuffer, 0x00, 128);
     privateComm.txBuffer[0 ] = SEND_DATA_HEAD_H;
     privateComm.txBuffer[1 ] = SEND_DATA_HEAD_L;
     privateComm.txBuffer[2 ] = PRIVATE_COMM_DEVICE_ID;
@@ -350,6 +358,7 @@ void Private_Comm_GET_REC_Response(uint8_t code)
 {
     uint16_t crc, length, addrNum, endAddrNum, i, recSum, recPos;
     uint8_t  readData[6];
+    memset(privateComm.txBuffer, 0x00, 128);
     privateComm.txBuffer[0 ] = SEND_DATA_HEAD_H;
     privateComm.txBuffer[1 ] = SEND_DATA_HEAD_L;
     privateComm.txBuffer[2 ] = PRIVATE_COMM_DEVICE_ID;
