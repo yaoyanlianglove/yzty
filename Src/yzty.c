@@ -92,7 +92,7 @@ uint8_t YZTY_Init(void)
 
     if(Read_First_Program_Flag(initData) != STORAGE_OK)
         Save_Default_Config(&g_configPara);
-    else if(initData[0] != FIRST_PROGRAM_FLAG)
+    if(initData[0] != FIRST_PROGRAM_FLAG)
         Save_Default_Config(&g_configPara);
     if(Read_Config_Para(&g_configPara) != STORAGE_OK)
     {
