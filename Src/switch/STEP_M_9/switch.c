@@ -27,7 +27,6 @@ volatile  uint16_t gear6Count    = 1;
 volatile  uint16_t gear7Count    = 1;
 volatile  uint16_t gear8Count    = 1;
 volatile  uint16_t gear9Count    = 1;
-volatile  uint16_t gear10Count    = 1;
 extern MotorCfgTypeDef     g_motorCfg;
 uint8_t   gearFaultArray[32] = {0};
 /*****************************************************************************
@@ -147,19 +146,6 @@ void Gear_Signal_Time_Counter(GearSignalTypeDef *gearSignal)
     }
     else 
         gear9Count = 0;
-
-    if(gearSignal->gear10 == REMOTE_SIGNAL_GEAR10)
-    {
-        if(gear10Count < REMOTE_SIGNAL_SUB_DITH_TIME)
-            gear10Count++;
-        else
-        {
-            gearSignal->gear10 = REMOTE_SIGNAL_GEAR10 ^ 1;
-        }
-    }
-    else 
-        gear10Count = 0;
-
 }
 /*****************************************************************************
  Function    : Read_Gear_No_Delay
@@ -181,7 +167,6 @@ uint8_t Read_Gear_No_Delay(void)
     uint8_t gear7 = 0;
     uint8_t gear8 = 0;
     uint8_t gear9 = 0;
-    uint8_t gear10 = 0;
 
     if(REMOTE_SIGNAL_GEAR1 == 0)
     {
@@ -228,12 +213,6 @@ uint8_t Read_Gear_No_Delay(void)
         temp++;
         gear9 = 9;
     }
-    if(REMOTE_SIGNAL_GEAR10 == 0)
-    {
-        temp++;
-        gear10 = 10;
-    }
-    
     if(temp == 1)
     {
         if(GEAR_TOTAL == 5)
@@ -246,8 +225,6 @@ uint8_t Read_Gear_No_Delay(void)
         }
         else if(GEAR_TOTAL == 9)
             gear = gear1 + gear2 + gear3 + gear4 + gear5 + gear6 + gear7 + gear8 + gear9;
-        else if(GEAR_TOTAL == 17)
-            gear = gear1 + gear2 + gear3 + gear4 + gear5 + gear6 + gear7 + gear8 + gear9 + gear10;
     }
         
     else if(temp == 0)
@@ -301,7 +278,6 @@ GearStatusTypeDef Read_Gear(SwitchTypeDef *sw, GearSignalTypeDef *gearSignal)
     uint8_t gear7 = 0; 
     uint8_t gear8 = 0; 
     uint8_t gear9 = 0; 
-    uint8_t gear10 = 0; 
     temp = 0;  
     
     if(gearSignal->gear1 == 1)
@@ -349,11 +325,6 @@ GearStatusTypeDef Read_Gear(SwitchTypeDef *sw, GearSignalTypeDef *gearSignal)
         temp++;
         gear9 = 9;
     }
-    //if(gearSignal->gear10 == 1)
-    //{
-    //    temp++;
-    //    gear10 = 10;
-    //}
      
     if(temp == 1)
     {
@@ -370,8 +341,6 @@ GearStatusTypeDef Read_Gear(SwitchTypeDef *sw, GearSignalTypeDef *gearSignal)
         }
         else if(GEAR_TOTAL == 9)
             gear = gear1 + gear2 + gear3 + gear4 + gear5 + gear6 + gear7 + gear8 + gear9;
-        else if(GEAR_TOTAL == 17)
-            gear = gear1 + gear2 + gear3 + gear4 + gear5 + gear6 + gear7 + gear8 + gear9 + gear10;
         sw->currentGear = gear;
         return GEAR_OK;
     }

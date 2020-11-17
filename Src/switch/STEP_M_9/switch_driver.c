@@ -31,15 +31,6 @@
  *****************************************************************************/
 void Switch_Driver_Init(void)
 {
-
-    /*Configure GPIO pins : PGPin PGPin PGPin PGPin 
-                           PGPin PGPin */
-    GPIO_InitStruct.Pin = LED5_Pin|LED6_Pin|DOUT13_Pin|DOUT12_Pin 
-                            |DOUT11_Pin|DOUT10_Pin;
-    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
     SPI_TMC262_GPIO_Init();
     TMC262_GPIO_Init();
 }

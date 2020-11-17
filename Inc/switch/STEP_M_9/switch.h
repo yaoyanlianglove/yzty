@@ -26,7 +26,6 @@ extern "C" {
 #define  REMOTE_SIGNAL_GEAR7       HAL_GPIO_ReadPin(DIN7_GPIO_Port, DIN7_Pin)
 #define  REMOTE_SIGNAL_GEAR8       HAL_GPIO_ReadPin(DIN8_GPIO_Port, DIN8_Pin)
 #define  REMOTE_SIGNAL_GEAR9       HAL_GPIO_ReadPin(DIN9_GPIO_Port, DIN9_Pin)
-#define  REMOTE_SIGNAL_GEAR10      HAL_GPIO_ReadPin(DIN9_GPIO_Port, DIN10_Pin)
 #define  REMOTE_SIGNAL_SUB_DITH_TIME 10        //遥信去抖时间 
 
 
