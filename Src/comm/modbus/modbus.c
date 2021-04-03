@@ -529,8 +529,8 @@ void Modbus_Data_Analysis(volatile  uint16_t *remoteHeartTimeout)
         {//设备忙
             Modbus_Function_Err_Process(0x06);
         }
+        modbus.rxEndFlag = 0;
+        modbus.rxCount   = 0;
     }
-    modbus.rxEndFlag = 0;
-    modbus.rxCount   = 0;
 }
 /************************ZXDQ *****END OF FILE****/
