@@ -465,7 +465,7 @@ void Modbus_Data_Analysis(volatile  uint16_t *remoteHeartTimeout)
 {
     uint16_t crc = 0;
     uint8_t  res = 0;
-    if(modbus.rxEndFlag == 1 && modbus.rxCount > 5)
+    if(modbus.rxEndFlag == 1)
     {
         *remoteHeartTimeout = (uint16_t)HEART_TIMEOUT_PERIOD;
         if(modbus.rxBuffer[0] == MODBUS_DEVICE_ID || modbus.rxBuffer[0] == 0)     //地址正确或者广播地址
