@@ -595,7 +595,7 @@ SwitchStatusTypeDef Turn_Gear(uint8_t dir, MotorCfgTypeDef* motorCfg, SwitchType
         }
     }
     sw->memoryGear = sw->expectGear;
-    gear = Read_Gear_No_Delay();
+    gear = Read_Gear_No_Delay();   //如果挡位不存在，这里不返回原档位，有可能是干扰导致，后面挡位检查的时候会进行闭锁判断
     if(gear > 0 && gear < sw->totalGear/2 + 2)
     {
         return Find_Middle_Of_Gear(FORWARD, motorCfg, sw);

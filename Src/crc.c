@@ -9,6 +9,9 @@
   ******************************************************************************
   */
 
+  
+#include "crc.h"
+
 /*****************************************************************************
  Function    : CRC_16
  Description : Calculate CRC16 checksums for input data.
@@ -16,9 +19,7 @@
                usDataLen, the length of data
  Output      : None
  Return      : None
- *****************************************************************************/   
-#include "crc.h"
-
+ *****************************************************************************/ 
 uint16_t CRC_16(uint8_t* puchMsg, uint16_t usDataLen)
 {
     uint8_t uchCRCHi;
