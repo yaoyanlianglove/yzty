@@ -54,8 +54,8 @@ extern "C" {
   */
 typedef struct 
 {
-    float    dutyCycle;            //当前档位
-    uint8_t  motorFault;           //记忆档位
+    float    dutyCycle;            //占空比
+    uint8_t  motorFault;           //电机故障标志
 }MotorTypeDef;
 
 void     Motor_Init(MotorTypeDef* motor);
