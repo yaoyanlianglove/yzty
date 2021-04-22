@@ -543,8 +543,9 @@ static void YZTY_Go_To_Main_Tap(void)
     g_switch.motion = RC_NONE; //永磁调压开关不需要找主分接
     goToMainTapFlag = 1;
     return;
+/**  去掉上电回主分接功能，保留调容回大容量
 #else
-		uint8_t mainTapGear;
+    uint8_t mainTapGear;
     if(g_switch.totalGear % 2 == 0)
         mainTapGear = g_switch.totalGear/2;
     else
@@ -576,6 +577,7 @@ static void YZTY_Go_To_Main_Tap(void)
         g_switch.lastMotion     = g_switch.motion;
         g_saveFlag.switchMotionFlag = 1;
     } 
+**/
 #endif
 }
 /*****************************************************************************
