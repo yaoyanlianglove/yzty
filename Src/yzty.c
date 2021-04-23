@@ -525,7 +525,6 @@ void YZTY_Hand_Judge(void)
  *****************************************************************************/
 static void YZTY_Go_To_Main_Tap(void)
 {
-#ifdef P_MAG_SWITCH
 #ifdef FUNCTION_TURN_CAPACITY  //永磁调容调压开关需要上电回大容量
     if(g_switch.currentCapa == 1)
     {
@@ -543,7 +542,10 @@ static void YZTY_Go_To_Main_Tap(void)
     g_switch.motion = RC_NONE; //永磁调压开关不需要找主分接
     goToMainTapFlag = 1;
     return;
-/**  去掉上电回主分接功能，保留调容回大容量
+
+
+
+/**  去掉步进电机和永磁电机的上电回主分接功能，保留调容回大容量
 #else
     uint8_t mainTapGear;
     if(g_switch.totalGear % 2 == 0)
@@ -578,7 +580,7 @@ static void YZTY_Go_To_Main_Tap(void)
         g_saveFlag.switchMotionFlag = 1;
     } 
 **/
-#endif
+
 }
 /*****************************************************************************
  Function    : YZTY_Control_Judge
