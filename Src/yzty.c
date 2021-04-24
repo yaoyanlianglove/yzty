@@ -619,22 +619,14 @@ void YZTY_Control_Judge(void)
             g_switch.motion = g_switch.lcdMotion;
         if(g_switch.motion == RC_UP_VOL)
         {
-#ifdef STEP_MOTOR                
-            if(g_switch.memoryGear > g_configPara.deviceInfo.tapTotalNum - 1)
-#else
             if(g_switch.currentGear > g_configPara.deviceInfo.tapTotalNum - 1)
-#endif
                 action = RC_NONE;
             else
                 action = RC_UP_VOL;
         }
         else if(g_switch.motion == RC_DOWN_VOL)
         {
-#ifdef STEP_MOTOR                
-            if(g_switch.memoryGear < 2 )
-#else
             if(g_switch.currentGear < 2 )
-#endif
                 action = RC_NONE;
             else
                 action = RC_DOWN_VOL;

@@ -252,8 +252,7 @@ GearStatusTypeDef Gear_Check(SwitchTypeDef *sw, GearSignalTypeDef *gearSignal)
     {
         if(gearFaultArray[i] == 1)
         {
-            if(gearFaultArray[i - 1] == 1 || gearFaultArray[i + 1] == 1)
-                return GEAR_ERROR;
+            return GEAR_ERROR;
         }
     }
     return GEAR_OK;
@@ -552,6 +551,8 @@ SwitchStatusTypeDef Switch_Calibration(SwitchTypeDef *sw, MotorCfgTypeDef *motor
         else if(sw->memoryGear == sw->totalGear)
             res = Find_Gear(REVERSE, motorCfg, sw);
     }
+    /* 多挡位，直接闭锁 */
+    /* 去掉上电找中功能
     else if(sw->currentGear > 0 && sw->currentGear < sw->totalGear/2 + 2)
     {
         return Find_Middle_Of_Gear(FORWARD, motorCfg, sw);
@@ -560,6 +561,7 @@ SwitchStatusTypeDef Switch_Calibration(SwitchTypeDef *sw, MotorCfgTypeDef *motor
     {
         return Find_Middle_Of_Gear(REVERSE, motorCfg, sw);
     }
+    */
     return res;
 }
 /*****************************************************************************
@@ -603,6 +605,12 @@ SwitchStatusTypeDef Turn_Gear(uint8_t dir, MotorCfgTypeDef* motorCfg, SwitchType
     else if(gear > sw->totalGear/2 + 1 && gear < sw->totalGear + 1)
     {
         return Find_Middle_Of_Gear(REVERSE, motorCfg, sw);
+    }
+    else if(gear == 0 || gear == 0xff)
+    {
+        sw->memoryGear = sw->expectGear - 1;
+        gearFaultArray[sw->expectGear] = 1;
+        return Back_Gear(dir^1, step, SWITCH_GEAR_ERROR, motorCfg);
     }
     Motor_Config_Current_Scale(motorCfg->current_half);
     return SWITCH_OK;
