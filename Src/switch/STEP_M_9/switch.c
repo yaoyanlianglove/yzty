@@ -361,25 +361,38 @@ GearStatusTypeDef Read_Gear(SwitchTypeDef *sw, GearSignalTypeDef *gearSignal)
  Output      : None
  Return      : 0-sucess,1-failed;
  *****************************************************************************/
-SwitchStatusTypeDef Back_Gear(uint8_t dir, uint32_t backStep, SwitchStatusTypeDef stat, MotorCfgTypeDef* motorCfg)
+SwitchStatusTypeDef Back_Gear(uint8_t dir, uint32_t backStep, SwitchStatusTypeDef stat, 
+                              MotorCfgTypeDef* motorCfg, SwitchTypeDef* sw)
 {
     uint32_t step = 0;
     uint32_t count = 0;
     uint32_t speed = 0;
+    uint32_t gear = 0;
+    uint32_t rightTimes = 0;
     Motor_Dir(dir);
     Motor_Config_Current_Scale(motorCfg->current_all);
     while(step < backStep)
     {
-        delay_us(STEP_PWM_PERIOD + 5);     //等价读档位的时间
-        speed = Motor_Speed(step);
-        if(count < speed)
-            count++;
+        gear = Read_Gear_No_Delay();
+        if(gear > 0 && gear < sw->totalGear + 1)
+        {
+            rightTimes++;
+            if(rightTimes == 3)
+                break;
+        }
         else
         {
-            count = 0;
-            Motor_Run();
-            step++;
-        } 
+            delay_us(STEP_PWM_PERIOD); 
+            speed = Motor_Speed(step);
+            if(count < speed)
+                count++;
+            else
+            {
+                count = 0;
+                Motor_Run();
+                step++;
+            } 
+        }
     }
     Motor_Config_Current_Scale(motorCfg->current_half);
     return stat;
@@ -456,7 +469,7 @@ SwitchStatusTypeDef Find_Middle_Of_Gear(uint8_t dir, MotorCfgTypeDef *motorCfg, 
             }
         }
         else
-            return Back_Gear(dir^1, step, SWITCH_ERROR, motorCfg);
+            return Back_Gear(dir^1, step, SWITCH_ERROR, motorCfg, sw);
     }
     return Go_To_Middle(dir^1, motorCfg, sw);
 }
@@ -518,7 +531,7 @@ SwitchStatusTypeDef Find_Gear(uint8_t dir, MotorCfgTypeDef* motorCfg, SwitchType
         else
         {
             gearFaultArray[sw->expectGear] = 1;
-            return Back_Gear(dir^1, step, SWITCH_GEAR_ERROR, motorCfg);
+            return Back_Gear(dir^1, step, SWITCH_GEAR_ERROR, motorCfg, sw);
         }
     }
     return Go_To_Middle(dir, motorCfg, sw);
@@ -614,12 +627,12 @@ SwitchStatusTypeDef Turn_Gear(uint8_t dir, MotorCfgTypeDef* motorCfg, SwitchType
     {
         if(gear == sw->currentGear)
         {
-            return Back_Gear(dir^1, step, SWITCH_ERROR, motorCfg);
+            return Back_Gear(dir^1, step, SWITCH_ERROR, motorCfg, sw);
         }
         else
         {
             gearFaultArray[sw->expectGear] = 1;
-            return Back_Gear(dir^1, step, SWITCH_GEAR_ERROR, motorCfg);
+            return Back_Gear(dir^1, step, SWITCH_GEAR_ERROR, motorCfg, sw);
         }
     }
     Motor_Config_Current_Scale(motorCfg->current_half);
