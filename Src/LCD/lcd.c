@@ -1052,7 +1052,7 @@ void LCD_Display_Handle_Down_Key(LCDStatusTypeDef *lcdStatus, SwitchTypeDef *sw)
 void LCD_Display_Logo(ClockTypeDef *clock)
 {
     LCD_Refresh_Screen();
-    LCD_Display_One_Hanzi(1, 2, 20, &FONT_Chinese[64][16], 16); 
+    LCD_Display_One_Hanzi(1, 2, 20, &FONT_Chinese[64][16], 16); /* 修改公司LOGO */
     LCD_Display_One_Hanzi(1, 2, 44, &FONT_Chinese[66][16], 16);
     LCD_Display_One_Hanzi(1, 2, 68, &FONT_Chinese[68][16], 16);
     LCD_Display_One_Hanzi(1, 2, 92, &FONT_Chinese[70][16], 16);
