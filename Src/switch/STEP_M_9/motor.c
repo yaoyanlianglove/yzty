@@ -91,24 +91,24 @@ void Motor_Run(void)
 uint32_t Motor_Speed(uint32_t step)
 {
     if(step < 40)
-        return 2000/7;  //500Hz
+        return 2000/PERIOD_OF_ONE_CIRCLE;  //500Hz
     else if(step < 80 && step >= 40)
-        return 2000/20;   //1500Hz
+        return 2000/(PERIOD_OF_ONE_CIRCLE * 3);   //1500Hz
     else if(step < 120 && step >= 80)
-        return 2000/40;   //3200Hz
+        return 2000/(PERIOD_OF_ONE_CIRCLE * 32/5);   //3200Hz
     else if(step < 160 && step >= 120)
-        return 2000/60;   //5000Hz
+        return 2000/(PERIOD_OF_ONE_CIRCLE * 10);   //5000Hz
     else if(step < (g_motorCfg.pulse_tiaodang - 160) && step >= 160)
-        return 2000/90;   //7200Hz
+        return 2000/(PERIOD_OF_ONE_CIRCLE * 72/5);   //7200Hz
     else if(step < (g_motorCfg.pulse_tiaodang - 120) && (step >= g_motorCfg.pulse_tiaodang - 160))
-        return 2000/60; 
+        return 2000/(PERIOD_OF_ONE_CIRCLE * 10); 
     else if(step < (g_motorCfg.pulse_tiaodang - 80) && (step >= g_motorCfg.pulse_tiaodang - 120))
-        return 2000/40;   
+        return 2000/(PERIOD_OF_ONE_CIRCLE * 32/5);   
     else if(step < (g_motorCfg.pulse_tiaodang - 40) && (step >= g_motorCfg.pulse_tiaodang - 80))
-        return 2000/20;
+        return 2000/(PERIOD_OF_ONE_CIRCLE * 3);
     else if(step < g_motorCfg.pulse_tiaodang && step >= (g_motorCfg.pulse_tiaodang - 40))
-        return 2000/7;
-    return 2000/7;
+        return 2000/PERIOD_OF_ONE_CIRCLE;
+    return 2000/PERIOD_OF_ONE_CIRCLE;
 }
 /************************ZXDQ *****END OF FILE****/
 

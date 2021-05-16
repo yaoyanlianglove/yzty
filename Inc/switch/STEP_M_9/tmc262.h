@@ -108,7 +108,7 @@ typedef struct __coolstep_control_reg
 typedef struct __stallguard_control_reg
 {
     uint8_t filter_enable;         
-    char stallguard_threshold;      //堵转监测值
+    char stallguard_threshold;         //堵转监测值
     uint8_t current_scale;             //电流模式        
 } _stallguard_control_reg;
 
