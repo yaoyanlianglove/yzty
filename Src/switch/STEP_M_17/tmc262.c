@@ -53,8 +53,8 @@ static uint32_t Driver_Control_REG_Config(void)
         spi_write_data |= 1 << 9;                  //0：失能。1：使能脉冲修改
     if (driver_control_reg.dedge) 
         spi_write_data |= 1 << 8;                  //1：使能双边沿脉冲。减少步进频率要求
-    if (driver_control_reg.mres > 8) 
-        driver_control_reg.mres = 8;               //微步距进度配置
+    if (driver_control_reg.mres > 15) 
+        driver_control_reg.mres = 15;               //微步距进度配置
     spi_write_data |= driver_control_reg.mres;
 
     spi_read_data = TMC262_Read_Write(spi_write_data);
@@ -204,9 +204,9 @@ void TMC262_Init(void)
 {
 
     //负载检测和电流设置寄存器初始化
-    stallguard_control_reg.filter_enable        = 1;     /* 失步检测滤波0:标准模式，1:4个fullstep滤波*/
-    stallguard_control_reg.stallguard_threshold = 0;     /* 带符号失步门限-64~63，值越大灵敏度越低，不建议小于-10*/
-    stallguard_control_reg.current_scale        = 10;    /* 驱动电流0~31*/
+    stallguard_control_reg.filter_enable        = 1;      /* 失步检测滤波0:标准模式，1:4个fullstep滤波*/
+    stallguard_control_reg.stallguard_threshold = 0;      /* 带符号失步门限-64~63，值越大灵敏度越低，不建议小于-10*/
+    stallguard_control_reg.current_scale        = 10;     /* 驱动电流0~31*/
 
     //驱动配置寄存器初始化
     driver_config_reg.slope_high_side           = 3;      /* 上功率管控制斜率0:最小3: 最大*/
@@ -239,9 +239,8 @@ void TMC262_Init(void)
     chopper_control_reg.hysteresis_start        = 7;      /* 内阻及磁滞损耗导致实际电流与预想不符的补偿*/
     chopper_control_reg.time_off                = 5;      /* 斩波慢衰减时间，影响开关频率*/
 
+    Read_TMC262_State(0);
 
-    Driver_Config_REG_Config();
-    
     Coolstep_Control_REG_Config();
     Stallguard_Control_REG_Config();
     Driver_Config_REG_Config();
@@ -260,7 +259,6 @@ void Read_TMC262_State(uint8_t type)
 {
     uint32_t spi_read_data  = 0; 
     driver_config_reg.read_back_select = type;      /* 读取返回项,0:微步,1:负载值,2:负载值高5位及设置电流大小*/
-    Driver_Config_REG_Config();
     spi_read_data = Driver_Config_REG_Config();
     memset(&tmc262_state, 0, sizeof(tmc262_state));
     tmc262_state.type = type;
@@ -297,6 +295,8 @@ void Read_TMC262_State(uint8_t type)
  *****************************************************************************/
 void Motor_Config_Current_Scale(uint8_t current_scale)
 {    
+    chopper_control_reg.time_off = 5;
+    Chopper_Control_REG_Config();
     stallguard_control_reg.current_scale = current_scale;  
     Stallguard_Control_REG_Config();
 }
@@ -310,6 +310,7 @@ void Motor_Config_Current_Scale(uint8_t current_scale)
 void Motor_Config_Zhengzhuan(void)
 { 
     TMC262_DIR_HIGH;
+    TMC262_Init();
 }
 /*****************************************************************************
  Function    : Motor_Config_Fanzhuan
@@ -320,7 +321,8 @@ void Motor_Config_Zhengzhuan(void)
  *****************************************************************************/
 void Motor_Config_Fanzhuan(void)
 {
-    TMC262_DIR_LOW; 
+    TMC262_DIR_LOW;
+    TMC262_Init(); 
 }
 
 /************************ZXDQ *****END OF FILE****/
