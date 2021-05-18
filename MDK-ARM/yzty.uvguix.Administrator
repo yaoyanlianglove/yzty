@@ -77,18 +77,18 @@
       <flags>2</flags>
       <showCmd>3</showCmd>
       <MinPosition>
-        <xPos>-32000</xPos>
-        <yPos>-32000</yPos>
+        <xPos>-1</xPos>
+        <yPos>-1</yPos>
       </MinPosition>
       <MaxPosition>
         <xPos>-1</xPos>
         <yPos>-1</yPos>
       </MaxPosition>
       <NormalPosition>
-        <Top>95</Top>
-        <Left>293</Left>
-        <Right>1563</Right>
-        <Bottom>778</Bottom>
+        <Top>128</Top>
+        <Left>392</Left>
+        <Right>1662</Right>
+        <Bottom>811</Bottom>
       </NormalPosition>
     </WindowPosition>
     <MDIClientArea>
@@ -3408,9 +3408,9 @@
       </Doc>
       <Doc>
         <Name>..\Src\switch\STEP_M_9\switch.c</Name>
-        <ColumnNumber>9</ColumnNumber>
-        <TopLine>432</TopLine>
-        <CurrentLine>450</CurrentLine>
+        <ColumnNumber>23</ColumnNumber>
+        <TopLine>25</TopLine>
+        <CurrentLine>52</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
