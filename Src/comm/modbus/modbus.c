@@ -94,7 +94,7 @@ uint8_t Modbus_Function_01_Process(void)
     modbus.txBuffer[2] = length;
     for(i = 0; i < length; i++)
     {
-        if(i == length - 1)
+        if((i == length - 1) && (regNum%8 != 0))
         {
             for(j = 0; j < regNum%8; j++)
                 modbus.txBuffer[3 + i] = modbus.txBuffer[3 + i] | (*(modbus.coilReg[regStart + j + i*8]) << j); 
@@ -142,7 +142,7 @@ uint8_t Modbus_Function_02_Process(void)
     modbus.txBuffer[2] = length;
     for(i = 0; i < length; i++)
     {
-        if(i == length - 1)
+        if((i == length - 1) && (regNum%8 != 0))
         {
             for(j = 0; j < regNum%8; j++)
                 modbus.txBuffer[3 + i] = modbus.txBuffer[3 + i] | (*(modbus.discreteInputReg[regStart + j + i*8]) << j);  
@@ -354,7 +354,7 @@ uint8_t Modbus_Function_15_Process(void)
     length = modbus.rxBuffer[6];
     for(i = 0; i < length; i++)
     {
-        if(i == length - 1)
+        if((i == length - 1) && (regNum%8 != 0))
         {
             for(j = 0; j < regNum%8; j++)
                 data[j + i*8] = (modbus.rxBuffer[i+7] >> j) & 0x01;
