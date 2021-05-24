@@ -432,7 +432,7 @@ StorageStatusTypeDef Save_Default_Config(ConfigParaTypeDef *cfgPara)
     cfgPara->tyDelay              = 300;
     cfgPara->ctRatio              = 300; 
     cfgPara->lockOverCurrent      = 400;
-    cfgPara->lockVoltageUpLimit   = 240;
+    cfgPara->lockVoltageUpLimit   = 250;
     cfgPara->lockVoltageLowLimit  = 198;
     cfgPara->lockHighVoltage      = 280;
     cfgPara->lockLowVoltage       = 150;

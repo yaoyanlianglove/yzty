@@ -157,20 +157,12 @@ uint16_t Private_Comm_Interface_Remote_Control_Process(RemoteSignalTypeDef *remo
                 return STATUS_CODE_LOCK_ERR;
             if(data == 1)
             {
-#ifdef STEP_MOTOR                
-                if(sw->memoryGear >= configPara-> deviceInfo.tapTotalNum)
-#else
                 if(sw->currentGear >= configPara-> deviceInfo.tapTotalNum)
-#endif
                     return STATUS_CODE_DW_HIGH_ERR;
             }
             else if(data == 2)
             {
-#ifdef STEP_MOTOR                
-                if(sw->memoryGear == 1)
-#else
                 if(sw->currentGear == 1)
-#endif
                     return STATUS_CODE_DW_LOW_ERR;
             }
             else if(data != 3)
@@ -185,17 +177,10 @@ uint16_t Private_Comm_Interface_Remote_Control_Process(RemoteSignalTypeDef *remo
                 return STATUS_CODE_LOCK_ERR;
             if(privateComm.flagYkReady  == 0)
                 return STATUS_CODE_NO_YK_ERR;
-#ifdef STEP_MOTOR                
-                if(sw->memoryGear == 1 && privateComm.switchMotion == 2)
-#else
-                if(sw->currentGear == 1 && privateComm.switchMotion == 2)
-#endif
+            if(sw->currentGear == 1 && privateComm.switchMotion == 2)
                 return STATUS_CODE_DW_LOW_ERR;
-#ifdef STEP_MOTOR                
-                if(sw->memoryGear >= configPara-> deviceInfo.tapTotalNum && privateComm.switchMotion == 1)
-#else
-                if(sw->currentGear >= configPara-> deviceInfo.tapTotalNum && privateComm.switchMotion == 1)
-#endif
+
+            if(sw->currentGear >= configPara-> deviceInfo.tapTotalNum && privateComm.switchMotion == 1)
                 return STATUS_CODE_DW_HIGH_ERR;
             if(data == 0xFF)
                 sw->remoteMotion = privateComm.switchMotion;
@@ -275,11 +260,11 @@ uint16_t Private_Comm_Interface_Set_Config_Process(RemoteSignalTypeDef *remoteSi
         switch(i)
         {
             case 0:
-                if(data[i] < 225 || data[i] > 240)
+                if(data[i] < 198 || data[i] > 250)
                     res = STATUS_CODE_OVER_ERR;
             break;
             case 1:
-                if(data[i] < 198 || data[i] > 225)
+                if(data[i] < 198 || data[i] > 250)
                     res = STATUS_CODE_OVER_ERR;
             break;
             case 2:

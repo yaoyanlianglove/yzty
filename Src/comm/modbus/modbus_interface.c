@@ -239,11 +239,11 @@ uint8_t Modbus_Interface_Set_Config_Process(RemoteSignalTypeDef *remoteSignal,
         switch(i)
         {
             case 0:
-                if(data[i] < 225 || data[i] > 240)
+                if(data[i] < 198 || data[i] > 250)
                     res = 3;
             break;
             case 1:
-                if(data[i] < 198 || data[i] > 225)
+                if(data[i] < 198 || data[i] > 250)
                     res = 3;
             break;
             case 2:
