@@ -16,9 +16,7 @@ extern "C" {
 #endif
 
 #include  "stdint.h"
-
-#define   HARD_VERSION     1000
-#define   SOFT_VERSION     1001 
+ 
 #define   SWITCH_TYPE      0x11             //步进电机5档
 
 #define   STEP_MOTOR   1

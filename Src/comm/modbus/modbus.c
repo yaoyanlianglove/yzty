@@ -83,7 +83,7 @@ uint8_t Modbus_Function_01_Process(void)
     modbus.txBuffer[0] = MODBUS_DEVICE_ID;
     modbus.txBuffer[1] = modbus.rxBuffer[1];
     
-    regStart = (modbus.rxBuffer[2] << 8) + modbus.rxBuffer[3];
+    regStart = ((modbus.rxBuffer[2] << 8) + modbus.rxBuffer[3]) - MODBUS_CODE_01_REG_START;
     regNum   = (modbus.rxBuffer[4] << 8) + modbus.rxBuffer[5];
     if(regStart + regNum > 2)
         return 2;
@@ -131,7 +131,7 @@ uint8_t Modbus_Function_02_Process(void)
     modbus.txBuffer[0] = MODBUS_DEVICE_ID;
     modbus.txBuffer[1] = modbus.rxBuffer[1];
     
-    regStart = (modbus.rxBuffer[2] << 8) + modbus.rxBuffer[3];
+    regStart = (modbus.rxBuffer[2] << 8) + modbus.rxBuffer[3] - MODBUS_CODE_02_REG_START;
     regNum   = (modbus.rxBuffer[4] << 8) + modbus.rxBuffer[5];
     if(regStart + regNum > MODBUS_DIS_INPUT_REG_LIMIT)
         return 2;
@@ -178,7 +178,7 @@ uint8_t Modbus_Function_03_Process(void)
     modbus.txBuffer[0] = MODBUS_DEVICE_ID;
     modbus.txBuffer[1] = modbus.rxBuffer[1];
     
-    regStart = (modbus.rxBuffer[2] << 8) + modbus.rxBuffer[3];
+    regStart = (modbus.rxBuffer[2] << 8) + modbus.rxBuffer[3] - MODBUS_CODE_03_REG_START;
     regNum   = (modbus.rxBuffer[4] << 8) + modbus.rxBuffer[5];
     if(regStart + regNum > MODBUS_HOLDING_REG_LIMIT)
         return 2;
@@ -215,8 +215,7 @@ uint8_t Modbus_Function_04_Process(void)
     memset(modbus.txBuffer, 0x00, 128);
     modbus.txBuffer[0] = MODBUS_DEVICE_ID;
     modbus.txBuffer[1] = modbus.rxBuffer[1];
-    
-    regStart = (modbus.rxBuffer[2] << 8) + modbus.rxBuffer[3];
+    regStart = (modbus.rxBuffer[2] << 8) + modbus.rxBuffer[3] - MODBUS_CODE_04_REG_START;
     regNum   = (modbus.rxBuffer[4] << 8) + modbus.rxBuffer[5];
     if(regStart + regNum > MODBUS_INPUT_REG_LIMIT)
         return 2;
@@ -253,7 +252,7 @@ uint8_t Modbus_Function_05_Process(void)
     memset(modbus.txBuffer, 0x00, 128);
     modbus.txBuffer[0] = MODBUS_DEVICE_ID;
     modbus.txBuffer[1] = modbus.rxBuffer[1];
-    regStart = (modbus.rxBuffer[2] << 8) + modbus.rxBuffer[3];
+    regStart = (modbus.rxBuffer[2] << 8) + modbus.rxBuffer[3] - MODBUS_CODE_01_REG_START;
     if(regStart + 1 > MODBUS_COIN_REG_LIMIT)
         return 2;
     modbus.txBuffer[2] = modbus.rxBuffer[2];
@@ -301,7 +300,7 @@ uint8_t Modbus_Function_06_Process(void)
     modbus.txBuffer[0] = MODBUS_DEVICE_ID;
     modbus.txBuffer[1] = modbus.rxBuffer[1];
 
-    regStart = (modbus.rxBuffer[2] << 8) + modbus.rxBuffer[3];
+    regStart = (modbus.rxBuffer[2] << 8) + modbus.rxBuffer[3] - MODBUS_CODE_03_REG_START;
     if(regStart + 1 > MODBUS_HOLDING_REG_LIMIT)
         return 2;
     length = 3;
@@ -342,7 +341,7 @@ uint8_t Modbus_Function_15_Process(void)
     memset(modbus.txBuffer, 0x00, 128);
     modbus.txBuffer[0] = MODBUS_DEVICE_ID;
     modbus.txBuffer[1] = modbus.rxBuffer[1];
-    regStart = (modbus.rxBuffer[2] << 8) + modbus.rxBuffer[3];
+    regStart = (modbus.rxBuffer[2] << 8) + modbus.rxBuffer[3] - MODBUS_CODE_01_REG_START;
     regNum   = (modbus.rxBuffer[4] << 8) + modbus.rxBuffer[5];
     if(regStart + regNum > MODBUS_COIN_REG_LIMIT)
         return 2;
@@ -396,7 +395,7 @@ uint8_t Modbus_Function_16_Process(void)
     modbus.txBuffer[0] = MODBUS_DEVICE_ID;
     modbus.txBuffer[1] = modbus.rxBuffer[1];
 
-    regStart = (modbus.rxBuffer[2] << 8) + modbus.rxBuffer[3];
+    regStart = (modbus.rxBuffer[2] << 8) + modbus.rxBuffer[3] - MODBUS_CODE_03_REG_START;
     regNum   = (modbus.rxBuffer[4] << 8) + modbus.rxBuffer[5];
     if(regStart + regNum > MODBUS_HOLDING_REG_LIMIT)
         return 2;

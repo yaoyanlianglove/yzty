@@ -202,7 +202,10 @@ void YZTY_Read_Telemetry(void)
         telemetryReg[13] =  (int16_t)(g_telemetry.sample.freq   * 100.0);
         telemetryReg[14] =  (int16_t)(g_telemetry.sample.tmp    * 10.0);
         telemetryReg[15] =  (int16_t)(g_telemetry.oilTmp        * 10.0);
-    }   
+    } 
+    Read_Switch_Motion_Counter(g_telemetry.swMotionCnt);  
+    telemetryReg[16] = (g_telemetry.swMotionCnt[0] << 8) + g_telemetry.swMotionCnt[1];
+    telemetryReg[17] = (g_telemetry.swMotionCnt[2] << 8) + g_telemetry.swMotionCnt[3];
 }
 /*****************************************************************************
  Function    : YZTY_Read_Clock

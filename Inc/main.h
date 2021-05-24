@@ -173,7 +173,8 @@ void Error_Handler(void);
 #define DOUT1_Pin GPIO_PIN_1
 #define DOUT1_GPIO_Port GPIOE
 /* USER CODE BEGIN Private defines */
-
+#define   HARD_VERSION     (1000)
+#define   SOFT_VERSION     (1007) 
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

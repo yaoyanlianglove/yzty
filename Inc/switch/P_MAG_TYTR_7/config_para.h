@@ -17,8 +17,6 @@ extern "C" {
 
 #include  "stdint.h"
 
-#define   HARD_VERSION     1000
-#define   SOFT_VERSION     1001 
 #define   SWITCH_TYPE      0x25             //永磁调容调压7档
 
 #define   P_MAG_SWITCH   1

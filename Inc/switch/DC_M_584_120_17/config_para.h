@@ -17,8 +17,6 @@ extern "C" {
 
 #include  "stdint.h"
 
-#define   HARD_VERSION     1000
-#define   SOFT_VERSION     1001 
 #define   SWITCH_TYPE      04    //双直流电机584转 94转 17档
 #define   DD_MOTOR         1     //定义双直流电机
 

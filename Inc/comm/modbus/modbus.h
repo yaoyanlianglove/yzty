@@ -23,7 +23,12 @@
 #define MODBUS_COIN_REG_LIMIT           7
 #define MODBUS_DIS_INPUT_REG_LIMIT      32
 #define MODBUS_HOLDING_REG_LIMIT        27
-#define MODBUS_INPUT_REG_LIMIT          16
+#define MODBUS_INPUT_REG_LIMIT          18
+
+#define MODBUS_CODE_01_REG_START        (0x1000)
+#define MODBUS_CODE_02_REG_START        (0x2000)
+#define MODBUS_CODE_03_REG_START        (0x3000)
+#define MODBUS_CODE_04_REG_START        (0x4000)
 
 
 #define RS485DIR_TX     HAL_GPIO_WritePin(RS485_DIR_GPIO_Port, RS485_DIR_Pin, GPIO_PIN_SET)       

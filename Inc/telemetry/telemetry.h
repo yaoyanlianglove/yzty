@@ -23,7 +23,8 @@ extern "C" {
 typedef struct 
 {
     ACSampleTypeDef sample; 
-    ACSampleTypeDef bfSample;   
+    ACSampleTypeDef bfSample;
+    uint8_t swMotionCnt[6];             //调压次数   
     float oilTmp;          
 }TelemetryTypeDef;
 
