@@ -590,6 +590,7 @@ SwitchStatusTypeDef Turn_Gear(uint8_t dir, MotorCfgTypeDef* motorCfg, SwitchType
     uint8_t gear = 0;
     uint32_t count = 0;
     uint32_t speed = 0;
+    uint32_t rightTimes = 0;
     if(dir == FORWARD)
         sw->expectGear = sw->memoryGear + 1;
     else
@@ -609,7 +610,18 @@ SwitchStatusTypeDef Turn_Gear(uint8_t dir, MotorCfgTypeDef* motorCfg, SwitchType
             step++;
         }
     }
-    gear = Read_Gear_No_Delay();
+    count = 0;
+    while(count < 10)
+    {
+        gear = Read_Gear_No_Delay();
+        if(gear > 0 && gear < sw->totalGear + 1)
+        {
+            rightTimes++;
+            if(rightTimes > 3)
+                break;
+        }
+        count++;
+    }
     if(gear == sw->expectGear)
     {
         sw->memoryGear  = sw->expectGear;
