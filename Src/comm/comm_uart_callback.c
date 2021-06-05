@@ -106,7 +106,16 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
                     if(privateComm.rxCount < privateComm.rxLength - 1)
                         privateComm.rxCount++;
                     else
-                        Private_Comm_Rev_Data_Check();
+                    {
+                        if(privateComm.rxLength > 2 && privateComm.rxLength < 64)  //不完整帧处理
+                            Private_Comm_Rev_Data_Check();
+                        else
+                        {
+                            privateComm.rxCount = 0;
+                            privateComm.rxLength = 0;
+                        }
+
+                    }
                 break;
             }
         }

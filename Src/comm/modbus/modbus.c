@@ -479,7 +479,11 @@ void Modbus_Data_Analysis(volatile  uint16_t *remoteHeartTimeout)
     if(modbus.rxEndFlag == 1)
     {
         *remoteHeartTimeout = (uint16_t)HEART_TIMEOUT_PERIOD;
-        if(modbus.rxBuffer[0] == MODBUS_DEVICE_ID || modbus.rxBuffer[0] == 0)     //地址正确或者广播地址
+        if(modbus.rxCount < 5)
+        {
+            ;//不完整帧，不做回复和处理
+        }
+        else if(modbus.rxBuffer[0] == MODBUS_DEVICE_ID || modbus.rxBuffer[0] == 0)     //地址正确或者广播地址
         {
             crc = modbus.rxBuffer[modbus.rxCount-1] + (modbus.rxBuffer[modbus.rxCount-2] << 8);//接收到的CRC(低字节在前，高字节在后)
             if(crc == CRC_16(modbus.rxBuffer, modbus.rxCount - 2))
