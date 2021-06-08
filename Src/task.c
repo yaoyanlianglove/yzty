@@ -25,9 +25,9 @@ static UINT16 TIMER_1MS_ID;
 #define TASK_LCD_PRIOR           20  
 #define TASK_MAIN_PRIOR          3  
 
-#define TASK_YZTY_INIT_SIZE      0x150
-#define TASK_LCD_SIZE            0x200
-#define TASK_MAIN_SIZE           0x150
+#define TASK_YZTY_INIT_SIZE      0x800
+#define TASK_LCD_SIZE            0x800
+#define TASK_MAIN_SIZE           0x800
 
 /*****************************************************************************
  Function    : Task_Lcd
