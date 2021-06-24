@@ -41,7 +41,7 @@ volatile  uint16_t lcdPeriodCount  = 0;
 void Remote_Signal_Init(RemoteSignalTypeDef *remoteSignal)
 {
     remoteSignal->autoMode    = 1;       //默认自动模式
-    remoteSignal->oilPosAlarm = 1;       //默认油位告警
+    //remoteSignal->oilPosAlarm = 1;       //默认油位告警
 }
 /*****************************************************************************
  Function    : LCD_Button_Time_Counter
@@ -204,17 +204,17 @@ static void Hand_Button_Time_Counter(HandButtonSignalTypeDef *handButton)
 void Remote_Signal_Time_Counter(RemoteSignalTypeDef *remoteSignal)
 {
     //油位
-    if(remoteSignal->oilPosAlarm != REMOTE_SIGNAL_OIL_POS)
-    {
-        if(oilCount < REMOTE_SIGNAL_SUB_DITH_TIME)
-            oilCount++;
-        else
-        {
-            remoteSignal->oilPosAlarm = REMOTE_SIGNAL_OIL_POS;
-        }
-    }
-    else 
-        oilCount = 0;
+    // if(remoteSignal->oilPosAlarm != REMOTE_SIGNAL_OIL_POS)
+    // {
+    //     if(oilCount < REMOTE_SIGNAL_SUB_DITH_TIME)
+    //         oilCount++;
+    //     else
+    //     {
+    //         remoteSignal->oilPosAlarm = REMOTE_SIGNAL_OIL_POS;
+    //     }
+    // }
+    // else 
+    //     oilCount = 0;
     Gear_Signal_Time_Counter(&(remoteSignal->gearSignal));
     Hand_Button_Time_Counter(&(remoteSignal->handButton));
     LCD_Button_Time_Counter(&(remoteSignal->lcdButton));

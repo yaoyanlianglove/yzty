@@ -453,7 +453,7 @@ void YZTY_Lock_Judge(void)
     if(g_remoteSignal.overCurrentAlarm == 1 || g_remoteSignal.highVoltageAlarm == 1 || 
        g_remoteSignal.lowVoltageAlarm  == 1 || g_remoteSignal.gearFault        == 1 ||
        g_remoteSignal.switchFault      == 1 || g_remoteSignal.turnGearFail     == 1 ||
-       g_remoteSignal.turnCapFail      == 1)
+       g_remoteSignal.turnCapFail      == 1 || g_remoteSignal.oilPosAlarm      == 1)
         g_remoteSignal.lockSwitch = 1;
     else
         g_remoteSignal.lockSwitch = 0;
