@@ -621,6 +621,7 @@ SwitchStatusTypeDef Turn_Gear(uint8_t dir, MotorCfgTypeDef* motorCfg, SwitchType
                 break;
         }
         count++;
+        delay_ms(1);
     }
     if(gear == sw->expectGear)
     {
@@ -639,7 +640,7 @@ SwitchStatusTypeDef Turn_Gear(uint8_t dir, MotorCfgTypeDef* motorCfg, SwitchType
     {
         if(gear == sw->currentGear)
         {
-            return Back_Gear(dir^1, step, SWITCH_ERROR, motorCfg, sw);
+            return SWITCH_ERROR;
         }
         else
         {

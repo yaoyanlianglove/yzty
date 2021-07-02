@@ -439,7 +439,7 @@ void LCD_Display_RealStatus(SwitchTypeDef *sw, uint16_t version, float oilTemp, 
         LCD_Display_One_Hanzi(0, 2, 84, &FONT_Characters[0][16], 16);
     else
         LCD_Display_One_Hanzi(0, 2, 84, &FONT_Cap[0][16], 16);
-    LCD_Display_One_Hanzi(0, 2, 90, &FONT_Number[Font_Number_Array(temp%10)][16], 16);
+    LCD_Display_One_Hanzi(0, 2, 92, &FONT_Number[Font_Number_Array(temp%10)][16], 16);
 
     if(deviceStatus > 9999 && deviceStatus < 100000)
         LCD_Display_One_Hanzi(0, 4, 60, &FONT_Number[Font_Number_Array(deviceStatus/10000)][16], 16);
@@ -458,7 +458,7 @@ void LCD_Display_RealStatus(SwitchTypeDef *sw, uint16_t version, float oilTemp, 
     else
         LCD_Display_One_Hanzi(0, 4, 84, &FONT_Cap[0][16], 16);
 
-    LCD_Display_One_Hanzi(0, 4, 90, &FONT_Number[Font_Number_Array((deviceStatus%10)/1)][16], 16);
+    LCD_Display_One_Hanzi(0, 4, 92, &FONT_Number[Font_Number_Array((deviceStatus%10)/1)][16], 16);
 
     if(sw->currentGear < 20)
     {
