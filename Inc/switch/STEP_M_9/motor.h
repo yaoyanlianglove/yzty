@@ -19,7 +19,7 @@ extern "C" {
 #define     FORWARD   0
 #define     REVERSE   1  
 
-#define     PERIOD_OF_ONE_CIRCLE     (6)    //一个循环的周期
+#define     PERIOD_OF_ONE_CIRCLE     (10)    //一个循环的周期
 /**
   * @brief  Motor structures definition
   */
